@@ -1,0 +1,629 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: linear-gradient(
+        135deg,
+        #061d33,
+        #075985
+    );
+
+    color: #0b1d2d;
+}
+
+
+/* ========================================
+   PORTADA
+======================================== */
+
+.portada {
+    position: relative;
+
+    width: calc(100% - 60px);
+    max-width: 1380px;
+    min-height: 950px;
+
+    margin: 50px auto;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+    border-top: 10px solid #0aab9a;
+
+    box-shadow:
+        0 15px 40px rgba(15, 23, 42, 0.18);
+
+    display: flex;
+    justify-content: center;
+}
+
+.portada-contenido {
+    width: 100%;
+    max-width: 1050px;
+
+    padding: 75px 80px 80px;
+
+    text-align: center;
+}
+
+
+/* UNIVERSIDAD */
+
+.encabezado-portada h2 {
+    margin: 0;
+
+    color: #062f5b;
+
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.carrera {
+    margin: 18px 0 0;
+
+    color: #475569;
+
+    font-size: 19px;
+}
+
+.linea-portada {
+    width: 120px;
+    height: 5px;
+
+    margin: 38px auto 45px;
+
+    background: #0aab9a;
+
+    border-radius: 10px;
+}
+
+
+/* TÍTULO */
+
+.materia-portada {
+    margin: 0 0 30px;
+
+    color: #075985;
+
+    font-size: 21px;
+    font-weight: 700;
+
+    letter-spacing: 4px;
+}
+
+.titulo-portada h1 {
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    color: #0f172a;
+
+    font-size: 55px;
+    line-height: 1.18;
+
+    font-weight: 700;
+}
+
+.practica-portada {
+    margin: 28px 0 0;
+
+    color: #0aab9a;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+
+/* SEPARADOR */
+
+.separador-portada {
+    width: 75%;
+    height: 1px;
+
+    margin: 55px auto 45px;
+
+    background: #cbd5e1;
+}
+
+
+/* INFORMACIÓN */
+
+.informacion-portada {
+    color: #0f172a;
+
+    font-size: 18px;
+}
+
+.dato-portada {
+    margin-bottom: 24px;
+}
+
+.dato-portada strong {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 18px;
+}
+
+.dato-portada p {
+    margin: 0;
+
+    font-size: 18px;
+}
+
+.datos-fila {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 22px;
+
+    margin-top: 28px;
+}
+
+.datos-fila strong {
+    margin-right: 6px;
+}
+
+.division-dato {
+    width: 1px;
+    height: 24px;
+
+    background: #94a3b8;
+}
+
+.fecha-portada {
+    margin-top: 28px;
+}
+
+
+/* NÚMERO DE PÁGINA */
+
+.numero-pagina {
+    position: absolute;
+
+    right: 40px;
+    bottom: 30px;
+
+    color: #64748b;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ========================================
+   SECCIONES
+======================================== */
+
+.seccion {
+    position: relative;
+
+    width: calc(100% - 60px);
+    max-width: 1380px;
+    min-height: 900px;
+
+    margin: 50px auto;
+    padding: 75px 90px 90px;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+    border-top: 8px solid #0aab9a;
+
+    box-shadow:
+        0 15px 40px rgba(15, 23, 42, 0.18);
+}
+
+
+/* ========================================
+   ENCABEZADOS DE SECCIÓN
+======================================== */
+
+.encabezado-seccion {
+    display: flex;
+    align-items: center;
+
+    gap: 30px;
+}
+
+.numero-seccion {
+    color: #0aab9a;
+
+    font-size: 58px;
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+.encabezado-seccion h2 {
+    margin: 0 0 8px 0;
+
+    color: #062f5b;
+
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.encabezado-seccion p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 18px;
+}
+
+.linea-seccion {
+    width: 100%;
+    height: 2px;
+
+    margin: 30px 0 45px;
+
+    background: #e2e8f0;
+}
+
+
+/* ========================================
+   ÍNDICE
+======================================== */
+
+.lista-indice {
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.item-indice {
+    display: flex;
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 24px 30px;
+
+    background: #f8fafc;
+
+    border: 1px solid #d8e1ea;
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+.item-indice:hover {
+    transform: translateX(7px);
+
+    border-color: #0aab9a;
+
+    box-shadow:
+        0 5px 15px rgba(15, 23, 42, 0.08);
+}
+
+.item-indice > span {
+    min-width: 48px;
+
+    color: #0aab9a;
+
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.item-indice h3 {
+    margin: 0 0 6px 0;
+
+    color: #062f5b;
+
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.item-indice p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 16px;
+    line-height: 1.6;
+
+    /* Requisito de la lista de cotejo */
+    text-align: justify;
+}
+
+/* ========================================
+   CONTENIDO DE LAS SECCIONES
+======================================== */
+
+.contenido-seccion {
+    padding: 0 45px;
+}
+
+.contenido-seccion p {
+    margin: 0 0 28px 0;
+
+    color: #1e293b;
+
+    font-size: 18px;
+    line-height: 1.9;
+
+    /* Texto justificado */
+    text-align: justify;
+}
+
+.contenido-seccion strong {
+    color: #062f5b;
+    font-weight: 700;
+}
+
+
+/* ========================================
+   BOTÓN VOLVER AL ÍNDICE
+======================================== */
+
+.volver-indice {
+    display: inline-block;
+
+    margin-top: 30px;
+    padding: 14px 22px;
+
+    background: #062f5b;
+    color: #ffffff;
+
+    border-radius: 9px;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+.volver-indice:hover {
+    background: #0aab9a;
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    text-decoration: none;
+}
+
+/* ========================================
+   MARCO TEÓRICO
+======================================== */
+
+.bloque-teorico {
+    margin: 0 35px 28px 35px;
+    padding: 28px 32px;
+
+    background: #f8fafc;
+
+    border: 1px solid #d8e1ea;
+    border-left: 5px solid #0aab9a;
+
+    border-radius: 10px;
+}
+
+.bloque-teorico h3 {
+    margin: 0 0 17px 0;
+
+    color: #062f5b;
+
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.bloque-teorico p {
+    margin: 0 0 16px 0;
+
+    color: #1e293b;
+
+    font-size: 17px;
+    line-height: 1.8;
+
+    text-align: justify;
+}
+
+.bloque-teorico p:last-child {
+    margin-bottom: 0;
+}
+
+/* ========================================
+   PROCEDIMIENTO
+======================================== */
+
+.paso {
+    margin: 35px 20px;
+    padding: 36px 38px;
+
+    background: #f8fafc;
+
+    border: 1px solid #d8e1ea;
+    border-radius: 12px;
+}
+
+.titulo-paso {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+.titulo-paso span {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #0aab9a;
+    color: #ffffff;
+
+    border-radius: 50%;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.titulo-paso h3 {
+    margin: 0;
+
+    color: #062f5b;
+
+    font-size: 27px;
+    font-weight: 700;
+}
+
+
+/* TEXTO */
+
+.paso p {
+    margin: 0 0 22px 0;
+
+    color: #1e293b;
+
+    font-size: 18px;
+    line-height: 1.8;
+
+    text-align: justify;
+}
+
+
+/* COMANDOS */
+
+.comando {
+    margin: 20px 0 25px;
+    padding: 20px 25px;
+
+    background: #0b1d2d;
+
+    border-radius: 8px;
+
+    overflow-x: auto;
+}
+
+.comando code {
+    color: #ffffff;
+
+    font-family: Consolas, "Courier New", monospace;
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* CAPTURAS */
+
+.captura {
+    margin-top: 28px;
+}
+
+.captura img {
+    display: block;
+
+    width: 100%;
+    max-width: 950px;
+    height: auto;
+
+    margin: 0 auto 15px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+
+    box-shadow:
+        0 5px 15px rgba(15, 23, 42, 0.08);
+}
+
+.captura p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 15px;
+    font-style: italic;
+
+    text-align: center;
+}
+
+/* ========================================
+   REFERENCIAS BIBLIOGRÁFICAS
+======================================== */
+
+.lista-referencias {
+    padding: 0 45px;
+}
+
+.lista-referencias p {
+    margin: 0 0 28px 0;
+
+    color: #1e293b;
+
+    font-size: 17px;
+    line-height: 1.8;
+
+    text-align: justify;
+
+    /* Sangría francesa para referencias APA */
+    padding-left: 35px;
+    text-indent: -35px;
+}
+
+.lista-referencias em {
+    color: #0f172a;
+}
+
+/* =========================================
+   NAVEGACION ENTRE PRACTICAS
+========================================= */
+
+.barra-navegacion {
+    width: calc(100% - 60px);
+    max-width: 1380px;
+
+    margin: 30px auto -20px;
+
+    text-align: left;
+}
+
+.volver-practicas {
+    display: inline-block;
+
+    padding: 13px 20px;
+
+    background: rgba(255, 255, 255, .12);
+
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 9px;
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: .2s;
+}
+
+.volver-practicas:hover {
+    background: #0aab9a;
+    border-color: #0aab9a;
+
+    transform: translateX(-3px);
+}

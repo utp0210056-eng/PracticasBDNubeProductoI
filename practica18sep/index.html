@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Práctica - Sistema de Asistencia PostgreSQL</title>
+
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <div class="barra-navegacion">
+    <a href="../index.html" class="volver-practicas">
+        ← Volver a todas las prácticas
+    </a>
+</div>
+
+    <!-- PORTADA -->
+<section class="portada">
+
+    <div class="portada-contenido">
+
+        <div class="encabezado-portada">
+
+            <h2>Universidad Tecnológica de Puebla</h2>
+
+            <p class="carrera">
+                Ingeniería en Tecnologías de la Información e Innovación Digital
+            </p>
+
+            <div class="linea-portada"></div>
+
+        </div>
+
+
+        <div class="titulo-portada">
+
+            <p class="materia-portada">
+                BASE DE DATOS EN LA NUBE
+            </p>
+
+            <h1>
+                Control de Asistencia<br>
+                con PostgreSQL y Neon
+            </h1>
+
+            <p class="practica-portada">
+                Práctica de laboratorio
+            </p>
+
+        </div>
+
+
+        <div class="separador-portada"></div>
+
+
+        <div class="informacion-portada">
+
+            <div class="dato-portada">
+                <strong>Alumno:</strong>
+                <p>Alexis Ian Neocelo Sanabria</p>
+            </div>
+
+            <div class="dato-portada">
+                <strong>Profesor:</strong>
+                <p>Javier Nolasco Hernández</p>
+            </div>
+
+            <div class="datos-fila">
+
+                <div>
+                    <strong>Grupo:</strong>
+                    <span>7C</span>
+                </div>
+
+                <div class="division-dato"></div>
+
+                <div>
+                    <strong>Turno:</strong>
+                    <span>Vespertino</span>
+                </div>
+
+            </div>
+
+            <div class="dato-portada fecha-portada">
+                <strong>Práctica:</strong>
+                <p>18 de septiembre de 2026</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="numero-pagina">1</div>
+
+</section>
+
+<!-- ÍNDICE -->
+<section class="seccion indice" id="indice">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">00</span>
+
+        <div>
+            <h2>Índice</h2>
+            <p>Contenido de la práctica</p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+    <div class="lista-indice">
+
+        <a href="#introduccion" class="item-indice">
+            <span>01</span>
+
+            <div>
+                <h3>Introducción</h3>
+                <p>
+                    Descripción general y propósito de la práctica.
+                </p>
+            </div>
+        </a>
+
+        <a href="#marco-teorico" class="item-indice">
+            <span>02</span>
+
+            <div>
+                <h3>Marco teórico</h3>
+                <p>
+                    Conceptos relacionados con PostgreSQL, Neon,
+                    psql y bases de datos relacionales.
+                </p>
+            </div>
+        </a>
+
+        <a href="#procedimiento" class="item-indice">
+            <span>03</span>
+
+            <div>
+                <h3>Procedimiento</h3>
+                <p>
+                    Creación y ejecución del archivo asistencia.sql,
+                    inserción de registros y comprobación de resultados.
+                </p>
+            </div>
+        </a>
+
+        <a href="#conclusion" class="item-indice">
+            <span>04</span>
+
+            <div>
+                <h3>Conclusión</h3>
+                <p>
+                    Resultados obtenidos y conocimientos adquiridos
+                    durante la práctica.
+                </p>
+            </div>
+        </a>
+
+        <a href="#referencias" class="item-indice">
+            <span>05</span>
+
+            <div>
+                <h3>Referencias bibliográficas</h3>
+                <p>
+                    Fuentes de información utilizadas para el
+                    desarrollo de la práctica.
+                </p>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="numero-pagina">2</div>
+
+</section>
+
+<!-- INTRODUCCIÓN -->
+<section class="seccion" id="introduccion">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">01</span>
+
+        <div>
+            <h2>Introducción</h2>
+            <p>Creación y administración de una base de datos de asistencia</p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+    <div class="contenido-seccion">
+
+        <p>
+            Las bases de datos permiten organizar y administrar información
+            de manera estructurada, facilitando su almacenamiento, consulta
+            y actualización. En el ámbito académico pueden utilizarse para
+            registrar información relacionada con materias, grupos,
+            profesores, alumnos y asistencias, permitiendo establecer
+            relaciones entre los diferentes datos que forman parte de un
+            sistema escolar.
+        </p>
+
+        <p>
+            En esta práctica se desarrolló un archivo denominado
+            <strong>asistencia.sql</strong>, cuyo propósito fue definir la
+            estructura de una base de datos para el control de asistencia
+            del grupo 7C de la materia Base de Datos en la Nube. Para ello,
+            se crearon las tablas <strong>materia</strong>,
+            <strong>grupo</strong>, <strong>profesor</strong>,
+            <strong>alumno</strong> y <strong>asistencia</strong>,
+            estableciendo relaciones entre ellas mediante llaves primarias
+            y llaves foráneas.
+        </p>
+
+        <p>
+            Además de crear la estructura de la base de datos, se registró
+            la información correspondiente a la materia, el grupo, el
+            profesor y los 21 alumnos incluidos en la lista de asistencia
+            proporcionada para la práctica. Posteriormente, se almacenaron
+            los valores de asistencia correspondientes a siete fechas del
+            mes de septiembre de 2026, obteniendo un total de 147 registros
+            en la tabla asistencia.
+        </p>
+
+        <p>
+            Finalmente, el archivo SQL fue ejecutado mediante el cliente
+            <strong>psql</strong> sobre la base de datos
+            <strong>neondb</strong> alojada en Neon. Después de la ejecución,
+            se realizaron diferentes consultas para comprobar la creación
+            de las tablas, verificar la cantidad de registros almacenados y
+            relacionar la información de los alumnos con sus respectivas
+            asistencias. De esta manera, la práctica permitió aplicar
+            conceptos de bases de datos relacionales en un entorno de
+            PostgreSQL alojado en la nube.
+        </p>
+
+    </div>
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <div class="numero-pagina">3</div>
+
+</section>
+
+<!-- MARCO TEÓRICO -->
+<section class="seccion" id="marco-teorico">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">02</span>
+
+        <div>
+            <h2>Marco teórico</h2>
+            <p>Fundamentos utilizados para el desarrollo de la práctica</p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+
+    <div class="bloque-teorico">
+
+        <h3>PostgreSQL</h3>
+
+        <p>
+            PostgreSQL es un sistema de gestión de bases de datos
+            objeto-relacional de código abierto que permite almacenar,
+            organizar y consultar información. Además, ofrece características
+            como consultas complejas, llaves foráneas, disparadores,
+            integridad transaccional y control de concurrencia
+            (PostgreSQL Global Development Group, 2026).
+        </p>
+
+    </div>
+
+
+    <div class="bloque-teorico">
+
+        <h3>Base de datos relacional</h3>
+
+        <p>
+            En un sistema de gestión de bases de datos relacional, la
+            información se organiza mediante relaciones que pueden
+            representarse como tablas. Cada tabla está formada por filas
+            y columnas, donde las columnas tienen un tipo de dato definido
+            y las filas representan los registros almacenados
+            (PostgreSQL Global Development Group, 2026).
+        </p>
+
+        <p>
+            Este modelo fue aplicado en la práctica mediante las tablas
+            materia, grupo, profesor, alumno y asistencia, las cuales
+            permiten separar la información y relacionarla mediante
+            identificadores.
+        </p>
+
+    </div>
+
+
+    <div class="bloque-teorico">
+
+        <h3>Llave primaria</h3>
+
+        <p>
+            Una llave primaria es una restricción utilizada para identificar
+            de manera única cada fila de una tabla. Los valores que forman
+            una llave primaria deben ser únicos y no pueden ser nulos
+            (PostgreSQL Global Development Group, 2026).
+        </p>
+
+        <p>
+            En la práctica se utilizaron llaves primarias como idMateria,
+            idGrupo, idProfesor, idAlumno e idAsistencia para identificar
+            individualmente los registros almacenados en las diferentes
+            tablas.
+        </p>
+
+    </div>
+
+
+    <div class="bloque-teorico">
+
+        <h3>Llave foránea e integridad referencial</h3>
+
+        <p>
+            Una llave foránea permite establecer una relación entre dos
+            tablas. PostgreSQL establece que los valores de una llave
+            foránea deben corresponder con valores existentes en la tabla
+            referenciada, contribuyendo de esta manera a mantener la
+            integridad referencial de los datos
+            (PostgreSQL Global Development Group, 2026).
+        </p>
+
+        <p>
+            En la base de datos desarrollada, por ejemplo, la tabla alumno
+            utiliza idGrupo para relacionar cada alumno con su grupo,
+            mientras que la tabla asistencia utiliza idAlumno para asociar
+            cada registro de asistencia con el alumno correspondiente.
+        </p>
+
+    </div>
+
+
+    <div class="bloque-teorico">
+
+        <h3>psql</h3>
+
+        <p>
+            psql es la herramienta de terminal interactiva utilizada para
+            trabajar con PostgreSQL. Mediante este cliente es posible
+            conectarse a una base de datos, ejecutar instrucciones SQL y
+            utilizar comandos propios para consultar información relacionada
+            con la estructura de una base de datos
+            (PostgreSQL Global Development Group, 2026).
+        </p>
+
+        <p>
+            Durante esta práctica se utilizó psql para ejecutar el archivo
+            asistencia.sql sobre la base de datos neondb y posteriormente
+            comprobar las tablas y registros creados.
+        </p>
+
+    </div>
+
+
+    <div class="bloque-teorico">
+
+        <h3>Neon</h3>
+
+        <p>
+            Neon proporciona infraestructura para trabajar con bases de datos
+            PostgreSQL de forma remota. La conexión puede realizarse mediante
+            clientes compatibles con PostgreSQL, incluyendo psql, utilizando
+            los datos de conexión correspondientes al proyecto
+            (Neon, 2024).
+        </p>
+
+        <p>
+            En esta práctica, Neon fue utilizado para alojar la base de datos
+            neondb, permitiendo ejecutar desde Windows las instrucciones
+            almacenadas en asistencia.sql y posteriormente consultar la
+            información creada.
+        </p>
+
+    </div>
+
+
+    <div class="bloque-teorico">
+
+        <h3>Consultas y relaciones entre tablas</h3>
+
+        <p>
+            SQL permite consultar información almacenada en las tablas y
+            combinar datos relacionados. PostgreSQL incluye operaciones de
+            unión entre tablas que permiten obtener información procedente
+            de más de una relación (PostgreSQL Global Development Group, 2026).
+        </p>
+
+        <p>
+            Este concepto fue aplicado al final de la práctica mediante un
+            INNER JOIN entre alumno y asistencia, con el objetivo de mostrar
+            el nombre del alumno junto con la fecha y las horas registradas
+            en su asistencia.
+        </p>
+
+    </div>
+
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <div class="numero-pagina">4</div>
+
+</section>
+
+<!-- PROCEDIMIENTO -->
+<section class="seccion" id="procedimiento">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">03</span>
+
+        <div>
+            <h2>Procedimiento</h2>
+            <p>
+                Desarrollo, ejecución y comprobación de la base de datos
+                de asistencia
+            </p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+
+    <!-- PASO 1 -->
+    <div class="paso">
+
+        <div class="titulo-paso">
+            <span>1</span>
+            <h3>Creación del directorio de trabajo</h3>
+        </div>
+
+        <p>
+            Para comenzar la práctica se creó un directorio de trabajo
+            destinado a almacenar los archivos utilizados durante el
+            desarrollo. La carpeta se ubicó dentro del directorio de
+            prácticas de la materia y se nombró <strong>sep18</strong>,
+            haciendo referencia a la fecha correspondiente a la actividad.
+        </p>
+
+        <p>
+            Posteriormente, desde la terminal de Windows se accedió a dicha
+            ubicación y se utilizó el comando <strong>code .</strong> para
+            abrir el directorio directamente en Visual Studio Code. Esto
+            permitió trabajar con los archivos de la práctica desde un
+            entorno organizado.
+        </p>
+
+        <div class="comando">
+            <code>
+                cd C:\Windows\System32\Optativas1\7C\sep18<br>
+                code .
+            </code>
+        </div>
+
+        <p>
+            Una vez abierto Visual Studio Code, se creó el archivo
+            <strong>asistencia.sql</strong>. Este archivo se utilizó como
+            script principal para almacenar las instrucciones SQL necesarias
+            para crear las tablas y registrar la información correspondiente
+            a la materia, grupo, profesor, alumnos y asistencias.
+        </p>
+
+        <div class="captura">
+
+            <img src="img/captura1.png"
+                 alt="Creación del archivo asistencia.sql en Visual Studio Code">
+
+            <p>
+                Figura 1. Creación del archivo asistencia.sql
+                dentro del directorio de la práctica.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- PASO 2 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>2</span>
+        <h3>Creación de las tablas de la base de datos</h3>
+    </div>
+
+    <p>
+        Después de crear el archivo <strong>asistencia.sql</strong>, se
+        definió la estructura de la base de datos. Para organizar la
+        información de la práctica se crearon cinco tablas:
+        <strong>materia</strong>, <strong>grupo</strong>,
+        <strong>profesor</strong>, <strong>alumno</strong> y
+        <strong>asistencia</strong>.
+    </p>
+
+    <p>
+        Cada tabla cuenta con una llave primaria generada mediante
+        <strong>SERIAL</strong>, mientras que las relaciones entre los
+        diferentes registros se establecieron mediante llaves foráneas.
+        De esta manera, fue posible relacionar el grupo con la materia,
+        el profesor con la materia, los alumnos con su grupo y cada
+        registro de asistencia con el alumno correspondiente.
+    </p>
+
+    <div class="comando">
+        <code>
+CREATE TABLE materia (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;idMateria SERIAL PRIMARY KEY,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nombre VARCHAR(100) NOT NULL<br>
+);<br><br>
+
+CREATE TABLE grupo (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;idGrupo SERIAL PRIMARY KEY,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nombre VARCHAR(20) NOT NULL,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;idMateria INTEGER NOT NULL,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FOREIGN KEY (idMateria) REFERENCES materia(idMateria)<br>
+);<br><br>
+
+CREATE TABLE profesor (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;idProfesor SERIAL PRIMARY KEY,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nombre VARCHAR(100) NOT NULL,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;idMateria INTEGER NOT NULL,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FOREIGN KEY (idMateria) REFERENCES materia(idMateria)<br>
+);<br><br>
+
+CREATE TABLE alumno (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;idAlumno SERIAL PRIMARY KEY,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nombre VARCHAR(100) NOT NULL,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;idGrupo INTEGER NOT NULL,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FOREIGN KEY (idGrupo) REFERENCES grupo(idGrupo)<br>
+);<br><br>
+
+CREATE TABLE asistencia (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;idAsistencia SERIAL PRIMARY KEY,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;idAlumno INTEGER NOT NULL,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fecha DATE NOT NULL,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;horas INTEGER NOT NULL,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FOREIGN KEY (idAlumno) REFERENCES alumno(idAlumno)<br>
+);
+        </code>
+    </div>
+
+    <p>
+        La estructura anterior permite evitar que toda la información se
+        almacene en una sola tabla. Por ejemplo, la tabla
+        <strong>asistencia</strong> no necesita guardar nuevamente el nombre
+        completo del estudiante, ya que utiliza <strong>idAlumno</strong>
+        para relacionar cada asistencia con un registro existente en la
+        tabla alumno.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura2.png"
+             alt="Creación de las tablas en el archivo asistencia.sql">
+
+        <p>
+            Figura 2. Definición de las tablas y sus relaciones
+            dentro del archivo asistencia.sql.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 3 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>3</span>
+        <h3>Registro de la materia, grupo y profesor</h3>
+    </div>
+
+    <p>
+        Una vez definida la estructura de las tablas, se agregaron los
+        primeros registros necesarios para representar la información
+        académica de la práctica. Primero se registró la materia
+        <strong>Optativa I. Base de datos en la nube</strong> y posteriormente
+        se agregó el grupo <strong>7C</strong>.
+    </p>
+
+    <p>
+        Para relacionar el grupo con la materia se utilizó el identificador
+        <strong>idMateria</strong>. De la misma manera, se registró al profesor
+        <strong>Javier Nolasco Hernández</strong> y se relacionó con la materia
+        correspondiente mediante el mismo identificador.
+    </p>
+
+    <div class="comando">
+        <code>
+INSERT INTO materia (nombre)<br>
+VALUES ('Optativa I. Base de datos en la nube');<br><br>
+
+INSERT INTO grupo (nombre, idMateria)<br>
+VALUES ('7C', 1);<br><br>
+
+INSERT INTO profesor (nombre, idMateria)<br>
+VALUES ('JAVIER NOLASCO HERNANDEZ', 1);
+        </code>
+    </div>
+
+    <p>
+        El valor <strong>1</strong> utilizado en el campo
+        <strong>idMateria</strong> corresponde al identificador generado
+        para la materia registrada previamente. Esto permite que tanto el
+        grupo como el profesor queden relacionados con la materia dentro
+        de la base de datos.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura3.png"
+             alt="Inserción de materia, grupo y profesor en asistencia.sql">
+
+        <p>
+            Figura 3. Instrucciones SQL utilizadas para registrar
+            la materia, el grupo y el profesor.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 4 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>4</span>
+        <h3>Registro de los alumnos</h3>
+    </div>
+
+    <p>
+        Después de registrar la materia, el grupo y el profesor, se
+        incorporaron los alumnos correspondientes al grupo
+        <strong>7C</strong>. Para ello se utilizó una instrucción
+        <strong>INSERT INTO</strong> que permitió agregar varios registros
+        en una sola operación.
+    </p>
+
+    <p>
+        En total se registraron <strong>21 alumnos</strong>. Cada estudiante
+        fue asociado con el grupo mediante el campo
+        <strong>idGrupo</strong>, utilizando el valor 1 debido a que
+        corresponde al identificador asignado al grupo 7C.
+    </p>
+
+    <div class="comando">
+        <code>
+INSERT INTO alumno (nombre, idGrupo) VALUES<br>
+('AREVALO SANCHEZ CESAR HESSIEL', 1),<br>
+('BARRANCO CERVANTES JESUS MANUEL', 1),<br>
+('CALVARIO CALVARIO NICOLAS', 1),<br>
+('CARCAMO HUERTA LUIS ANGEL', 1),<br>
+('CARMONA LEZAMA ANGEL DAVID', 1),<br>
+('COSME CERVANTES KEVIN URIEL', 1),<br>
+('DE LA ROSA JUAREZ VIVIANA', 1),<br>
+('GONZALEZ DE LA ROSA OSWALDO', 1),<br>
+('HERNANDEZ CUBAS YARET VANESSA', 1),<br>
+('HERNANDEZ GARZON EVA NAOMI', 1),<br>
+('HERRADA SOLIS JOSHUE', 1),<br>
+('NEOCELO SANABRIA ALEXIS IAN', 1),<br>
+('PEREZ GARCIA TANIA', 1),<br>
+('RIVERA CABRERA DIEGO JESUS', 1),<br>
+('ROMERO VELEZ MARTIN', 1),<br>
+('SALAZAR CASTILLO ALEXANDER', 1),<br>
+('SANCHEZ LEAL ZURIEL', 1),<br>
+('SANCHEZ SANTOS ANA YAZMIN', 1),<br>
+('SILVERIO MACUXTLE CHRISTOPHER', 1),<br>
+('TLATELPA SALAS EMMANUEL', 1),<br>
+('VAZQUEZ LUNA URIEL', 1);
+        </code>
+    </div>
+
+    <p>
+        Al realizar la inserción de esta manera, todos los alumnos quedaron
+        almacenados en la tabla <strong>alumno</strong> y relacionados con
+        el mismo grupo. Posteriormente, sus identificadores fueron utilizados
+        para asociar cada estudiante con sus respectivos registros de
+        asistencia.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura4.png"
+             alt="Registro de alumnos en el archivo asistencia.sql">
+
+        <p>
+            Figura 4. Registro de los alumnos del grupo 7C
+            dentro del archivo asistencia.sql.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 5 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>5</span>
+        <h3>Registro de las asistencias</h3>
+    </div>
+
+    <p>
+        Una vez registrados los 21 alumnos, se procedió a capturar la
+        información correspondiente a sus asistencias. Para ello se utilizó
+        la tabla <strong>asistencia</strong>, almacenando el identificador
+        del alumno, la fecha de la clase y el número de horas registradas
+        en cada sesión.
+    </p>
+
+    <p>
+        La información utilizada correspondió a siete fechas del mes de
+        septiembre de 2026: <strong>2, 4, 7, 9, 11, 14 y 18 de septiembre</strong>.
+        Para cada alumno se registró un valor de horas de acuerdo con la
+        lista de asistencia proporcionada.
+    </p>
+
+    <div class="comando">
+        <code>
+INSERT INTO asistencia (idAlumno, fecha, horas) VALUES<br>
+(1, '2026-09-02', 0),<br>
+(1, '2026-09-04', 2),<br>
+(1, '2026-09-07', 2),<br>
+(1, '2026-09-09', 2),<br>
+(1, '2026-09-11', 0),<br>
+(1, '2026-09-14', 2),<br>
+(1, '2026-09-18', 2),<br>
+...<br>
+(21, '2026-09-02', 0),<br>
+(21, '2026-09-04', 2),<br>
+(21, '2026-09-07', 2),<br>
+(21, '2026-09-09', 2),<br>
+(21, '2026-09-11', 0),<br>
+(21, '2026-09-14', 2),<br>
+(21, '2026-09-18', 2);
+        </code>
+    </div>
+
+    <p>
+        Debido a que se registraron <strong>21 alumnos</strong> y cada uno
+        cuenta con información correspondiente a <strong>7 fechas</strong>,
+        el archivo contiene un total de <strong>147 registros de
+        asistencia</strong>. Este resultado se obtiene al multiplicar
+        21 alumnos por 7 sesiones.
+    </p>
+
+    <p>
+        El campo <strong>idAlumno</strong> permite identificar a qué
+        estudiante pertenece cada registro, mientras que
+        <strong>fecha</strong> indica el día de la clase y
+        <strong>horas</strong> almacena el valor correspondiente a la
+        asistencia registrada. De esta forma, un mismo alumno puede tener
+        múltiples registros asociados dentro de la tabla asistencia.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura5.png"
+             alt="Registro de asistencias en asistencia.sql">
+
+        <p>
+            Figura 5. Registro de las asistencias de los alumnos
+            dentro del archivo asistencia.sql.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 6 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>6</span>
+        <h3>Ejecución del archivo asistencia.sql con psql</h3>
+    </div>
+
+    <p>
+        Después de completar las instrucciones para crear las tablas e
+        insertar los registros, se procedió a ejecutar el archivo
+        <strong>asistencia.sql</strong> sobre la base de datos
+        <strong>neondb</strong> alojada en Neon. Para realizar esta operación
+        se utilizó el cliente de línea de comandos <strong>psql</strong>.
+    </p>
+
+    <p>
+        Desde la terminal de Windows se ejecutó el siguiente comando,
+        utilizando la cadena de conexión proporcionada por Neon y la opción
+        <strong>-f</strong> para indicar el archivo SQL que debía ser
+        procesado.
+    </p>
+
+    <div class="comando">
+        <code>
+psql "TU_CADENA_DE_CONEXION_DE_NEON" -f asistencia.sql
+        </code>
+    </div>
+
+    <p>
+        Al ejecutar el comando, PostgreSQL procesó las instrucciones
+        contenidas en el archivo. La terminal mostró cinco mensajes
+        <strong>CREATE TABLE</strong>, confirmando la creación de las cinco
+        tablas. Posteriormente, aparecieron los resultados de las
+        instrucciones de inserción.
+    </p>
+
+    <div class="comando">
+        <code>
+CREATE TABLE<br>
+CREATE TABLE<br>
+CREATE TABLE<br>
+CREATE TABLE<br>
+CREATE TABLE<br>
+INSERT 0 1<br>
+INSERT 0 1<br>
+INSERT 0 1<br>
+INSERT 0 21<br>
+INSERT 0 147
+        </code>
+    </div>
+
+    <p>
+        Los primeros tres resultados <strong>INSERT 0 1</strong> corresponden
+        al registro de la materia, el grupo y el profesor. El mensaje
+        <strong>INSERT 0 21</strong> confirma la inserción de los 21 alumnos,
+        mientras que <strong>INSERT 0 147</strong> indica que fueron
+        almacenados correctamente los 147 registros correspondientes a las
+        asistencias.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura6.png"
+             alt="Ejecución del archivo asistencia.sql mediante psql">
+
+        <p>
+            Figura 6. Ejecución correcta del archivo asistencia.sql
+            mediante el cliente psql.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 7 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>7</span>
+        <h3>Comprobación de las tablas creadas</h3>
+    </div>
+
+    <p>
+        Después de ejecutar correctamente el archivo
+        <strong>asistencia.sql</strong>, se realizó una comprobación de la
+        estructura creada en la base de datos. Para ello se accedió a
+        <strong>neondb</strong> mediante el cliente <strong>psql</strong>
+        y se utilizó el comando <strong>\dt</strong>.
+    </p>
+
+    <div class="comando">
+        <code>
+\dt
+        </code>
+    </div>
+
+    <p>
+        Este comando permitió visualizar las tablas existentes dentro del
+        esquema público de la base de datos. Como resultado se mostraron las
+        cinco tablas definidas previamente en el archivo SQL:
+        <strong>alumno</strong>, <strong>asistencia</strong>,
+        <strong>grupo</strong>, <strong>materia</strong> y
+        <strong>profesor</strong>.
+    </p>
+
+    <div class="comando">
+        <code>
+Schema |   Name     | Type  | Owner<br>
+-------+------------+-------+-------<br>
+public | alumno     | table | ...<br>
+public | asistencia | table | ...<br>
+public | grupo      | table | ...<br>
+public | materia    | table | ...<br>
+public | profesor   | table | ...<br><br>
+(5 rows)
+        </code>
+    </div>
+
+    <p>
+        La aparición de las cinco tablas confirmó que las instrucciones
+        <strong>CREATE TABLE</strong> contenidas en el script fueron
+        procesadas correctamente y que la estructura necesaria para
+        almacenar la información de la práctica quedó disponible en
+        PostgreSQL.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura7.png"
+             alt="Comprobación de las tablas creadas mediante el comando dt">
+
+        <p>
+            Figura 7. Comprobación de las cinco tablas creadas
+            en la base de datos mediante el comando \dt.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 8 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>8</span>
+        <h3>Consulta de los alumnos registrados</h3>
+    </div>
+
+    <p>
+        Después de comprobar la existencia de las tablas, se verificó la
+        información almacenada en la tabla <strong>alumno</strong>. Para ello
+        se ejecutó una consulta <strong>SELECT</strong> desde el cliente
+        psql, solicitando todos los registros y columnas disponibles en
+        dicha tabla.
+    </p>
+
+    <div class="comando">
+        <code>
+SELECT * FROM alumno;
+        </code>
+    </div>
+
+    <p>
+        Como resultado de la consulta se mostraron los alumnos registrados
+        previamente mediante el archivo <strong>asistencia.sql</strong>.
+        Cada registro contiene un <strong>idAlumno</strong>, el nombre del
+        estudiante y el <strong>idGrupo</strong> utilizado para relacionarlo
+        con el grupo correspondiente.
+    </p>
+
+    <p>
+        La consulta permitió comprobar que los <strong>21 alumnos</strong>
+        fueron almacenados correctamente. Además, todos los estudiantes
+        aparecen relacionados con el grupo mediante el valor
+        <strong>1</strong> en el campo <strong>idGrupo</strong>.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura8.png"
+             alt="Consulta de los alumnos registrados en PostgreSQL">
+
+        <p>
+            Figura 8. Consulta de los alumnos registrados
+            en la tabla alumno mediante psql.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 9 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>9</span>
+        <h3>Comprobación de los registros de asistencia</h3>
+    </div>
+
+    <p>
+        Después de verificar los alumnos registrados, se comprobó la cantidad
+        total de registros almacenados en la tabla
+        <strong>asistencia</strong>. Para realizar esta validación se utilizó
+        la función <strong>COUNT(*)</strong>, la cual permite contar el número
+        de filas existentes en una tabla.
+    </p>
+
+    <div class="comando">
+        <code>
+SELECT COUNT(*) FROM asistencia;
+        </code>
+    </div>
+
+    <p>
+        La consulta devolvió como resultado un total de
+        <strong>147 registros</strong>. Esta cantidad coincide con la
+        información ingresada en el archivo asistencia.sql, debido a que
+        se registraron siete fechas de asistencia para cada uno de los
+        21 alumnos.
+    </p>
+
+    <div class="comando">
+        <code>
+ count<br>
+-------<br>
+ 147<br>
+(1 row)
+        </code>
+    </div>
+
+    <p>
+        El resultado permite comprobar que la totalidad de los registros
+        previstos fue almacenada correctamente. La cantidad también puede
+        verificarse mediante la multiplicación de los
+        <strong>21 alumnos por las 7 fechas registradas</strong>, obteniendo
+        como resultado los mismos 147 registros de asistencia.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura9.png"
+             alt="Comprobación de los registros de asistencia">
+
+        <p>
+            Figura 9. Comprobación de los 147 registros almacenados
+            en la tabla asistencia.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 10 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>10</span>
+        <h3>Consulta de alumnos y asistencias mediante INNER JOIN</h3>
+    </div>
+
+    <p>
+        Como última comprobación de la base de datos, se realizó una consulta
+        para relacionar la información almacenada en las tablas
+        <strong>alumno</strong> y <strong>asistencia</strong>. Para ello se
+        utilizó la instrucción <strong>INNER JOIN</strong>, relacionando ambas
+        tablas mediante el campo <strong>idAlumno</strong>.
+    </p>
+
+    <div class="comando">
+        <code>
+SELECT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alumno.nombre,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;asistencia.fecha,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;asistencia.horas<br>
+FROM asistencia<br>
+INNER JOIN alumno<br>
+ON asistencia.idAlumno = alumno.idAlumno<br>
+ORDER BY alumno.idAlumno, asistencia.fecha;
+        </code>
+    </div>
+
+    <p>
+        La consulta selecciona el nombre del alumno, la fecha de la clase
+        y las horas registradas. La condición utilizada en
+        <strong>INNER JOIN</strong> permite asociar cada registro de la tabla
+        asistencia con el alumno al que pertenece.
+    </p>
+
+    <p>
+        También se utilizó <strong>ORDER BY</strong> para ordenar los
+        resultados primero por el identificador del alumno y posteriormente
+        por la fecha. De esta manera, las asistencias de cada estudiante
+        aparecen agrupadas y organizadas cronológicamente.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura10.png"
+             alt="Consulta de alumnos y asistencias mediante INNER JOIN">
+
+        <p>
+            Figura 10. Consulta de los alumnos con sus fechas y horas
+            de asistencia mediante INNER JOIN.
+        </p>
+
+    </div>
+
+    <p>
+        El resultado obtenido permitió comprobar que las relaciones
+        establecidas entre las tablas funcionan correctamente, ya que fue
+        posible recuperar en una misma consulta el nombre de cada alumno
+        junto con las fechas y las horas correspondientes a sus registros
+        de asistencia.
+    </p>
+
+</div>
+
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <div class="numero-pagina">5</div>
+
+</section>
+
+<!-- CONCLUSIÓN -->
+<section class="seccion" id="conclusion">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">04</span>
+
+        <div>
+            <h2>Conclusión</h2>
+            <p>Resultados y conocimientos obtenidos durante la práctica</p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+    <div class="contenido-seccion">
+
+        <p>
+            Durante el desarrollo de esta práctica se logró crear y ejecutar
+            correctamente un script SQL para administrar información de
+            asistencia mediante PostgreSQL. El archivo
+            <strong>asistencia.sql</strong> permitió definir una estructura
+            formada por las tablas materia, grupo, profesor, alumno y
+            asistencia, estableciendo relaciones entre ellas mediante
+            llaves primarias y llaves foráneas.
+        </p>
+
+        <p>
+            También se realizó el registro de la información correspondiente
+            a la materia, el grupo, el profesor y los 21 alumnos incluidos
+            en la lista proporcionada. Posteriormente, se almacenaron las
+            asistencias correspondientes a siete fechas de septiembre de
+            2026, obteniendo un total de <strong>147 registros</strong>.
+            Esto permitió trabajar con una cantidad de datos suficiente para
+            comprobar el funcionamiento de las relaciones establecidas entre
+            las tablas.
+        </p>
+
+        <p>
+            La ejecución del archivo mediante <strong>psql</strong> permitió
+            cargar las instrucciones directamente en la base de datos
+            <strong>neondb</strong> alojada en Neon. Los mensajes obtenidos
+            durante la ejecución confirmaron la creación de las cinco tablas,
+            así como la inserción de los registros correspondientes. Además,
+            mediante el comando <strong>\dt</strong> y diferentes consultas
+            SELECT se comprobó que la información fue almacenada
+            correctamente.
+        </p>
+
+        <p>
+            Finalmente, la consulta realizada mediante
+            <strong>INNER JOIN</strong> permitió relacionar la información
+            de los alumnos con sus respectivos registros de asistencia,
+            mostrando el nombre, la fecha y las horas correspondientes.
+            Con esta práctica se reforzaron conocimientos sobre creación de
+            tablas, inserción de registros, relaciones entre tablas,
+            consultas SQL y utilización de PostgreSQL mediante un servicio
+            de base de datos alojado en la nube.
+        </p>
+
+    </div>
+
+    <div class="resultado-final">
+
+        <div>
+            <span>5</span>
+            <p>Tablas creadas</p>
+        </div>
+
+        <div>
+            <span>21</span>
+            <p>Alumnos registrados</p>
+        </div>
+
+        <div>
+            <span>147</span>
+            <p>Asistencias registradas</p>
+        </div>
+
+        <div>
+            <span>7</span>
+            <p>Fechas registradas</p>
+        </div>
+
+    </div>
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <div class="numero-pagina">6</div>
+
+</section>
+
+<!-- REFERENCIAS BIBLIOGRÁFICAS -->
+<section class="seccion" id="referencias">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">05</span>
+
+        <div>
+            <h2>Referencias bibliográficas</h2>
+            <p>Fuentes consultadas para el desarrollo de la práctica</p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+    <div class="referencias-contenido">
+
+        <div class="referencia">
+            <p>
+                PostgreSQL Global Development Group. (2026).
+                <em>¿Qué es PostgreSQL?</em> PostgreSQL Documentation.
+                https://www.postgresql.org/docs/18/intro-whatis.html
+            </p>
+        </div>
+
+        <div class="referencia">
+            <p>
+                PostgreSQL Global Development Group. (2026).
+                <em>Conceptos</em> [Documentación de PostgreSQL 18].
+                https://www.postgresql.org/docs/18/tutorial-concepts.html
+            </p>
+        </div>
+
+        <div class="referencia">
+            <p>
+                PostgreSQL Global Development Group. (2026).
+                <em>Restricciones: llaves primarias y llaves foráneas</em>
+                [Documentación de PostgreSQL 18].
+                https://www.postgresql.org/docs/18/ddl-constraints.html
+            </p>
+        </div>
+
+        <div class="referencia">
+            <p>
+                PostgreSQL Global Development Group. (2026).
+                <em>Tutorial de PostgreSQL</em>.
+                https://www.postgresql.org/docs/18/tutorial.html
+            </p>
+        </div>
+
+        <div class="referencia">
+            <p>
+                Neon. (2024).
+                <em>How does psql -h pg.neon.tech work?</em>
+                https://neon.com/blog/how-psql-pg-neon-tech-works
+            </p>
+        </div>
+
+    </div>
+
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <div class="numero-pagina">7</div>
+
+</section>
+
+</body>
+
+</html>

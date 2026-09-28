@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Acceso a BD Neon desde PHP</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+    <div class="barra-navegacion">
+    <a href="../index.html" class="volver-practicas">
+        ← Volver a todas las prácticas
+    </a>
+</div>
+
+    <!-- PORTADA -->
+    <header class="portada">
+
+        <div class="portada-contenido">
+
+            <p class="universidad">
+                Universidad Tecnológica de Puebla
+            </p>
+
+            <p class="carrera">
+                Ingeniería en Tecnologías de la Información e Innovación Digital
+            </p>
+
+            <div class="linea"></div>
+
+            <p class="materia">
+                Base de Datos en la Nube
+            </p>
+
+            <h1>
+                Acceso a BD Neon<br>
+                desde PHP
+            </h1>
+
+            <p class="tipo-trabajo">
+                Práctica de laboratorio
+            </p>
+
+            <div class="datos">
+
+                <p>
+                    <strong>Alumno:</strong><br>
+                    Alexis Ian Neocelo Sanabria
+                </p>
+
+                <p>
+                    <strong>Profesor:</strong><br>
+                    Javier Nolasco Hernández
+                </p>
+
+                <p>
+                    <strong>Grupo:</strong> 7C &nbsp; | &nbsp;
+                    <strong>Turno:</strong> Vespertino
+                </p>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main>
+
+    <!-- ÍNDICE -->
+    <section class="seccion indice" id="indice">
+
+        <h2>Índice</h2>
+
+        <p class="descripcion-seccion">
+            Contenido de la práctica de laboratorio
+        </p>
+
+        <nav class="menu-indice">
+
+            <a href="#introduccion">
+                <span>01</span>
+                <div>
+                    <strong>Introducción</strong>
+                    <small>Descripción general de la práctica</small>
+                </div>
+            </a>
+
+            <a href="#marco-teorico">
+                <span>02</span>
+                <div>
+                    <strong>Marco teórico</strong>
+                    <small>Conceptos y tecnologías utilizadas</small>
+                </div>
+            </a>
+
+            <a href="#procedimiento">
+                <span>03</span>
+                <div>
+                    <strong>Procedimiento</strong>
+                    <small>Desarrollo paso a paso de la práctica</small>
+                </div>
+            </a>
+
+            <a href="#conclusion">
+                <span>04</span>
+                <div>
+                    <strong>Conclusión</strong>
+                    <small>Resultados y conocimientos adquiridos</small>
+                </div>
+            </a>
+
+            <a href="#referencias">
+                <span>05</span>
+                <div>
+                    <strong>Referencias bibliográficas</strong>
+                    <small>Fuentes consultadas</small>
+                </div>
+            </a>
+
+        </nav>
+
+        <span class="numero-pagina">Página 1</span>
+    </section>
+
+
+    <!-- Estas secciones las desarrollaremos después -->
+
+    <!-- INTRODUCCIÓN -->
+<section class="seccion" id="introduccion">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">01</span>
+
+        <div>
+            <h2>Introducción</h2>
+            <p>Acceso a una base de datos PostgreSQL en la nube desde PHP</p>
+        </div>
+    </div>
+
+    <div class="contenido-texto">
+
+        <p>
+            Actualmente, el uso de bases de datos en la nube permite
+            almacenar y consultar información desde aplicaciones conectadas
+            a Internet, evitando depender únicamente de servidores de bases
+            de datos instalados de manera local. Este tipo de servicios
+            facilita el acceso remoto a la información y permite integrar
+            diferentes tecnologías dentro de una misma aplicación.
+        </p>
+
+        <p>
+            En esta práctica se realizó la conexión de una aplicación
+            desarrollada en PHP con una base de datos PostgreSQL alojada
+            en Neon. Para administrar las dependencias del proyecto se
+            utilizó Composer y se incorporó la biblioteca Laminas DB,
+            encargada de facilitar la comunicación entre PHP y el sistema
+            gestor de base de datos.
+        </p>
+
+        <p>
+            Durante el desarrollo se configuraron las extensiones necesarias
+            de PHP, se instaló Laminas DB mediante Composer, se obtuvieron
+            los parámetros de conexión proporcionados por Neon y se creó
+            un archivo PHP encargado de establecer la comunicación con
+            la base de datos.
+        </p>
+
+        <p>
+            Finalmente, se realizó una consulta sobre la tabla
+            <strong>usuarios</strong>, recuperando los campos
+            <strong>id, nombre, email y creado_en</strong>. Los registros
+            obtenidos fueron mostrados dinámicamente en una tabla HTML
+            mediante un servidor local de PHP.
+        </p>
+
+    </div>
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <span class="numero-pagina">Página 2</span>
+</section>
+
+    <!-- MARCO TEÓRICO -->
+<section class="seccion" id="marco-teorico">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">02</span>
+
+        <div>
+            <h2>Marco teórico</h2>
+            <p>Conceptos y tecnologías utilizadas durante la práctica</p>
+        </div>
+    </div>
+
+    <div class="contenido-texto">
+
+        <article class="concepto">
+
+            <h3>PHP</h3>
+
+            <p>
+                PHP es un lenguaje de programación de propósito general
+                especialmente utilizado para el desarrollo web. Una de sus
+                principales características es que el código se ejecuta del
+                lado del servidor, permitiendo generar contenido dinámico y
+                establecer comunicación con diferentes sistemas de bases de
+                datos (PHP Documentation Group, 2026).
+            </p>
+
+        </article>
+
+
+        <article class="concepto">
+
+            <h3>Composer</h3>
+
+            <p>
+                Composer es una herramienta para la administración de
+                dependencias en proyectos desarrollados con PHP. Permite
+                declarar las bibliotecas que necesita un proyecto y se
+                encarga de instalarlas junto con las dependencias necesarias.
+                Además, genera un sistema de carga automática que facilita
+                utilizar las bibliotecas instaladas dentro del código
+                (Composer, 2026).
+            </p>
+
+        </article>
+
+
+        <article class="concepto">
+
+            <h3>Laminas DB</h3>
+
+            <p>
+                Laminas DB es un componente orientado al acceso y manejo
+                de bases de datos desde aplicaciones PHP. Proporciona
+                adaptadores que permiten establecer conexiones con diferentes
+                sistemas gestores de bases de datos y ejecutar consultas
+                desde una aplicación (Laminas Project, 2026).
+            </p>
+
+            <p>
+                En esta práctica se utilizó
+                <strong>Laminas\Db\Adapter\Adapter</strong> para establecer
+                la conexión entre PHP y PostgreSQL y posteriormente ejecutar
+                la consulta sobre la tabla usuarios.
+            </p>
+
+        </article>
+
+
+        <article class="concepto">
+
+            <h3>PostgreSQL</h3>
+
+            <p>
+                PostgreSQL es un sistema gestor de bases de datos
+                objeto-relacional de código abierto. Permite almacenar,
+                organizar y consultar información utilizando SQL y proporciona
+                diferentes características para trabajar con aplicaciones
+                que requieren almacenamiento persistente de información
+                (PostgreSQL Global Development Group, 2026).
+            </p>
+
+        </article>
+
+
+        <article class="concepto">
+
+            <h3>Neon</h3>
+
+            <p>
+                Neon es una plataforma que proporciona PostgreSQL en la nube.
+                Permite crear bases de datos y obtener los parámetros
+                necesarios para que una aplicación pueda establecer una
+                conexión remota, como el host, la base de datos, el usuario
+                y las opciones de conexión segura (Neon, 2026).
+            </p>
+
+            <p>
+                Para esta práctica se utilizó Neon como servicio de base de
+                datos en la nube, almacenando en PostgreSQL la tabla
+                <strong>usuarios</strong> consultada posteriormente desde PHP.
+            </p>
+
+        </article>
+
+
+        <article class="concepto">
+
+            <h3>HTML5</h3>
+
+            <p>
+                HTML es el lenguaje de marcado utilizado para estructurar
+                el contenido de las páginas web. Mediante sus elementos es
+                posible organizar títulos, párrafos, tablas, imágenes,
+                enlaces y diferentes secciones de un documento web
+                (MDN Web Docs, 2026).
+            </p>
+
+            <p>
+                En la práctica, HTML se utilizó para presentar en el navegador
+                los registros recuperados desde PostgreSQL en forma de tabla
+                y también para estructurar la presente documentación.
+            </p>
+
+        </article>
+
+    </div>
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <span class="numero-pagina">Página 3</span>
+</section>
+
+    <!-- PROCEDIMIENTO -->
+<section class="seccion" id="procedimiento">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">03</span>
+
+        <div>
+            <h2>Procedimiento</h2>
+            <p>Desarrollo paso a paso de la práctica</p>
+        </div>
+    </div>
+
+    <div class="contenido-texto">
+
+        <p>
+            A continuación, se describe el procedimiento realizado para
+            establecer la conexión entre una aplicación desarrollada en PHP
+            y una base de datos PostgreSQL alojada en Neon. Durante el
+            procedimiento se configuraron las herramientas necesarias,
+            se instalaron las dependencias del proyecto y finalmente se
+            realizó una consulta a la base de datos.
+        </p>
+
+        <!-- PASO 1 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>1</span>
+        <h3>Verificación de PHP</h3>
+    </div>
+
+    <p>
+        Primero se verificó que PHP estuviera instalado y funcionando
+        correctamente en el equipo. También se identificó la ubicación
+        de la instalación de PHP para poder realizar su configuración.
+    </p>
+
+    <div class="comando">
+        <code>php -v</code>
+    </div>
+
+    <div class="comando">
+        <code>where php</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura1.png"
+             alt="Verificación de PHP desde la terminal">
+
+        <p>Captura 1. Verificación de PHP y ubicación de su instalación.</p>
+    </div>
+
+</article>
+
+<!-- PASO 2 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>2</span>
+        <h3>Configuración de PHP</h3>
+    </div>
+
+    <p>
+        Dentro de la carpeta de instalación de PHP se utilizó el archivo
+        <strong>php.ini-development</strong> como base para crear el archivo
+        <strong>php.ini</strong>. Este archivo permite administrar la
+        configuración y las extensiones utilizadas por PHP.
+    </p>
+
+    <div class="comando">
+        <code>copy php.ini-development php.ini</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura2.png"
+             alt="Creación del archivo php.ini">
+
+        <p>Captura 2. Creación del archivo php.ini para la configuración de PHP.</p>
+    </div>
+
+</article>
+
+<!-- PASO 3 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>3</span>
+        <h3>Habilitación de extensiones de PHP</h3>
+    </div>
+
+    <p>
+        En el archivo <strong>php.ini</strong> se configuró la carpeta
+        donde se encuentran las extensiones de PHP. Posteriormente, se
+        habilitaron los módulos necesarios para trabajar con conexiones
+        seguras, Composer y PostgreSQL.
+    </p>
+
+    <div class="comando">
+        <code>extension_dir = "ext"</code>
+    </div>
+
+    <div class="comando">
+        <code>extension=openssl</code>
+    </div>
+
+    <div class="comando">
+        <code>extension=zip</code>
+    </div>
+
+    <div class="comando">
+        <code>extension=pdo_pgsql</code>
+    </div>
+
+    <div class="comando">
+        <code>extension=pgsql</code>
+    </div>
+
+    <p>
+        Una vez habilitadas las extensiones, se verificó desde la terminal
+        que PHP las reconociera correctamente.
+    </p>
+
+    <div class="comando">
+        <code>php -m | findstr /I "openssl zip pgsql"</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura3.png"
+             alt="Extensiones habilitadas en PHP">
+
+        <p>
+            Captura 3. Verificación de las extensiones habilitadas en PHP.
+        </p>
+    </div>
+
+</article>
+
+<!-- PASO 4 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>4</span>
+        <h3>Descarga e instalación de Composer</h3>
+    </div>
+
+    <p>
+        Se descargó el instalador de <strong>Composer</strong> utilizando
+        PHP. Posteriormente, se ejecutó el instalador para generar el archivo
+        <strong>composer.phar</strong>, el cual permite utilizar Composer
+        como administrador de dependencias para proyectos PHP.
+    </p>
+
+    <div class="comando">
+        <code>php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"</code>
+    </div>
+
+    <div class="comando">
+        <code>php composer-setup.php</code>
+    </div>
+
+    <div class="comando">
+        <code>php composer.phar --version</code>
+    </div>
+
+    <p>
+        Finalmente, se verificó la instalación consultando la versión
+        de Composer desde la línea de comandos.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura4.png"
+             alt="Instalación y verificación de Composer">
+
+        <p>
+            Captura 4. Instalación y verificación del funcionamiento de Composer.
+        </p>
+    </div>
+
+</article>
+
+<!-- PASO 5 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>5</span>
+        <h3>Configuración global de Composer</h3>
+    </div>
+
+    <p>
+        Para poder utilizar <strong>Composer</strong> desde cualquier
+        directorio del sistema, se creó la carpeta
+        <strong>C:\Composer</strong> y se colocó dentro de ella el archivo
+        <strong>composer.phar</strong>.
+    </p>
+
+    <p>
+        Posteriormente, se creó el archivo
+        <strong>composer.bat</strong>, encargado de ejecutar Composer
+        mediante PHP.
+    </p>
+
+    <div class="comando">
+        <code>@echo off<br>
+        php "C:\Composer\composer.phar" %*</code>
+    </div>
+
+    <p>
+        Después, la ruta <strong>C:\Composer</strong> se agregó a la
+        variable de entorno <strong>Path</strong> de Windows. De esta
+        manera, Composer puede ejecutarse desde cualquier ubicación
+        utilizando directamente el comando <strong>composer</strong>.
+    </p>
+
+    <div class="comando">
+        <code>composer --version</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura5.png"
+             alt="Verificación global de Composer">
+
+        <p>
+            Captura 5. Verificación de Composer configurado globalmente.
+        </p>
+    </div>
+
+</article>
+
+<!-- PASO 6 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>6</span>
+        <h3>Preparación de la carpeta del proyecto</h3>
+    </div>
+
+    <p>
+        Se trabajó dentro de la carpeta destinada a la práctica. Desde
+        esta ubicación se instalaron las dependencias necesarias y se
+        crearon posteriormente los archivos PHP correspondientes al
+        proyecto.
+    </p>
+
+    <p>
+        Mediante la terminal de Windows se accedió al directorio de
+        trabajo utilizando el siguiente comando:
+    </p>
+
+    <div class="comando">
+        <code>cd /d C:\Windows\System32\Optativas1\7C\sep04</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura6.png"
+             alt="Acceso a la carpeta del proyecto desde CMD">
+
+        <p>
+            Captura 6. Acceso al directorio utilizado para desarrollar la práctica.
+        </p>
+    </div>
+
+</article>
+
+<!-- PASO 7 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>7</span>
+        <h3>Instalación de Laminas DB</h3>
+    </div>
+
+    <p>
+        Con Composer configurado correctamente, se instaló
+        <strong>Laminas DB</strong> dentro de la carpeta del proyecto.
+        Esta biblioteca permite trabajar con bases de datos desde PHP
+        mediante diferentes adaptadores.
+    </p>
+
+    <p>
+        Para realizar la instalación se utilizó el siguiente comando:
+    </p>
+
+    <div class="comando">
+        <code>composer require laminas/laminas-db</code>
+    </div>
+
+    <p>
+        Al finalizar la instalación, Composer generó los archivos
+        <strong>composer.json</strong> y <strong>composer.lock</strong>,
+        además de la carpeta <strong>vendor</strong>, donde se almacenan
+        las dependencias utilizadas por el proyecto.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura7.png"
+             alt="Instalación de Laminas DB mediante Composer">
+
+        <p>
+            Captura 7. Instalación de Laminas DB y generación de las
+            dependencias del proyecto.
+        </p>
+    </div>
+
+</article>
+
+<!-- PASO 8 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>8</span>
+        <h3>Preparación de PostgreSQL</h3>
+    </div>
+
+    <p>
+        Antes de realizar la conexión con la base de datos en la nube,
+        se verificó que PHP tuviera habilitados los controladores
+        necesarios para trabajar con <strong>PostgreSQL</strong>.
+    </p>
+
+    <p>
+        Las extensiones <strong>pdo_pgsql</strong> y
+        <strong>pgsql</strong> permiten establecer la comunicación
+        entre PHP y una base de datos PostgreSQL.
+    </p>
+
+    <p>
+        Para comprobar que ambas extensiones estuvieran disponibles,
+        se ejecutó el siguiente comando:
+    </p>
+
+    <div class="comando">
+        <code>php -m | findstr /I "pgsql"</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura8.png"
+             alt="Verificación de extensiones de PostgreSQL en PHP">
+
+        <p>
+            Captura 8. Verificación de los controladores de PostgreSQL
+            habilitados en PHP.
+        </p>
+    </div>
+
+</article>
+
+<!-- PASO 9 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>9</span>
+        <h3>Preparación de la base de datos en Neon</h3>
+    </div>
+
+    <p>
+        Se utilizó <strong>Neon</strong> como servicio de PostgreSQL
+        en la nube. Dentro del proyecto se trabajó con la base de datos
+        <strong>neondb</strong> y el esquema <strong>public</strong>.
+    </p>
+
+    <p>
+        En la base de datos se utilizó la tabla
+        <strong>usuarios</strong>, compuesta por los campos
+        <strong>id</strong>, <strong>nombre</strong>,
+        <strong>email</strong> y <strong>creado_en</strong>.
+        También se agregaron registros de prueba que posteriormente
+        serían consultados desde PHP.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura9.png"
+             alt="Tabla usuarios almacenada en PostgreSQL de Neon">
+
+        <p>
+            Captura 9. Tabla usuarios y registros almacenados en la
+            base de datos PostgreSQL de Neon.
+        </p>
+    </div>
+
+</article>
+
+<!-- PASO 10 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>10</span>
+        <h3>Obtención de los datos de conexión</h3>
+    </div>
+
+    <p>
+        Una vez preparada la base de datos, se accedió a la opción
+        <strong>Connect</strong> de Neon para obtener los parámetros
+        necesarios para establecer la conexión desde PHP.
+    </p>
+
+    <p>
+        Entre los datos proporcionados por Neon se encuentran el
+        <strong>host</strong>, la <strong>base de datos</strong>,
+        el <strong>usuario</strong>, la <strong>contraseña</strong>
+        y el <strong>modo SSL</strong>. Estos parámetros serían utilizados
+        posteriormente para configurar la conexión mediante Laminas DB.
+    </p>
+
+    <p>
+        Por motivos de seguridad, la contraseña de la base de datos
+        se mantuvo oculta durante la documentación de la práctica.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura10.png"
+             alt="Datos de conexión proporcionados por Neon">
+
+        <p>
+            Captura 10. Obtención de los parámetros de conexión
+            de la base de datos desde Neon.
+        </p>
+    </div>
+
+</article>
+
+<!-- PASO 11 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>11</span>
+        <h3>Apertura del proyecto en Visual Studio Code</h3>
+    </div>
+
+    <p>
+        Después de preparar la base de datos y obtener los datos de
+        conexión, se abrió la carpeta del proyecto en
+        <strong>Visual Studio Code</strong> para comenzar a trabajar
+        con los archivos PHP.
+    </p>
+
+    <p>
+        Desde la terminal, estando ubicado en el directorio del proyecto,
+        se utilizó el siguiente comando:
+    </p>
+
+    <div class="comando">
+        <code>code .</code>
+    </div>
+
+    <p>
+        Este comando permite abrir en Visual Studio Code la carpeta
+        correspondiente al directorio actual.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura11.png"
+             alt="Proyecto abierto en Visual Studio Code">
+
+        <p>
+            Captura 11. Apertura de la carpeta del proyecto en
+            Visual Studio Code.
+        </p>
+    </div>
+
+</article>
+
+<!-- PASO 12 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>12</span>
+        <h3>Creación del archivo index.php</h3>
+    </div>
+
+    <p>
+        Dentro de la carpeta del proyecto se creó el archivo
+        <strong>index.php</strong>. Este archivo contiene la lógica
+        necesaria para realizar la conexión con la base de datos y
+        posteriormente consultar la información almacenada en PostgreSQL.
+    </p>
+
+    <p>
+        Primero se cargó el archivo <strong>autoload.php</strong>
+        generado por Composer. Esto permite utilizar las clases de las
+        dependencias instaladas en el proyecto.
+    </p>
+
+    <div class="comando">
+        <code>require_once __DIR__ . '/vendor/autoload.php';</code>
+    </div>
+
+    <p>
+        Posteriormente, se importó la clase
+        <strong>Adapter</strong> perteneciente a Laminas DB, la cual
+        será utilizada para establecer la comunicación con PostgreSQL.
+    </p>
+
+    <div class="comando">
+        <code>use Laminas\Db\Adapter\Adapter;</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura12.png"
+             alt="Creación del archivo index.php en Visual Studio Code">
+
+        <p>
+            Captura 12. Creación del archivo index.php y carga de
+            Laminas DB mediante el autoload de Composer.
+        </p>
+    </div>
+
+</article>
+
+<!-- PASO 13 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>13</span>
+        <h3>Configuración de la conexión</h3>
+    </div>
+
+    <p>
+        Para establecer la comunicación con PostgreSQL se creó un arreglo
+        de configuración utilizando los datos de conexión proporcionados
+        por Neon, como el host, la base de datos, el usuario, la contraseña
+        y la configuración SSL.
+    </p>
+
+    <p>
+        Posteriormente, se creó un objeto de tipo
+        <strong>Adapter</strong> utilizando la configuración establecida.
+        Este objeto permite que Laminas DB realice la comunicación entre
+        la aplicación PHP y la base de datos PostgreSQL alojada en Neon.
+    </p>
+
+    <div class="comando">
+        <code>$adapter = new Adapter($configArray);</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura13.png"
+             alt="Configuración de la conexión con PostgreSQL mediante Laminas DB">
+
+        <p>
+            Captura 13. Configuración de la conexión entre PHP,
+            Laminas DB y PostgreSQL alojado en Neon.
+        </p>
+    </div>
+
+</article>
+
+<!-- PASO 14 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>14</span>
+        <h3>Consulta de la tabla usuarios</h3>
+    </div>
+
+    <p>
+        Una vez establecida la conexión con PostgreSQL, se creó una
+        consulta SQL para recuperar todos los registros almacenados
+        en la tabla <strong>usuarios</strong>.
+    </p>
+
+    <p>
+        La consulta fue ejecutada mediante el objeto
+        <strong>Adapter</strong> de Laminas DB, utilizando el modo
+        de ejecución de consultas.
+    </p>
+
+    <div class="comando">
+        <code>$consulta = "SELECT * FROM usuarios";</code>
+    </div>
+
+    <div class="comando">
+        <code>$tabla = $adapter->query($consulta, Adapter::QUERY_MODE_EXECUTE);</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura14.png"
+             alt="Consulta de la tabla usuarios mediante Laminas DB">
+
+        <p>
+            Captura 14. Consulta de los registros almacenados
+            en la tabla usuarios mediante Laminas DB.
+        </p>
+    </div>
+
+</article>
+
+<!-- PASO 15 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>15</span>
+        <h3>Generación de la tabla HTML</h3>
+    </div>
+
+    <p>
+        Después de obtener los registros almacenados en PostgreSQL,
+        los datos recuperados se recorrieron desde PHP para mostrarlos
+        de forma organizada en el navegador.
+    </p>
+
+    <p>
+        Se definieron los campos <strong>id</strong>,
+        <strong>nombre</strong>, <strong>email</strong> y
+        <strong>creado_en</strong>, correspondientes a las columnas
+        de la tabla usuarios.
+    </p>
+
+    <div class="comando">
+        <code>$nomcampos = array("id", "nombre", "email", "creado_en");</code>
+    </div>
+
+    <p>
+        Posteriormente, se generó una tabla HTML con sus respectivos
+        encabezados y filas para presentar cada uno de los registros
+        recuperados de la base de datos.
+    </p>
+
+    <div class="comando">
+        <code>$tablahtml = '&lt;table border="1"&gt;';<br>
+        echo $tablahtml;</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura15.png"
+             alt="Generación de la tabla HTML mediante PHP">
+
+        <p>
+            Captura 15. Código PHP utilizado para generar la tabla HTML
+            con los registros obtenidos de PostgreSQL.
+        </p>
+    </div>
+
+</article>
+
+<!-- PASO 16 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>16</span>
+        <h3>Ejecución del servidor PHP</h3>
+    </div>
+
+    <p>
+        Una vez terminado el código necesario para realizar la conexión,
+        consultar la base de datos y generar la tabla HTML, se inició el
+        servidor de desarrollo integrado de <strong>PHP</strong>.
+    </p>
+
+    <p>
+        Desde la terminal, ubicada en la carpeta del proyecto, se ejecutó
+        el servidor local utilizando el puerto <strong>8080</strong>.
+    </p>
+
+    <div class="comando">
+        <code>php -S localhost:8080</code>
+    </div>
+
+    <p>
+        Al ejecutar este comando, PHP inició un servidor web local que
+        permitió acceder al archivo <strong>index.php</strong> desde
+        el navegador.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura16.png"
+             alt="Servidor local de PHP ejecutándose en el puerto 8080">
+
+        <p>
+            Captura 16. Ejecución del servidor local de PHP en el
+            puerto 8080.
+        </p>
+    </div>
+
+</article>
+
+<!-- PASO 17 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>17</span>
+        <h3>Visualización del resultado</h3>
+    </div>
+
+    <p>
+        Con el servidor local de PHP en ejecución, se abrió el navegador
+        web y se accedió a la dirección <strong>localhost:8080</strong>.
+    </p>
+
+    <div class="comando">
+        <code>http://localhost:8080</code>
+    </div>
+
+    <p>
+        Al acceder a esta dirección, el archivo
+        <strong>index.php</strong> se ejecutó automáticamente. La
+        aplicación realizó la conexión con PostgreSQL alojado en Neon,
+        ejecutó la consulta sobre la tabla <strong>usuarios</strong>
+        y mostró los registros obtenidos mediante una tabla HTML.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura17.png"
+             alt="Resultado de la consulta mostrado en el navegador">
+
+        <p>
+            Captura 17. Visualización de los registros de la tabla
+            usuarios desde el navegador.
+        </p>
+    </div>
+
+</article>
+
+<!-- PASO 18 -->
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>18</span>
+        <h3>Resultado final</h3>
+    </div>
+
+    <p>
+        El resultado final permitió comprobar el funcionamiento completo
+        del proyecto. PHP utilizó Composer para cargar las dependencias
+        necesarias de Laminas DB y establecer la comunicación con
+        PostgreSQL alojado en Neon.
+    </p>
+
+    <p>
+        Una vez establecida la conexión, se ejecutó una consulta sobre
+        la tabla <strong>usuarios</strong>. Los registros recuperados
+        fueron procesados mediante PHP y finalmente se mostraron en una
+        tabla HTML desde el navegador.
+    </p>
+
+    <div class="resultado-final">
+
+        <h4>Flujo de funcionamiento</h4>
+
+        <p class="flujo">
+            PHP → Composer → Laminas DB → PostgreSQL en Neon →
+            Consulta de datos → Tabla HTML en el navegador
+        </p>
+
+    </div>
+
+    <div class="captura">
+        <img src="img/captura17.png"
+             alt="Resultado final de la práctica">
+
+        <p>
+            Captura 18. Resultado final de la conexión y consulta
+            de PostgreSQL en Neon desde PHP.
+        </p>
+    </div>
+
+</article>
+
+    </div>
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <span class="numero-pagina">Página 4</span>
+</section>
+
+    <!-- SECCIÓN 04: CONCLUSIÓN -->
+<section class="seccion" id="conclusion">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">04</span>
+
+        <div>
+            <h2>Conclusión</h2>
+            <p>Resultados y conocimientos adquiridos</p>
+        </div>
+    </div>
+
+    <div class="contenido-texto">
+
+        <p>
+            Mediante el desarrollo de esta práctica se logró establecer
+            correctamente una conexión entre una aplicación desarrollada
+            en PHP y una base de datos PostgreSQL alojada en Neon. Para
+            conseguirlo fue necesario preparar el entorno de trabajo,
+            configurar PHP y habilitar las extensiones requeridas para
+            trabajar con PostgreSQL.
+        </p>
+
+        <p>
+            También se utilizó Composer como administrador de dependencias,
+            lo que permitió incorporar Laminas DB al proyecto. Mediante
+            esta biblioteca se configuró el adaptador encargado de realizar
+            la comunicación entre PHP y la base de datos almacenada en
+            la nube.
+        </p>
+
+        <p>
+            Posteriormente, se realizó una consulta sobre la tabla
+            <strong>usuarios</strong> para recuperar los registros
+            almacenados en PostgreSQL. La información obtenida fue
+            procesada mediante PHP y presentada en una tabla HTML,
+            permitiendo comprobar visualmente que la conexión y la
+            consulta funcionaban correctamente.
+        </p>
+
+        <p>
+            Finalmente, la práctica permitió comprender de manera práctica
+            cómo diferentes tecnologías pueden trabajar en conjunto para
+            acceder a información almacenada en una base de datos en la
+            nube. El uso de PHP, Composer, Laminas DB, PostgreSQL y Neon
+            permitió completar el proceso desde la configuración del
+            entorno hasta la visualización de los datos en el navegador.
+        </p>
+
+    </div>
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <span class="numero-pagina">Página 5</span>
+</section>
+
+<!-- SECCIÓN 05: REFERENCIAS -->
+<section class="seccion" id="referencias">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">05</span>
+
+        <div>
+            <h2>Referencias bibliográficas</h2>
+            <p>Fuentes consultadas</p>
+        </div>
+    </div>
+
+    <div class="contenido-texto referencias">
+
+        <p>
+            Composer. (s. f.). <em>Composer documentation</em>.
+            <a href="https://getcomposer.org/doc/" target="_blank">
+                https://getcomposer.org/doc/
+            </a>
+        </p>
+
+        <p>
+            Laminas Project. (s. f.). <em>Laminas DB documentation</em>.
+            <a href="https://docs.laminas.dev/laminas-db/" target="_blank">
+                https://docs.laminas.dev/laminas-db/
+            </a>
+        </p>
+
+        <p>
+            Microsoft. (s. f.). <em>Visual Studio Code documentation</em>.
+            <a href="https://code.visualstudio.com/docs" target="_blank">
+                https://code.visualstudio.com/docs
+            </a>
+        </p>
+
+        <p>
+            Neon. (s. f.). <em>Neon documentation</em>.
+            <a href="https://neon.com/docs" target="_blank">
+                https://neon.com/docs
+            </a>
+        </p>
+
+        <p>
+            PHP Documentation Group. (s. f.). <em>Manual de PHP</em>.
+            <a href="https://www.php.net/manual/es/" target="_blank">
+                https://www.php.net/manual/es/
+            </a>
+        </p>
+
+        <p>
+            PostgreSQL Global Development Group. (s. f.).
+            <em>PostgreSQL documentation</em>.
+            <a href="https://www.postgresql.org/docs/" target="_blank">
+                https://www.postgresql.org/docs/
+            </a>
+        </p>
+
+    </div>
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <span class="numero-pagina">Página 6</span>
+</section>
+
+</main>
+
+</body>
+
+</html>

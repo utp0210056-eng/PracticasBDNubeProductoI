@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Práctica ASP.NET Core con PostgreSQL en Neon</title>
+</head>
+
+<body>
+
+    <div class="barra-navegacion">
+    <a href="../index.html" class="volver-practicas">
+        ← Volver a todas las prácticas
+    </a>
+</div>
+
+       <!-- PORTADA -->
+    <header class="portada">
+
+        <div class="portada-contenido">
+
+            <p class="universidad">
+                Universidad Tecnológica de Puebla
+            </p>
+
+            <p class="carrera">
+                Ingeniería en Tecnologías de la Información e Innovación Digital
+            </p>
+
+            <div class="linea"></div>
+
+            <p class="materia">
+                Base de Datos en la Nube
+            </p>
+
+            <h1>
+                ASP.NET Core con PostgreSQL en Neon<br>
+                
+            </h1>
+
+            <p class="tipo-trabajo">
+                Práctica de laboratorio
+            </p>
+
+            <div class="datos">
+
+                <p>
+                    <strong>Alumno:</strong><br>
+                    Alexis Ian Neocelo Sanabria
+                </p>
+
+                <p>
+                    <strong>Profesor:</strong><br>
+                    Javier Nolasco Hernández
+                </p>
+
+                <p>
+                    <strong>Grupo:</strong> 7C &nbsp; | &nbsp;
+                    <strong>Turno:</strong> Vespertino
+                </p>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <section class="seccion indice" id="indice">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">ÍNDICE</span>
+        <h2>Contenido de la práctica</h2>
+    </div>
+
+    <div class="lista-indice">
+
+        <a href="#introduccion" class="item-indice">
+            <span class="numero">01</span>
+            <div>
+                <h3>Introducción</h3>
+                <p>Descripción general y propósito de la práctica.</p>
+            </div>
+        </a>
+
+        <a href="#marco-teorico" class="item-indice">
+            <span class="numero">02</span>
+            <div>
+                <h3>Marco teórico</h3>
+                <p>Conceptos y tecnologías utilizadas durante el desarrollo.</p>
+            </div>
+        </a>
+
+        <a href="#procedimiento" class="item-indice">
+            <span class="numero">03</span>
+            <div>
+                <h3>Procedimiento</h3>
+                <p>Desarrollo paso a paso de la práctica.</p>
+            </div>
+        </a>
+
+        <a href="#conclusion" class="item-indice">
+            <span class="numero">04</span>
+            <div>
+                <h3>Conclusión</h3>
+                <p>Resultados obtenidos y conocimientos adquiridos.</p>
+            </div>
+        </a>
+
+        <a href="#referencias" class="item-indice">
+            <span class="numero">05</span>
+            <div>
+                <h3>Referencias bibliográficas</h3>
+                <p>Fuentes de información utilizadas.</p>
+            </div>
+        </a>
+
+    </div>
+
+    <span class="numero-pagina">Página 1</span>
+
+</section>
+
+<section class="seccion" id="introduccion">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">01 INTRODUCCIÓN</span>
+        <h2>Introducción</h2>
+    </div>
+
+    <div class="contenido-texto">
+        <p>
+            En esta práctica se desarrolló una aplicación web básica utilizando
+            <strong>ASP.NET Core y C#</strong>, con el propósito de establecer una
+            conexión con una base de datos <strong>PostgreSQL alojada en Neon</strong>.
+            Para realizar esta conexión se utilizaron las bibliotecas
+            <strong>Npgsql</strong> y <strong>Dapper</strong>, las cuales permiten
+            establecer comunicación con PostgreSQL y ejecutar consultas desde una
+            aplicación desarrollada en .NET.
+        </p>
+
+        <p>
+            Durante el desarrollo se creó un proyecto ASP.NET Core y se configuró
+            la cadena de conexión hacia la base de datos mediante el archivo
+            <code>appsettings.json</code>. Posteriormente, en
+            <code>Program.cs</code> se configuró la conexión con Npgsql, se utilizó
+            Dapper para realizar una consulta SQL y se creó el endpoint
+            <code>/usuario</code>, encargado de consultar la información almacenada
+            en la tabla <code>usuarios</code>.
+        </p>
+
+        <p>
+            Finalmente, la aplicación se ejecutó de manera local y se accedió al
+            endpoint desde el navegador. Como resultado, se obtuvieron correctamente
+            los registros almacenados en PostgreSQL y se mostraron en formato
+            <strong>JSON</strong>, comprobando así la comunicación entre la aplicación
+            ASP.NET Core y la base de datos alojada en Neon.
+        </p>
+    </div>
+
+    <a href="#indice" class="volver-indice">↑ Volver al índice</a>
+
+
+    <span class="numero-pagina">Página 2</span>
+</section>
+
+<section class="seccion" id="marco-teorico">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">02 MARCO TEÓRICO</span>
+        <h2>Tecnologías utilizadas</h2>
+    </div>
+
+    <div class="tarjetas-teoria">
+
+        <article class="tarjeta-teoria">
+            <h3>ASP.NET Core</h3>
+            <p>
+                ASP.NET Core es un framework de desarrollo web perteneciente a la
+                plataforma .NET que permite crear aplicaciones y servicios web.
+                En esta práctica se utilizó una plantilla de ASP.NET Core vacío
+                como base para desarrollar la aplicación encargada de comunicarse
+                con la base de datos.
+            </p>
+        </article>
+
+        <article class="tarjeta-teoria">
+            <h3>C#</h3>
+            <p>
+                C# es el lenguaje de programación utilizado para desarrollar la
+                aplicación ASP.NET Core. En esta práctica, el archivo
+                <code>Program.cs</code> contiene la configuración principal de la
+                aplicación, la conexión con PostgreSQL y el endpoint encargado de
+                consultar los usuarios.
+            </p>
+        </article>
+
+        <article class="tarjeta-teoria">
+            <h3>PostgreSQL</h3>
+            <p>
+                PostgreSQL es un sistema gestor de bases de datos relacional.
+                En la práctica se utilizó para almacenar la información consultada
+                por la aplicación, específicamente los datos de la tabla
+                <code>usuarios</code>.
+            </p>
+        </article>
+
+        <article class="tarjeta-teoria">
+            <h3>Neon</h3>
+            <p>
+                Neon es el servicio utilizado para disponer de una base de datos
+                PostgreSQL en la nube. La aplicación se conecta a este servicio
+                mediante una cadena de conexión configurada en el archivo
+                <code>appsettings.json</code>.
+            </p>
+        </article>
+
+        <article class="tarjeta-teoria">
+            <h3>Npgsql</h3>
+            <p>
+                Npgsql es el proveedor utilizado para establecer la comunicación
+                entre aplicaciones desarrolladas en .NET y PostgreSQL. En la
+                práctica se utilizó <code>NpgsqlConnection</code> para crear la
+                conexión con la base de datos alojada en Neon.
+            </p>
+        </article>
+
+        <article class="tarjeta-teoria">
+            <h3>Dapper</h3>
+            <p>
+                Dapper es una biblioteca que facilita la ejecución de consultas
+                SQL desde aplicaciones .NET. En esta práctica se utilizó
+                <code>QueryAsync&lt;Usuario&gt;()</code> para ejecutar una consulta
+                y transformar los resultados en objetos de tipo Usuario.
+            </p>
+        </article>
+
+        <article class="tarjeta-teoria">
+            <h3>JSON y endpoint</h3>
+            <p>
+                La aplicación implementó el endpoint <code>/usuario</code>, encargado
+                de consultar los registros almacenados en PostgreSQL. Los resultados
+                obtenidos fueron enviados al navegador en formato JSON para facilitar
+                su visualización e intercambio.
+            </p>
+        </article>
+
+    </div>
+
+    <a href="#indice" class="volver-indice">↑ Volver al índice</a>
+
+    <span class="numero-pagina">Página 3</span>
+</section>
+
+<section class="seccion" id="procedimiento">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">03 PROCEDIMIENTO</span>
+        <h2>Desarrollo de la práctica</h2>
+    </div>
+
+    <div class="contenido-texto">
+        <p>
+            A continuación, se presenta el procedimiento realizado para crear una
+            aplicación web con ASP.NET Core, configurar las dependencias necesarias
+            y establecer la conexión con una base de datos PostgreSQL alojada en
+            Neon. El proceso incluye la creación y configuración del proyecto,
+            instalación de Npgsql y Dapper, configuración de la conexión y
+            comprobación final mediante un endpoint que devuelve los registros
+            almacenados en la base de datos.
+        </p>
+    </div>
+
+    <!-- AQUÍ COLOCAREMOS LOS 18 PASOS -->
+
+    <article class="paso">
+
+    <div class="titulo-paso">
+        <span>1</span>
+        <h3>Creación y acceso a la carpeta de trabajo</h3>
+    </div>
+
+    <p>
+        Para comenzar la práctica, se accedió mediante la consola de Windows
+        a la carpeta de trabajo correspondiente al día de la práctica.
+        Esta carpeta se utilizó para almacenar el proyecto desarrollado
+        con ASP.NET Core.
+    </p>
+
+    <div class="comando">
+        <code>cd C:\Windows\System32\Optativas1\7C\sep7</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura1.png" alt="Acceso a la carpeta de trabajo sep7">
+        <p>
+            Figura 1. Acceso a la carpeta de trabajo sep7 desde la consola de Windows.
+        </p>
+    </div>
+
+</article>
+
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>2</span>
+        <h3>Creación del proyecto ASP.NET Core</h3>
+    </div>
+
+    <p>
+        Una vez ubicada la carpeta de trabajo, se creó un nuevo proyecto web
+        utilizando ASP.NET Core. Para ello se utilizó el comando
+        <strong>dotnet new web</strong>, indicando el nombre
+        <strong>webpgneon</strong> para el proyecto.
+    </p>
+
+    <p>
+        Al ejecutar el comando, .NET generó automáticamente la estructura
+        inicial del proyecto y realizó la restauración de los archivos
+        necesarios.
+    </p>
+
+    <div class="comando">
+        <code>dotnet new web -o webpgneon</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura2.png"
+             alt="Creación del proyecto ASP.NET Core webpgneon">
+        <p>
+            Figura 2. Creación del proyecto ASP.NET Core llamado webpgneon.
+        </p>
+    </div>
+
+</article>
+
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>3</span>
+        <h3>Acceso y verificación de la estructura del proyecto</h3>
+    </div>
+
+    <p>
+        Después de crear el proyecto, se accedió a la carpeta
+        <strong>webpgneon</strong> desde la consola de Windows. Posteriormente,
+        se utilizó el comando <strong>dir</strong> para verificar los archivos
+        y carpetas que fueron generados automáticamente por ASP.NET Core.
+    </p>
+
+    <p>
+        Entre los elementos principales se encontraron los archivos
+        <strong>Program.cs</strong>, <strong>appsettings.json</strong> y
+        <strong>webpgneon.csproj</strong>, además de las carpetas necesarias
+        para el funcionamiento del proyecto.
+    </p>
+
+    <div class="comando">
+        <code>cd webpgneon</code>
+    </div>
+
+    <div class="comando">
+        <code>dir</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura3.png"
+             alt="Estructura inicial del proyecto webpgneon">
+
+        <p>
+            Figura 3. Verificación de los archivos y carpetas generados en el proyecto webpgneon.
+        </p>
+    </div>
+
+</article>
+
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>4</span>
+        <h3>Revisión de la configuración inicial del proyecto</h3>
+    </div>
+
+    <p>
+        Una vez verificada la estructura del proyecto, se revisaron los
+        principales archivos generados automáticamente por ASP.NET Core.
+        Esto permitió conocer la configuración inicial antes de realizar
+        las modificaciones necesarias para establecer la conexión con
+        PostgreSQL.
+    </p>
+
+    <p>
+        Primero se consultó el archivo <strong>appsettings.json</strong>,
+        el cual contiene configuraciones utilizadas por la aplicación.
+    </p>
+
+    <div class="comando">
+        <code>type appsettings.json</code>
+    </div>
+
+    <p>
+        También se revisó el archivo <strong>webpgneon.csproj</strong>,
+        donde se encuentra la configuración del proyecto y la versión
+        de .NET utilizada.
+    </p>
+
+    <div class="comando">
+        <code>type webpgneon.csproj</code>
+    </div>
+
+    <p>
+        Finalmente, se consultó <strong>Program.cs</strong>, que inicialmente
+        contenía la configuración básica de la aplicación y un endpoint
+        que devolvía el mensaje <strong>Hello World!</strong>.
+    </p>
+
+    <div class="comando">
+        <code>type Program.cs</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura4.png"
+             alt="Revisión de los archivos iniciales del proyecto">
+
+        <p>
+            Figura 4. Revisión de los archivos de configuración inicial del proyecto ASP.NET Core.
+        </p>
+    </div>
+
+</article>
+
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>5</span>
+        <h3>Compilación y primera ejecución del proyecto</h3>
+    </div>
+
+    <p>
+        Después de revisar los archivos iniciales, se realizó una compilación
+        del proyecto para comprobar que la aplicación no presentara errores.
+        Para ello se utilizó el comando <strong>dotnet build</strong>.
+    </p>
+
+    <div class="comando">
+        <code>dotnet build</code>
+    </div>
+
+    <p>
+        La compilación terminó correctamente, sin advertencias ni errores.
+        Posteriormente, se ejecutó la aplicación mediante el comando
+        <strong>dotnet run</strong>.
+    </p>
+
+    <div class="comando">
+        <code>dotnet run</code>
+    </div>
+
+    <p>
+        ASP.NET Core inició el servidor web local y proporcionó una dirección
+        de acceso. Al abrirla desde el navegador se mostró el mensaje
+        <strong>Hello World!</strong>, confirmando que el proyecto funcionaba
+        correctamente antes de realizar la conexión con la base de datos.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura5.png"
+             alt="Compilación y ejecución inicial del proyecto">
+
+        <p>
+            Figura 5. Compilación y ejecución inicial del proyecto ASP.NET Core.
+        </p>
+    </div>
+
+</article>
+
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>6</span>
+        <h3>Instalación del paquete Npgsql</h3>
+    </div>
+
+    <p>
+        Para establecer la comunicación entre la aplicación ASP.NET Core
+        y la base de datos PostgreSQL, se instaló el paquete
+        <strong>Npgsql</strong>. Este paquete proporciona el controlador
+        necesario para realizar conexiones con PostgreSQL desde aplicaciones
+        desarrolladas en .NET.
+    </p>
+
+    <p>
+        La instalación se realizó desde la consola, dentro de la carpeta
+        del proyecto, utilizando el siguiente comando:
+    </p>
+
+    <div class="comando">
+        <code>dotnet add package Npgsql</code>
+    </div>
+
+    <p>
+        Al finalizar el proceso, el paquete fue agregado como una dependencia
+        del proyecto y se realizó automáticamente la restauración de los
+        archivos necesarios.
+    </p>
+
+    <p>
+        Posteriormente, se verificó el archivo
+        <strong>webpgneon.csproj</strong> para comprobar que la referencia
+        de Npgsql se hubiera agregado correctamente.
+    </p>
+
+    <div class="comando">
+        <code>type webpgneon.csproj</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura6.png"
+             alt="Instalación del paquete Npgsql">
+
+        <p>
+            Figura 6. Instalación y verificación del paquete Npgsql en el proyecto ASP.NET Core.
+        </p>
+    </div>
+
+</article>
+
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>7</span>
+        <h3>Instalación del paquete Dapper</h3>
+    </div>
+
+    <p>
+        Después de instalar Npgsql, se agregó el paquete
+        <strong>Dapper</strong> al proyecto. Esta biblioteca permite
+        ejecutar consultas SQL desde una aplicación .NET y facilita
+        la conversión de los resultados obtenidos desde la base de datos
+        en objetos de C#.
+    </p>
+
+    <p>
+        La instalación se realizó desde la consola mediante el siguiente
+        comando:
+    </p>
+
+    <div class="comando">
+        <code>dotnet add package Dapper</code>
+    </div>
+
+    <p>
+        Una vez finalizada la instalación, se verificó nuevamente el archivo
+        <strong>webpgneon.csproj</strong> para comprobar que tanto
+        <strong>Dapper</strong> como <strong>Npgsql</strong> estuvieran
+        registrados como dependencias del proyecto.
+    </p>
+
+    <div class="comando">
+        <code>type webpgneon.csproj</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura7.png"
+             alt="Instalación del paquete Dapper">
+
+        <p>
+            Figura 7. Instalación del paquete Dapper y verificación de las
+            dependencias del proyecto.
+        </p>
+    </div>
+
+</article>
+
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>8</span>
+        <h3>Apertura del proyecto en Visual Studio Code</h3>
+    </div>
+
+    <p>
+        Después de instalar las dependencias necesarias, se abrió la carpeta
+        del proyecto <strong>webpgneon</strong> en Visual Studio Code para
+        continuar con la configuración de la aplicación.
+    </p>
+
+    <p>
+        Desde el editor se identificaron los archivos principales que serían
+        modificados durante la práctica, especialmente
+        <strong>Program.cs</strong> y <strong>appsettings.json</strong>.
+    </p>
+
+    <p>
+        En <strong>Program.cs</strong> se realizaría la configuración de
+        Npgsql y Dapper, además de la creación del endpoint encargado de
+        consultar los usuarios. Por otra parte, en
+        <strong>appsettings.json</strong> se configuraría posteriormente
+        la cadena de conexión hacia PostgreSQL en Neon.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura8.png"
+             alt="Proyecto webpgneon abierto en Visual Studio Code">
+
+        <p>
+            Figura 8. Proyecto webpgneon abierto en Visual Studio Code para
+            realizar la configuración de la aplicación.
+        </p>
+    </div>
+
+</article>
+
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>9</span>
+        <h3>Importación de Npgsql y Dapper en Program.cs</h3>
+    </div>
+
+    <p>
+        Con el proyecto abierto en Visual Studio Code, se comenzó a modificar
+        el archivo <strong>Program.cs</strong>. Primero se agregaron las
+        instrucciones necesarias para utilizar las bibliotecas
+        <strong>Npgsql</strong> y <strong>Dapper</strong> dentro de la
+        aplicación.
+    </p>
+
+    <p>
+        Npgsql se utilizaría para establecer la conexión con PostgreSQL,
+        mientras que Dapper permitiría ejecutar las consultas SQL y trabajar
+        con los resultados obtenidos desde la base de datos.
+    </p>
+
+    <p>
+        Al inicio del archivo <strong>Program.cs</strong> se agregaron las
+        siguientes líneas:
+    </p>
+
+    <div class="comando">
+        <code>
+            using Npgsql;<br>
+            using Dapper;
+        </code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura9.png"
+             alt="Importación de Npgsql y Dapper en Program.cs">
+
+        <p>
+            Figura 9. Importación de las bibliotecas Npgsql y Dapper en el
+            archivo Program.cs.
+        </p>
+    </div>
+
+</article>
+
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>10</span>
+        <h3>Configuración de la conexión en Program.cs</h3>
+    </div>
+
+    <p>
+        Después de importar las bibliotecas necesarias, se realizó la
+        configuración de la conexión con PostgreSQL dentro del archivo
+        <strong>Program.cs</strong>.
+    </p>
+
+    <p>
+        Primero se indicó que la aplicación obtuviera la cadena de conexión
+        denominada <strong>DefaultConnection</strong> desde el archivo
+        <strong>appsettings.json</strong>. De esta manera, los datos de
+        conexión no tienen que escribirse directamente en la lógica principal
+        de la aplicación.
+    </p>
+
+    <div class="comando">
+        <code>
+            var builder = WebApplication.CreateBuilder(args);<br><br>
+
+            // Obtener la cadena de conexión del archivo appsettings.json<br>
+            string cadConexion = builder.Configuration.GetConnectionString("DefaultConnection")!;
+        </code>
+    </div>
+
+    <p>
+        Posteriormente, se registró <strong>NpgsqlConnection</strong> como
+        un servicio de la aplicación. La conexión utiliza la cadena obtenida
+        anteriormente y podrá ser utilizada posteriormente por el endpoint
+        encargado de consultar la base de datos.
+    </p>
+
+    <div class="comando">
+        <code>
+            // Registrar la conexión como un servicio<br>
+            builder.Services.AddTransient(sp =&gt; new NpgsqlConnection(cadConexion));
+        </code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura10.png"
+             alt="Configuración de NpgsqlConnection en Program.cs">
+
+        <p>
+            Figura 10. Configuración de la cadena de conexión y registro de
+            NpgsqlConnection en el archivo Program.cs.
+        </p>
+    </div>
+
+</article>
+
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>11</span>
+        <h3>Configuración de CORS</h3>
+    </div>
+
+    <p>
+        Después de registrar la conexión con PostgreSQL, se agregó la
+        configuración de <strong>CORS</strong> en la aplicación. Esta
+        configuración permite definir qué solicitudes externas pueden
+        acceder a los recursos proporcionados por la aplicación web.
+    </p>
+
+    <p>
+        Para esta práctica se estableció una política que permite solicitudes
+        desde cualquier origen, utilizando cualquier método HTTP y cualquier
+        encabezado.
+    </p>
+
+    <div class="comando">
+        <code>
+            builder.Services.AddCors(options =&gt; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;options.AddDefaultPolicy(policy =&gt;
+            policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());<br>
+            });
+        </code>
+    </div>
+
+    <p>
+        Esta configuración se realizó antes de construir la aplicación con
+        <strong>builder.Build()</strong>, dejando preparada la política CORS
+        para utilizarla posteriormente durante la ejecución.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura11.png"
+             alt="Configuración de CORS en Program.cs">
+
+        <p>
+            Figura 11. Configuración de la política CORS dentro del archivo
+            Program.cs.
+        </p>
+    </div>
+
+</article>
+
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>12</span>
+        <h3>Configuración de la conexión con Neon en appsettings.json</h3>
+    </div>
+
+    <p>
+        Una vez preparada la aplicación para utilizar Npgsql, se modificó
+        el archivo <strong>appsettings.json</strong> para agregar la cadena
+        de conexión correspondiente a la base de datos PostgreSQL alojada
+        en <strong>Neon</strong>.
+    </p>
+
+    <p>
+        Dentro del archivo se agregó la sección
+        <strong>ConnectionStrings</strong> y se creó una conexión denominada
+        <strong>DefaultConnection</strong>. Este nombre corresponde al mismo
+        que se utilizó anteriormente en <strong>Program.cs</strong>.
+    </p>
+
+    <div class="comando">
+        <code>
+            "ConnectionStrings": {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"DefaultConnection": "Host=SERVIDOR_NEON;Database=neondb;Username=neondb_owner;Password=********;SSL Mode=Require"<br>
+            }
+        </code>
+    </div>
+
+    <p>
+        La cadena contiene la información necesaria para identificar el
+        servidor, la base de datos y el usuario de PostgreSQL. También se
+        indicó el uso de una conexión segura mediante SSL.
+    </p>
+
+    <p>
+        Por seguridad, la contraseña utilizada para acceder a la base de
+        datos se mantiene oculta en la documentación y en las capturas
+        utilizadas como evidencia.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura12.png"
+             alt="Configuración de la conexión con Neon en appsettings.json">
+
+        <p>
+            Figura 12. Configuración de la cadena de conexión hacia la base
+            de datos PostgreSQL alojada en Neon.
+        </p>
+    </div>
+
+</article>
+
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>13</span>
+        <h3>Creación del endpoint para consultar usuarios</h3>
+    </div>
+
+    <p>
+        Después de configurar la conexión con la base de datos, se creó un
+        nuevo endpoint denominado <strong>/usuario</strong> dentro del archivo
+        <strong>Program.cs</strong>. Este endpoint se encarga de consultar
+        los registros almacenados en la tabla <strong>usuarios</strong>.
+    </p>
+
+    <p>
+        Para realizar la consulta se utilizó <strong>Dapper</strong> junto
+        con la conexión proporcionada por <strong>Npgsql</strong>. La
+        instrucción SQL selecciona el identificador, nombre, correo
+        electrónico y fecha de creación de cada usuario.
+    </p>
+
+    <div class="comando">
+        <code>
+            app.MapGet(<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"/usuario",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;async (NpgsqlConnection con) =&gt; {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const string sql = "SELECT id, nombre, email, creado_en AS CreadoEn FROM usuarios";<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var usuarios = await con.QueryAsync&lt;Usuario&gt;(sql);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return Results.Ok(usuarios);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            );
+        </code>
+    </div>
+
+    <p>
+        Mediante <strong>QueryAsync</strong>, Dapper ejecuta la consulta de
+        forma asíncrona y convierte los registros obtenidos en objetos de
+        tipo <strong>Usuario</strong>. Finalmente, mediante
+        <strong>Results.Ok()</strong> se devuelve la información obtenida
+        como respuesta del endpoint.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura13.png"
+             alt="Creación del endpoint usuario en Program.cs">
+
+        <p>
+            Figura 13. Creación del endpoint /usuario y consulta de la tabla
+            usuarios mediante Dapper.
+        </p>
+    </div>
+
+</article>
+
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>14</span>
+        <h3>Creación del modelo Usuario y activación de CORS</h3>
+    </div>
+
+    <p>
+        Para representar los registros obtenidos desde la tabla
+        <strong>usuarios</strong>, se creó un modelo denominado
+        <strong>Usuario</strong>. Este modelo contiene las propiedades
+        correspondientes al identificador, nombre, correo electrónico
+        y fecha de creación de cada registro.
+    </p>
+
+    <div class="comando">
+        <code>
+            public record Usuario(int Id, string Nombre, string Email, DateTime CreadoEn);
+        </code>
+    </div>
+
+    <p>
+        También se activó la política CORS configurada anteriormente mediante
+        el método <strong>UseCors()</strong>. Finalmente, se utilizó
+        <strong>app.Run()</strong> para iniciar la aplicación y permitir
+        que el servidor atienda las solicitudes recibidas.
+    </p>
+
+    <div class="comando">
+        <code>
+            app.UseCors();<br><br>
+            app.Run();
+        </code>
+    </div>
+
+    <p>
+        Con estas instrucciones quedó completada la configuración principal
+        de la aplicación. El modelo <strong>Usuario</strong> permite que
+        Dapper relacione los datos obtenidos de PostgreSQL con una estructura
+        definida en C#.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura14.png"
+             alt="Modelo Usuario y activación de CORS en Program.cs">
+
+        <p>
+            Figura 14. Creación del modelo Usuario y activación de CORS
+            dentro del archivo Program.cs.
+        </p>
+    </div>
+
+</article>
+
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>15</span>
+        <h3>Ejecución de la aplicación ASP.NET Core</h3>
+    </div>
+
+    <p>
+        Una vez terminada la configuración de la aplicación, se guardaron
+        los cambios realizados en los archivos del proyecto y se regresó
+        a la consola para ejecutar nuevamente la aplicación.
+    </p>
+
+    <p>
+        Para iniciar el servidor de ASP.NET Core se utilizó el siguiente
+        comando:
+    </p>
+
+    <div class="comando">
+        <code>dotnet run</code>
+    </div>
+
+    <p>
+        Al ejecutar el comando, ASP.NET Core compiló e inició la aplicación
+        correctamente. La consola indicó la dirección local en la que se
+        encontraba disponible el servidor web.
+    </p>
+
+    <div class="comando">
+        <code>http://localhost:5291</code>
+    </div>
+
+    <p>
+        La aplicación quedó en ejecución y preparada para recibir solicitudes.
+        Con esto fue posible realizar la comprobación final del endpoint
+        creado para consultar la información almacenada en PostgreSQL.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura15.png"
+             alt="Ejecución de la aplicación ASP.NET Core">
+
+        <p>
+            Figura 15. Ejecución de la aplicación ASP.NET Core mediante
+            el comando dotnet run.
+        </p>
+    </div>
+
+</article>
+
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>16</span>
+        <h3>Comprobación del endpoint /usuario</h3>
+    </div>
+
+    <p>
+        Con la aplicación en ejecución, se abrió el navegador web para
+        comprobar el funcionamiento del endpoint creado anteriormente.
+        Para ello, se agregó la ruta <strong>/usuario</strong> a la
+        dirección local proporcionada por ASP.NET Core.
+    </p>
+
+    <div class="comando">
+        <code>http://localhost:5291/usuario</code>
+    </div>
+
+    <p>
+        Al acceder a esta dirección, la aplicación ejecutó la consulta SQL
+        mediante Dapper y obtuvo los registros almacenados en la tabla
+        <strong>usuarios</strong> de la base de datos PostgreSQL alojada
+        en Neon.
+    </p>
+
+    <p>
+        Como resultado, el navegador mostró la información de los usuarios
+        en formato <strong>JSON</strong>, incluyendo su identificador,
+        nombre, correo electrónico y fecha de creación.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura16.png"
+             alt="Resultado del endpoint usuario en el navegador">
+
+        <p>
+            Figura 16. Registros obtenidos desde PostgreSQL mediante el
+            endpoint /usuario y mostrados en formato JSON.
+        </p>
+    </div>
+
+</article>
+
+<article class="paso">
+
+    <div class="titulo-paso">
+        <span>17</span>
+        <h3>Resultado final de la práctica</h3>
+    </div>
+
+    <p>
+        Como resultado final, se obtuvo una aplicación web desarrollada con
+        <strong>ASP.NET Core y C#</strong> capaz de establecer comunicación
+        con una base de datos <strong>PostgreSQL alojada en Neon</strong>.
+    </p>
+
+    <p>
+        La conexión se realizó mediante <strong>Npgsql</strong>, mientras que
+        <strong>Dapper</strong> se utilizó para ejecutar la consulta SQL y
+        convertir los registros obtenidos en objetos de tipo
+        <strong>Usuario</strong>.
+    </p>
+
+    <p>
+        El endpoint <strong>/usuario</strong> permitió recuperar correctamente
+        los registros almacenados en la tabla <strong>usuarios</strong> y
+        devolverlos en formato JSON. Con esta prueba se comprobó el
+        funcionamiento de la conexión entre la aplicación ASP.NET Core
+        y PostgreSQL en Neon.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura16.png"
+             alt="Resultado final de la práctica ASP.NET Core con PostgreSQL">
+
+        <p>
+            Figura 17. Resultado final de la aplicación mostrando los
+            registros obtenidos desde PostgreSQL en Neon.
+        </p>
+    </div>
+
+</article>
+
+    <a href="#indice" class="volver-indice">↑ Volver al índice</a>
+
+    <span class="numero-pagina">Página 4</span>
+
+</section>
+
+<section id="conclusion" class="seccion">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">04</span>
+
+        <div>
+            <p class="etiqueta-seccion">CONCLUSIÓN</p>
+            <h2>Conclusión</h2>
+        </div>
+    </div>
+
+    <div class="linea"></div>
+
+    <p>
+        Durante esta práctica se desarrolló una aplicación web utilizando
+        <strong>ASP.NET Core y C#</strong>, la cual permitió establecer una
+        conexión con una base de datos <strong>PostgreSQL alojada en Neon</strong>.
+        Para lograrlo, se configuraron diferentes elementos del proyecto y se
+        instalaron las dependencias necesarias para realizar la comunicación
+        con la base de datos.
+    </p>
+
+    <p>
+        El uso de <strong>Npgsql</strong> permitió establecer la conexión con
+        PostgreSQL, mientras que <strong>Dapper</strong> facilitó la ejecución
+        de la consulta SQL y el manejo de los datos obtenidos. También se
+        configuró la cadena de conexión mediante el archivo
+        <strong>appsettings.json</strong> y se creó el endpoint
+        <strong>/usuario</strong> para consultar los registros almacenados
+        en la tabla usuarios.
+    </p>
+
+    <p>
+        Finalmente, al ejecutar la aplicación y acceder al endpoint desde el
+        navegador, se visualizaron correctamente los registros de la base de
+        datos en formato JSON. Con esto se comprobó el funcionamiento de la
+        conexión entre una aplicación ASP.NET Core y una base de datos
+        PostgreSQL en la nube, además de reforzar conocimientos sobre
+        configuración de proyectos .NET, conexión a bases de datos y creación
+        de endpoints para consultar información.
+    </p>
+
+    <a href="#indice" class="volver">↑ Volver al índice</a>
+
+    <span class="numero-pagina">Página 5</span>
+</section>
+
+<section id="referencias" class="seccion">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">05</span>
+
+        <div>
+            <p class="etiqueta-seccion">REFERENCIAS BIBLIOGRÁFICAS</p>
+            <h2>Referencias bibliográficas</h2>
+        </div>
+    </div>
+
+    <div class="linea"></div>
+
+    <div class="referencias">
+
+        <p>
+            Microsoft. (2026). <em>Documentación de ASP.NET Core</em>.
+            Microsoft Learn.
+            <a href="https://learn.microsoft.com/es-es/aspnet/core/"
+               target="_blank">
+                https://learn.microsoft.com/es-es/aspnet/core/
+            </a>
+        </p>
+
+        <p>
+            Microsoft. (2026). <em>Documentación de C#</em>.
+            Microsoft Learn.
+            <a href="https://learn.microsoft.com/es-es/dotnet/csharp/"
+               target="_blank">
+                https://learn.microsoft.com/es-es/dotnet/csharp/
+            </a>
+        </p>
+
+        <p>
+            PostgreSQL Global Development Group. (2026).
+            <em>PostgreSQL documentation</em>.
+            <a href="https://www.postgresql.org/docs/"
+               target="_blank">
+                https://www.postgresql.org/docs/
+            </a>
+        </p>
+
+        <p>
+            Neon. (2026). <em>Neon documentation</em>.
+            <a href="https://neon.com/docs"
+               target="_blank">
+                https://neon.com/docs
+            </a>
+        </p>
+
+        <p>
+            Npgsql. (2026). <em>Npgsql documentation</em>.
+            <a href="https://www.npgsql.org/doc/"
+               target="_blank">
+                https://www.npgsql.org/doc/
+            </a>
+        </p>
+
+        <p>
+            Dapper. (2026). <em>Dapper</em>.
+            GitHub.
+            <a href="https://github.com/DapperLib/Dapper"
+               target="_blank">
+                https://github.com/DapperLib/Dapper
+            </a>
+        </p>
+
+    </div>
+
+    <a href="#indice" class="volver">↑ Volver al índice</a>
+
+    <span class="numero-pagina">Página 6</span>
+</section>
+
+
+
+    </main>
+
+    <footer>
+        <p>Alexis Ian Neocelo Sanabria</p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica - PostgreSQL y Neon</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <div class="barra-navegacion">
+    <a href="../index.html" class="volver-practicas">
+        ← Volver a todas las prácticas
+    </a>
+</div>
+
+    <!-- PORTADA -->
+    <section class="portada">
+
+        <div class="portada-contenido">
+
+            <p class="universidad">
+                Universidad Tecnológica de Puebla
+            </p>
+
+            <div class="linea-portada"></div>
+
+            <p class="tipo-documento">
+                PRÁCTICA DE LABORATORIO
+            </p>
+
+            <h1>
+                Administración e importación de una base de datos
+                PostgreSQL en Neon mediante psql
+            </h1>
+
+            <p class="descripcion-portada">
+                Conexión, consulta de información e importación
+                de una base de datos mediante comandos de PostgreSQL
+            </p>
+
+            <div class="datos-portada">
+
+                <div>
+                    <span>Materia</span>
+                    <p>Base de Datos en la Nube</p>
+                </div>
+
+                <div>
+                    <span>Alumno</span>
+                    <p>Alexis Ian Neocelo Sanabria</p>
+                </div>
+
+                <div>
+                    <span>Profesor</span>
+                    <p>Javier Nolasco Hernández</p>
+                </div>
+
+                <div>
+                    <span>Grupo</span>
+                    <p>7C Vespertino</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="numero-pagina">1</div>
+
+    </section>
+
+    <!-- ÍNDICE -->
+<section class="seccion indice" id="indice">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">00</span>
+
+        <div>
+            <h2>Índice</h2>
+            <p>Contenido de la práctica</p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+    <div class="lista-indice">
+
+        <a href="#introduccion" class="item-indice">
+            <span>01</span>
+            <div>
+                <h3>Introducción</h3>
+                <p>Descripción general y propósito de la práctica.</p>
+            </div>
+        </a>
+
+        <a href="#marco-teorico" class="item-indice">
+            <span>02</span>
+            <div>
+                <h3>Marco teórico</h3>
+                <p>Conceptos y tecnologías utilizadas durante la práctica.</p>
+            </div>
+        </a>
+
+        <a href="#procedimiento" class="item-indice">
+            <span>03</span>
+            <div>
+                <h3>Procedimiento</h3>
+                <p>Desarrollo paso a paso de la práctica.</p>
+            </div>
+        </a>
+
+        <a href="#conclusion" class="item-indice">
+            <span>04</span>
+            <div>
+                <h3>Conclusión</h3>
+                <p>Resultados obtenidos y conocimientos adquiridos.</p>
+            </div>
+        </a>
+
+        <a href="#referencias" class="item-indice">
+            <span>05</span>
+            <div>
+                <h3>Referencias bibliográficas</h3>
+                <p>Fuentes de información utilizadas.</p>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="numero-pagina">2</div>
+
+</section>
+
+<!-- INTRODUCCIÓN -->
+<section class="seccion" id="introduccion">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">01</span>
+
+        <div>
+            <h2>Introducción</h2>
+            <p>Administración de PostgreSQL en la nube mediante psql</p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+    <div class="contenido-seccion">
+
+        <p>
+            Actualmente, las bases de datos en la nube permiten almacenar,
+            administrar y consultar información desde diferentes aplicaciones
+            y equipos a través de Internet. Este tipo de servicios facilita el
+            acceso remoto a los datos y evita depender únicamente de un servidor
+            de base de datos instalado de manera local.
+        </p>
+
+        <p>
+            En esta práctica se trabajó con una base de datos
+            <strong>PostgreSQL</strong> alojada en <strong>Neon</strong>,
+            utilizando la herramienta de línea de comandos
+            <strong>psql</strong>. Mediante esta herramienta se estableció una
+            conexión segura con la base de datos en la nube y se utilizaron
+            diferentes comandos para consultar las bases de datos, visualizar
+            las tablas disponibles y revisar su estructura.
+        </p>
+
+        <p>
+            Durante el desarrollo de la práctica se consultó la información
+            almacenada en las tablas <strong>banco</strong>,
+            <strong>cliente</strong> y <strong>cuenta</strong>. También se
+            analizaron sus columnas, llaves primarias y llaves foráneas para
+            identificar las relaciones existentes entre los clientes, los
+            bancos y las cuentas registradas en la base de datos.
+        </p>
+
+        <p>
+            Finalmente, se utilizó un archivo llamado
+            <strong>banca.sql</strong> para realizar la importación de la
+            estructura y los registros de la base de datos. El archivo fue
+            ejecutado desde la consola mediante <strong>psql</strong>,
+            permitiendo crear nuevamente las tablas e insertar sus datos en
+            PostgreSQL alojado en Neon. Posteriormente, se verificó la
+            importación mediante comandos y consultas SQL.
+        </p>
+
+    </div>
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <div class="numero-pagina">3</div>
+
+</section>
+
+<!-- MARCO TEÓRICO -->
+<section class="seccion" id="marco-teorico">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">02</span>
+
+        <div>
+            <h2>Marco teórico</h2>
+            <p>Conceptos y tecnologías utilizadas durante la práctica</p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+    <div class="grid-teoria">
+
+        <div class="tarjeta-teoria">
+            <h3>PostgreSQL</h3>
+
+            <p>
+                PostgreSQL es un sistema gestor de bases de datos relacional
+                que permite almacenar, organizar y consultar información
+                mediante SQL. En esta práctica se utilizó PostgreSQL como el
+                sistema de base de datos donde se encuentran las tablas
+                banco, cliente y cuenta.
+            </p>
+        </div>
+
+        <div class="tarjeta-teoria">
+            <h3>Neon</h3>
+
+            <p>
+                Neon es una plataforma que proporciona bases de datos
+                PostgreSQL en la nube. En esta práctica se utilizó para
+                alojar la base de datos y obtener los parámetros necesarios
+                para establecer una conexión remota desde la computadora.
+            </p>
+        </div>
+
+        <div class="tarjeta-teoria">
+            <h3>psql</h3>
+
+            <p>
+                psql es una herramienta de línea de comandos de PostgreSQL.
+                Permite conectarse a un servidor de base de datos, ejecutar
+                instrucciones SQL y utilizar comandos propios para consultar
+                bases de datos, tablas y estructuras. Durante la práctica se
+                utilizó directamente desde el símbolo del sistema de Windows.
+            </p>
+        </div>
+
+        <div class="tarjeta-teoria">
+            <h3>SQL</h3>
+
+            <p>
+                SQL es un lenguaje utilizado para trabajar con bases de datos
+                relacionales. Permite realizar operaciones como crear tablas,
+                insertar registros y consultar información. En la práctica
+                se utilizaron consultas SELECT para visualizar los registros
+                almacenados en las diferentes tablas.
+            </p>
+        </div>
+
+        <div class="tarjeta-teoria">
+            <h3>Llaves primarias y foráneas</h3>
+
+            <p>
+                Una llave primaria permite identificar de manera única los
+                registros de una tabla. Por otra parte, una llave foránea
+                permite establecer relaciones entre tablas. En la base de
+                datos utilizada, la tabla cuenta relaciona los registros de
+                cliente y banco mediante los campos idcliente e idbanco.
+            </p>
+        </div>
+
+        <div class="tarjeta-teoria">
+            <h3>Archivo SQL</h3>
+
+            <p>
+                Un archivo con extensión .sql puede almacenar instrucciones
+                que posteriormente pueden ejecutarse en un sistema gestor de
+                bases de datos. En esta práctica se utilizó el archivo
+                banca.sql, que contiene las instrucciones necesarias para
+                crear las tablas cliente, banco y cuenta, además de insertar
+                los registros correspondientes.
+            </p>
+        </div>
+
+    </div>
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <div class="numero-pagina">4</div>
+
+</section>
+
+<!-- PROCEDIMIENTO -->
+<section class="seccion" id="procedimiento">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">03</span>
+
+        <div>
+            <h2>Procedimiento</h2>
+            <p>Desarrollo paso a paso de la práctica</p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+    <div class="contenido-seccion">
+
+        <p>
+            A continuación, se presenta el procedimiento realizado para
+            preparar las herramientas necesarias, establecer una conexión
+            con una base de datos PostgreSQL alojada en Neon, consultar la
+            información almacenada y realizar la importación de una base de
+            datos mediante un archivo SQL.
+        </p>
+
+    </div>
+
+
+    <!-- PASO 1 -->
+    <div class="paso">
+
+        <div class="titulo-paso">
+            <span>1</span>
+            <h3>Instalación de PostgreSQL y psql</h3>
+        </div>
+
+        <p>
+            Para comenzar la práctica, se verificó la disponibilidad de
+            <strong>psql</strong> desde el símbolo del sistema de Windows.
+            Debido a que inicialmente el comando no se encontraba disponible,
+            se realizó la instalación de PostgreSQL 18 para obtener el servidor,
+            pgAdmin y las herramientas de línea de comandos necesarias para
+            trabajar con PostgreSQL.
+        </p>
+
+        <p>
+            Durante la instalación se mantuvo el directorio predeterminado,
+            se seleccionaron los componentes de PostgreSQL y se incluyó
+            <strong>Command Line Tools</strong>, ya que este componente
+            proporciona la herramienta psql utilizada durante la práctica.
+        </p>
+
+        <div class="captura">
+            <img src="img/captura1.png"
+                 alt="Instalación de PostgreSQL">
+
+            <p>
+                Figura 1. Instalación de PostgreSQL y selección de las
+                herramientas necesarias.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- PASO 2 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>2</span>
+        <h3>Configuración y verificación de psql</h3>
+    </div>
+
+    <p>
+        Después de instalar PostgreSQL, se realizó una prueba desde el
+        símbolo del sistema para verificar el funcionamiento de
+        <strong>psql</strong>. Inicialmente, Windows no reconocía el comando
+        debido a que la carpeta de las herramientas de PostgreSQL no se
+        encontraba registrada en la variable de entorno PATH.
+    </p>
+
+    <p>
+        Para solucionar esto, se agregó al PATH de Windows la carpeta
+        <strong>bin</strong> correspondiente a PostgreSQL 18, donde se
+        encuentra el archivo ejecutable de psql.
+    </p>
+
+    <div class="comando">
+        <code>C:\Program Files\PostgreSQL\18\bin</code>
+    </div>
+
+    <p>
+        Después de guardar la configuración, se abrió nuevamente el símbolo
+        del sistema y se ejecutó el siguiente comando para comprobar que
+        psql podía utilizarse desde cualquier ubicación.
+    </p>
+
+    <div class="comando">
+        <code>psql --version</code>
+    </div>
+
+    <p>
+        El comando mostró la versión instalada de PostgreSQL, confirmando
+        que la herramienta de línea de comandos quedó correctamente
+        configurada y disponible para continuar con la práctica.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura2.png"
+             alt="Verificación de psql desde CMD">
+
+        <p>
+            Figura 2. Verificación de la instalación y configuración de psql
+            desde el símbolo del sistema de Windows.
+        </p>
+    </div>
+
+</div>
+
+<!-- PASO 3 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>3</span>
+        <h3>Conexión a PostgreSQL alojado en Neon</h3>
+    </div>
+
+    <p>
+        Una vez comprobado el funcionamiento de psql, se accedió a Neon
+        para obtener la cadena de conexión correspondiente a la base de
+        datos PostgreSQL utilizada durante la práctica. Esta cadena contiene
+        la información necesaria para establecer la comunicación con el
+        servidor remoto, como el usuario, la contraseña, el host y el nombre
+        de la base de datos.
+    </p>
+
+    <p>
+        Posteriormente, se abrió el símbolo del sistema de Windows y se
+        utilizó psql junto con la cadena de conexión proporcionada por Neon.
+        Por seguridad, la contraseña se oculta en la documentación y se
+        representa mediante el texto <strong>CONTRASEÑA</strong>.
+    </p>
+
+    <div class="comando">
+        <code>psql "postgresql://USUARIO:CONTRASEÑA@HOST/neondb?sslmode=require&amp;channel_binding=require"</code>
+    </div>
+
+    <p>
+        En Windows se utilizaron comillas dobles alrededor de la cadena de
+        conexión para que el comando fuera interpretado correctamente.
+        Después de ejecutarlo, psql estableció una conexión segura con el
+        servidor PostgreSQL alojado en Neon.
+    </p>
+
+    <p>
+        Al finalizar la conexión correctamente, la consola mostró el
+        indicador <strong>neondb=&gt;</strong>. A partir de este punto fue
+        posible ejecutar comandos de psql y consultas SQL directamente
+        sobre la base de datos almacenada en la nube.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura3.png"
+             alt="Conexión a PostgreSQL de Neon mediante psql">
+
+        <p>
+            Figura 3. Conexión exitosa a la base de datos PostgreSQL
+            alojada en Neon mediante psql.
+        </p>
+    </div>
+
+</div>
+
+<!-- PASO 4 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>4</span>
+        <h3>Exploración de la base de datos</h3>
+    </div>
+
+    <p>
+        Después de establecer correctamente la conexión con PostgreSQL
+        alojado en Neon, se utilizaron algunos comandos propios de psql
+        para explorar el contenido disponible en el servidor y conocer
+        las tablas existentes dentro de la base de datos.
+    </p>
+
+    <p>
+        Primero se ejecutó el comando <strong>\l</strong>, el cual permite
+        mostrar la lista de bases de datos disponibles en el servidor
+        PostgreSQL.
+    </p>
+
+    <div class="comando">
+        <code>\l</code>
+    </div>
+
+    <p>
+        Como resultado, se mostraron las bases de datos disponibles,
+        entre ellas <strong>neondb</strong>, que corresponde a la base de
+        datos utilizada durante el desarrollo de esta práctica.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura4.png"
+             alt="Listado de bases de datos mediante psql">
+
+        <p>
+            Figura 4. Listado de las bases de datos disponibles mediante
+            el comando \l de psql.
+        </p>
+    </div>
+
+    <p>
+        Posteriormente, se utilizó el comando <strong>\dt</strong> para
+        consultar las tablas existentes dentro de la base de datos
+        seleccionada.
+    </p>
+
+    <div class="comando">
+        <code>\dt</code>
+    </div>
+
+    <p>
+        El resultado permitió identificar las tablas
+        <strong>banco</strong>, <strong>cliente</strong> y
+        <strong>cuenta</strong>, todas pertenecientes al esquema
+        <strong>public</strong>. Estas tablas contienen la información
+        que posteriormente fue consultada y analizada durante la práctica.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura5.png"
+             alt="Listado de tablas mediante psql">
+
+        <p>
+            Figura 5. Visualización de las tablas banco, cliente y cuenta
+            mediante el comando \dt.
+        </p>
+    </div>
+
+</div>
+
+<!-- PASO 5 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>5</span>
+        <h3>Consulta de los registros de las tablas</h3>
+    </div>
+
+    <p>
+        Después de identificar las tablas existentes en la base de datos,
+        se realizaron consultas SQL para visualizar los registros almacenados.
+        Para ello se utilizó la instrucción <strong>SELECT</strong> acompañada
+        del símbolo <strong>*</strong>, permitiendo recuperar todas las
+        columnas y registros de cada tabla.
+    </p>
+
+    <p>
+        Primero se consultó la tabla <strong>banco</strong> mediante la
+        siguiente instrucción:
+    </p>
+
+    <div class="comando">
+        <code>SELECT * FROM banco;</code>
+    </div>
+
+    <p>
+        La consulta mostró los registros correspondientes a los diferentes
+        bancos almacenados en la base de datos, identificados mediante un
+        número y su respectivo nombre.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura6.png"
+             alt="Consulta de la tabla banco">
+
+        <p>
+            Figura 6. Consulta de los registros almacenados en la tabla banco.
+        </p>
+    </div>
+
+
+    <p>
+        Posteriormente, se realizó una consulta sobre la tabla
+        <strong>cliente</strong> para visualizar la información de los
+        clientes registrados.
+    </p>
+
+    <div class="comando">
+        <code>SELECT * FROM cliente;</code>
+    </div>
+
+    <p>
+        Como resultado, PostgreSQL mostró los identificadores y nombres de
+        los clientes almacenados en la tabla, permitiendo comprobar que los
+        registros se encontraban disponibles para su consulta.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura7.png"
+             alt="Consulta de la tabla cliente">
+
+        <p>
+            Figura 7. Consulta de los registros almacenados en la tabla cliente.
+        </p>
+    </div>
+
+
+    <p>
+        Finalmente, se consultó la tabla <strong>cuenta</strong>, la cual
+        relaciona a los clientes con los bancos y almacena el saldo
+        correspondiente a cada cuenta.
+    </p>
+
+    <div class="comando">
+        <code>SELECT * FROM cuenta;</code>
+    </div>
+
+    <p>
+        El resultado permitió observar los campos correspondientes al
+        identificador del cliente, identificador del banco y saldo. Con
+        esta consulta se comprobó la existencia de los registros y la
+        relación de información utilizada por la base de datos.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura8.png"
+             alt="Consulta de la tabla cuenta">
+
+        <p>
+            Figura 8. Consulta de los registros almacenados en la tabla cuenta.
+        </p>
+    </div>
+
+</div>
+
+<!-- PASO 6 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>6</span>
+        <h3>Análisis de la estructura de las tablas</h3>
+    </div>
+
+    <p>
+        Después de consultar los registros almacenados, se revisó la
+        estructura de cada una de las tablas mediante el comando
+        <strong>\d</strong> de psql. Este comando permite visualizar
+        información como las columnas, tipos de datos, restricciones,
+        llaves primarias y llaves foráneas definidas en una tabla.
+    </p>
+
+    <p>
+        Primero se analizó la estructura de la tabla
+        <strong>banco</strong> mediante el siguiente comando:
+    </p>
+
+    <div class="comando">
+        <code>\d banco</code>
+    </div>
+
+    <p>
+        El resultado mostró los campos <strong>id</strong> y
+        <strong>nombre</strong>. El campo id está definido como llave
+        primaria de la tabla, por lo que permite identificar de manera
+        única a cada banco. También se observó que este campo es
+        referenciado desde la tabla cuenta.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura9.png"
+             alt="Estructura de la tabla banco">
+
+        <p>
+            Figura 9. Estructura de la tabla banco mostrada mediante
+            el comando \d banco.
+        </p>
+    </div>
+
+
+    <p>
+        A continuación, se consultó la estructura de la tabla
+        <strong>cliente</strong>.
+    </p>
+
+    <div class="comando">
+        <code>\d cliente</code>
+    </div>
+
+    <p>
+        Esta tabla contiene los campos <strong>id</strong> y
+        <strong>nombre</strong>. Al igual que en la tabla banco, el campo
+        id funciona como llave primaria y permite identificar de forma
+        única a cada cliente. Este identificador también es utilizado
+        como referencia desde la tabla cuenta.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura10.png"
+             alt="Estructura de la tabla cliente">
+
+        <p>
+            Figura 10. Estructura de la tabla cliente mostrada mediante
+            el comando \d cliente.
+        </p>
+    </div>
+
+
+    <p>
+        Finalmente, se revisó la estructura de la tabla
+        <strong>cuenta</strong>.
+    </p>
+
+    <div class="comando">
+        <code>\d cuenta</code>
+    </div>
+
+    <p>
+        La tabla cuenta contiene los campos <strong>idcliente</strong>,
+        <strong>idbanco</strong> y <strong>saldo</strong>. En este caso,
+        la llave primaria está compuesta por los campos idcliente e
+        idbanco, lo que permite identificar una cuenta mediante la
+        combinación del cliente y el banco.
+    </p>
+
+    <p>
+        Además, se identificaron dos llaves foráneas:
+        <strong>idcliente</strong> referencia al campo id de la tabla
+        cliente, mientras que <strong>idbanco</strong> referencia al
+        campo id de la tabla banco. De esta manera, la tabla cuenta
+        establece la relación entre los clientes y los bancos.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura11.png"
+             alt="Estructura de la tabla cuenta">
+
+        <p>
+            Figura 11. Estructura de la tabla cuenta y visualización
+            de sus llaves primaria y foráneas.
+        </p>
+    </div>
+
+</div>
+
+<!-- PASO 7 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>7</span>
+        <h3>Preparación e importación del archivo banca.sql</h3>
+    </div>
+
+    <p>
+        Una vez finalizada la consulta de los datos y de la estructura de
+        las tablas, se procedió a realizar la importación de la base de
+        datos mediante el archivo <strong>banca.sql</strong>. Este archivo
+        contiene las instrucciones SQL necesarias para crear las tablas e
+        insertar los registros utilizados durante la práctica.
+    </p>
+
+    <p>
+        Primero, el archivo <strong>banca.sql</strong> se colocó dentro de
+        la carpeta de trabajo utilizada para la práctica.
+    </p>
+
+    <div class="comando">
+        <code>C:\Windows\System32\Optativas1\7C\sep11</code>
+    </div>
+
+    <p>
+        Desde el símbolo del sistema se accedió a esta ubicación y se utilizó
+        el comando <strong>dir</strong> para verificar que el archivo
+        banca.sql se encontraba correctamente almacenado en la carpeta.
+    </p>
+
+    <div class="comando">
+        <code>dir</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura12.png"
+             alt="Archivo banca.sql en la carpeta de trabajo">
+
+        <p>
+            Figura 12. Verificación del archivo banca.sql dentro de la
+            carpeta de trabajo.
+        </p>
+    </div>
+
+
+    <p>
+        Debido a que las tablas banco, cliente y cuenta ya existían en la
+        base de datos por las operaciones realizadas anteriormente, se
+        eliminaron antes de ejecutar nuevamente el archivo SQL. Esto permitió
+        realizar una importación desde cero y evitar conflictos por intentar
+        crear tablas que ya se encontraban existentes.
+    </p>
+
+    <div class="comando">
+        <code>DROP TABLE cuenta;</code>
+    </div>
+
+    <div class="comando">
+        <code>DROP TABLE cliente;</code>
+    </div>
+
+    <div class="comando">
+        <code>DROP TABLE banco;</code>
+    </div>
+
+    <p>
+        La tabla cuenta se eliminó primero debido a que contiene llaves
+        foráneas relacionadas con las tablas cliente y banco. Posteriormente,
+        se ejecutó el comando <strong>\dt</strong> para comprobar que las
+        tablas habían sido eliminadas.
+    </p>
+
+    <div class="comando">
+        <code>\dt</code>
+    </div>
+
+    <div class="captura">
+        <img src="img/captura13.png"
+             alt="Eliminación de las tablas antes de la importación">
+
+        <p>
+            Figura 13. Verificación de la eliminación de las tablas antes
+            de realizar la nueva importación.
+        </p>
+    </div>
+
+
+    <p>
+        Después de preparar la base de datos, se salió de la sesión
+        interactiva de psql mediante el comando <strong>\q</strong> y,
+        desde la carpeta donde se encontraba banca.sql, se ejecutó la
+        importación utilizando la opción <strong>-f</strong>.
+    </p>
+
+    <div class="comando">
+        <code>\q</code>
+    </div>
+
+    <div class="comando">
+        <code>psql "CADENA_DE_CONEXION_DE_NEON" -f banca.sql</code>
+    </div>
+
+    <p>
+        La opción <strong>-f</strong> permite indicar a psql que debe leer
+        y ejecutar las instrucciones almacenadas en un archivo. En este caso,
+        se utilizó banca.sql para crear nuevamente las tablas e insertar
+        sus respectivos registros en la base de datos alojada en Neon.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura14.png"
+             alt="Importación del archivo banca.sql mediante psql">
+
+        <p>
+            Figura 14. Ejecución del archivo banca.sql mediante psql.
+        </p>
+    </div>
+
+</div>
+
+<!-- PASO 8 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>8</span>
+        <h3>Verificación final de la importación</h3>
+    </div>
+
+    <p>
+        Después de ejecutar el archivo <strong>banca.sql</strong>, se realizó
+        una verificación final para comprobar que las tablas y los registros
+        habían sido creados correctamente en la base de datos PostgreSQL
+        alojada en Neon.
+    </p>
+
+    <p>
+        Primero, se estableció nuevamente la conexión con la base de datos
+        mediante psql. Una vez dentro de la sesión, se ejecutó el comando
+        <strong>\dt</strong> para visualizar las tablas existentes.
+    </p>
+
+    <div class="comando">
+        <code>\dt</code>
+    </div>
+
+    <p>
+        Como resultado, se mostraron nuevamente las tablas
+        <strong>banco</strong>, <strong>cliente</strong> y
+        <strong>cuenta</strong> dentro del esquema public. Esto confirmó
+        que las instrucciones de creación contenidas en el archivo
+        banca.sql fueron ejecutadas correctamente.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura15.png"
+             alt="Verificación de las tablas después de la importación">
+
+        <p>
+            Figura 15. Verificación de las tablas creadas después de
+            ejecutar el archivo banca.sql.
+        </p>
+    </div>
+
+    <p>
+        Finalmente, se realizó una consulta sobre la tabla
+        <strong>cuenta</strong> para comprobar que, además de la estructura,
+        los registros también habían sido insertados correctamente.
+    </p>
+
+    <div class="comando">
+        <code>SELECT * FROM cuenta;</code>
+    </div>
+
+    <p>
+        La consulta mostró los registros correspondientes a las cuentas,
+        incluyendo los identificadores de cliente y banco, así como el saldo
+        asociado. Con este resultado se comprobó que el proceso de importación
+        fue exitoso y que la base de datos quedó disponible para realizar
+        consultas desde psql.
+    </p>
+
+    <div class="captura">
+        <img src="img/captura16.png"
+             alt="Consulta final de la tabla cuenta">
+
+        <p>
+            Figura 16. Consulta final de los registros de la tabla cuenta
+            después de la importación.
+        </p>
+    </div>
+
+</div>
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <div class="numero-pagina">5</div>
+
+</section>
+
+<!-- CONCLUSIÓN -->
+<section class="seccion" id="conclusion">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">04</span>
+
+        <div>
+            <h2>Conclusión</h2>
+            <p>Resultados y conocimientos obtenidos durante la práctica</p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+    <div class="contenido-seccion">
+
+        <p>
+            Mediante el desarrollo de esta práctica fue posible comprender
+            el proceso necesario para trabajar con una base de datos
+            PostgreSQL alojada en la nube utilizando Neon y la herramienta
+            de línea de comandos psql. Desde la instalación y configuración
+            de PostgreSQL hasta la conexión con el servidor remoto, se
+            identificaron los elementos necesarios para administrar una
+            base de datos desde el símbolo del sistema de Windows.
+        </p>
+
+        <p>
+            El uso de los comandos de psql permitió explorar las bases de
+            datos disponibles, identificar las tablas existentes y analizar
+            su estructura. Asimismo, mediante consultas SQL se visualizaron
+            los registros almacenados en las tablas banco, cliente y cuenta,
+            lo que permitió observar la manera en que se organiza la
+            información y cómo se establecen relaciones mediante llaves
+            primarias y llaves foráneas.
+        </p>
+
+        <p>
+            Otro aspecto importante de la práctica fue la utilización del
+            archivo banca.sql. Mediante la opción -f de psql fue posible
+            ejecutar automáticamente las instrucciones contenidas en dicho
+            archivo para crear las tablas e insertar sus respectivos
+            registros. Posteriormente, la consulta de las tablas permitió
+            comprobar que la importación se realizó correctamente.
+        </p>
+
+        <p>
+            En conclusión, la práctica permitió reforzar los conocimientos
+            relacionados con PostgreSQL, SQL y la administración de bases de
+            datos en la nube. Además, se adquirió experiencia en el uso de
+            psql como herramienta de administración desde consola y en la
+            importación de archivos SQL, conocimientos que pueden aplicarse
+            posteriormente en el desarrollo y despliegue de aplicaciones que
+            requieran almacenar información en una base de datos remota.
+        </p>
+
+    </div>
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <div class="numero-pagina">6</div>
+
+</section>
+
+<!-- REFERENCIAS BIBLIOGRÁFICAS -->
+<section class="seccion" id="referencias">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">05</span>
+
+        <div>
+            <h2>Referencias bibliográficas</h2>
+            <p>Fuentes consultadas para el desarrollo de la práctica</p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+    <div class="lista-referencias">
+
+        <div class="referencia">
+            <span>[1]</span>
+
+            <p>
+                PostgreSQL Global Development Group. (2026).
+                <em>PostgreSQL 18: psql</em>. PostgreSQL.
+                https://www.postgresql.org/docs/18/app-psql.html
+            </p>
+        </div>
+
+        <div class="referencia">
+            <span>[2]</span>
+
+            <p>
+                PostgreSQL Global Development Group. (2026).
+                <em>PostgreSQL 18: Consultas SQL</em>. PostgreSQL.
+                https://www.postgresql.org/docs/current/queries-overview.html
+            </p>
+        </div>
+
+        <div class="referencia">
+            <span>[3]</span>
+
+            <p>
+                PostgreSQL Global Development Group. (2026).
+                <em>PostgreSQL 18: Restricciones</em>. PostgreSQL.
+                https://www.postgresql.org/docs/18/ddl-constraints.html
+            </p>
+        </div>
+
+        <div class="referencia">
+            <span>[4]</span>
+
+            <p>
+                Neon. (s. f.).
+                <em>Neon documentation</em>.
+                https://neon.com/docs
+            </p>
+        </div>
+
+    </div>
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <div class="numero-pagina">7</div>
+
+</section>
+
+</body>
+
+</html>

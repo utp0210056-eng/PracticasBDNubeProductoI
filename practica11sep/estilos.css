@@ -1,0 +1,576 @@
+/* ========================================
+   CONFIGURACIÓN GENERAL
+======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #edf2f7;
+    color: #0b1d2d;
+}
+
+
+/* ========================================
+   PORTADA
+======================================== */
+
+.portada {
+    position: relative;
+
+    width: calc(100% - 60px);
+    max-width: 1380px;
+    min-height: 850px;
+
+    margin: 30px auto 50px auto;
+    padding: 80px 90px;
+
+    background: #ffffff;
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.08);
+
+    display: flex;
+    align-items: center;
+}
+
+.portada-contenido {
+    width: 100%;
+}
+
+.universidad {
+    margin: 0;
+
+    color: #062f5b;
+
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.linea-portada {
+    width: 90px;
+    height: 5px;
+
+    margin: 25px 0 60px 0;
+
+    background: #0aab9a;
+    border-radius: 10px;
+}
+
+.tipo-documento {
+    margin-bottom: 18px;
+
+    color: #0aab9a;
+
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.portada h1 {
+    max-width: 1000px;
+
+    margin: 0 0 25px 0;
+
+    color: #062f5b;
+
+    font-size: 48px;
+    line-height: 1.2;
+}
+
+.descripcion-portada {
+    max-width: 900px;
+
+    margin-bottom: 65px;
+
+    color: #64748b;
+
+    font-size: 20px;
+    line-height: 1.7;
+}
+
+.datos-portada {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 70px;
+
+    max-width: 900px;
+}
+
+.datos-portada div {
+    padding-top: 15px;
+    border-top: 1px solid #d8e1ea;
+}
+
+.datos-portada span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #0aab9a;
+
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.datos-portada p {
+    margin: 0;
+
+    color: #062f5b;
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+/* ========================================
+   PAGINACIÓN
+======================================== */
+
+.numero-pagina {
+    position: absolute;
+
+    right: 40px;
+    bottom: 30px;
+
+    color: #64748b;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ========================================
+   TEXTO JUSTIFICADO
+======================================== */
+
+.seccion > p,
+.contenido-seccion p,
+.paso p,
+.tarjeta-teoria p {
+    text-align: justify;
+    line-height: 1.8;
+}
+
+/* ========================================
+   SECCIONES
+======================================== */
+
+.seccion {
+    position: relative;
+
+    width: calc(100% - 60px);
+    max-width: 1380px;
+    min-height: 850px;
+
+    margin: 50px auto;
+    padding: 75px 90px 90px;
+
+    background: #ffffff;
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+
+/* ========================================
+   ENCABEZADOS DE SECCIÓN
+======================================== */
+
+.encabezado-seccion {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.numero-seccion {
+    color: #0aab9a;
+
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.encabezado-seccion h2 {
+    margin: 0 0 7px 0;
+
+    color: #062f5b;
+
+    font-size: 40px;
+}
+
+.encabezado-seccion p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 18px;
+}
+
+.linea-seccion {
+    width: 100%;
+    height: 2px;
+
+    margin: 30px 0 45px;
+
+    background: #e2e8f0;
+}
+
+
+/* ========================================
+   ÍNDICE
+======================================== */
+
+.lista-indice {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.item-indice {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    padding: 23px 28px;
+
+    background: #f8fafc;
+    border: 1px solid #d8e1ea;
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+.item-indice:hover {
+    transform: translateX(6px);
+    border-color: #0aab9a;
+}
+
+.item-indice > span {
+    color: #0aab9a;
+
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.item-indice h3 {
+    margin: 0 0 5px;
+
+    color: #062f5b;
+
+    font-size: 20px;
+}
+
+.item-indice p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 16px;
+}
+
+/* ========================================
+   CONTENIDO DE LAS SECCIONES
+======================================== */
+
+.contenido-seccion {
+    padding: 0 50px;
+}
+
+.contenido-seccion p {
+    margin: 0 0 28px 0;
+
+    color: #0b1d2d;
+
+    font-size: 18px;
+    line-height: 1.9;
+
+    text-align: justify;
+}
+
+.contenido-seccion strong {
+    color: #062f5b;
+    font-weight: 700;
+}
+
+
+/* ========================================
+   VOLVER AL ÍNDICE
+======================================== */
+
+.volver-indice {
+    display: inline-block;
+
+    margin-top: 25px;
+
+    color: #0099b5;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.volver-indice:hover {
+    text-decoration: underline;
+}
+
+/* ========================================
+   MARCO TEÓRICO
+======================================== */
+
+.grid-teoria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+
+    padding: 0 25px;
+}
+
+.tarjeta-teoria {
+    padding: 28px 30px;
+
+    background: #f8fafc;
+
+    border: 1px solid #d8e1ea;
+    border-radius: 12px;
+}
+
+.tarjeta-teoria h3 {
+    margin: 0 0 18px 0;
+
+    color: #0aab9a;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.tarjeta-teoria p {
+    margin: 0;
+
+    color: #0b1d2d;
+
+    font-size: 16px;
+    line-height: 1.8;
+
+    text-align: justify;
+}
+
+/* ========================================
+   PASOS DEL PROCEDIMIENTO
+======================================== */
+
+.paso {
+    background: #f8fafc;
+
+    border: 1px solid #d8e1ea;
+    border-radius: 12px;
+
+    padding: 36px 38px;
+    margin: 35px 0;
+}
+
+.titulo-paso {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+.titulo-paso span {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #0aab9a;
+    color: #ffffff;
+
+    border-radius: 50%;
+
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.titulo-paso h3 {
+    margin: 0;
+
+    color: #062f5b;
+
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.paso p {
+    font-size: 18px;
+    line-height: 1.8;
+
+    text-align: justify;
+
+    margin-bottom: 22px;
+}
+
+
+/* ========================================
+   COMANDOS
+======================================== */
+
+.comando {
+    background: #0b1d2d;
+
+    border-radius: 8px;
+
+    padding: 20px 25px;
+    margin: 20px 0 25px 0;
+
+    overflow-x: auto;
+}
+
+.comando code {
+    color: #ffffff;
+
+    font-size: 16px;
+    font-family: Consolas, "Courier New", monospace;
+}
+
+
+/* ========================================
+   CAPTURAS
+======================================== */
+
+.captura {
+    margin-top: 25px;
+}
+
+.captura img {
+    display: block;
+
+    width: 100%;
+    max-width: 950px;
+    height: auto;
+
+    margin: 0 auto 15px auto;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+}
+
+.captura p {
+    margin: 0;
+
+    text-align: center;
+
+    font-size: 15px;
+    font-style: italic;
+
+    color: #64748b;
+}
+
+/* ========================================
+   REFERENCIAS BIBLIOGRÁFICAS
+======================================== */
+
+.lista-referencias {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+
+    padding: 0 40px;
+}
+
+.referencia {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+
+    padding: 25px 30px;
+
+    background: #f8fafc;
+
+    border: 1px solid #d8e1ea;
+    border-radius: 12px;
+}
+
+.referencia > span {
+    color: #0aab9a;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    min-width: 35px;
+}
+
+.referencia p {
+    margin: 0;
+
+    color: #0b1d2d;
+
+    font-size: 16px;
+    line-height: 1.8;
+
+    text-align: justify;
+}
+
+.referencia em {
+    color: #062f5b;
+}
+
+/* =========================================
+   NAVEGACION ENTRE PRACTICAS
+========================================= */
+
+.barra-navegacion {
+    width: calc(100% - 60px);
+    max-width: 1380px;
+
+    margin: 30px auto -20px;
+
+    text-align: left;
+}
+
+.volver-practicas {
+    display: inline-block;
+
+    padding: 13px 20px;
+
+    background: rgba(255, 255, 255, .12);
+
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 9px;
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: .2s;
+}
+
+.volver-practicas:hover {
+    background: #0aab9a;
+    border-color: #0aab9a;
+
+    transform: translateX(-3px);
+}

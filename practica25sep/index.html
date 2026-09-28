@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Práctica - Usuarios y privilegios en PostgreSQL</title>
+
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <div class="barra-navegacion">
+    <a href="../index.html" class="volver-practicas">
+        ← Volver a todas las prácticas
+    </a>
+</div>
+
+    <!-- PORTADA -->
+    <section class="portada">
+
+        <div class="portada-contenido">
+
+            <div class="encabezado-portada">
+
+                <h2>Universidad Tecnológica de Puebla</h2>
+
+                <p class="carrera">
+                    Ingeniería en Tecnologías de la Información e Innovación Digital
+                </p>
+
+                <div class="linea-portada"></div>
+
+            </div>
+
+
+            <div class="titulo-portada">
+
+                <p class="materia-portada">
+                    BASE DE DATOS EN LA NUBE
+                </p>
+
+                <h1>
+                    Usuarios y Privilegios<br>
+                    en PostgreSQL
+                </h1>
+
+                <p class="practica-portada">
+                    Práctica de laboratorio
+                </p>
+
+            </div>
+
+
+            <div class="separador-portada"></div>
+
+
+            <div class="informacion-portada">
+
+                <div class="dato-portada">
+                    <strong>Alumno:</strong>
+                    <p>Alexis Ian Neocelo Sanabria</p>
+                </div>
+
+                <div class="dato-portada">
+                    <strong>Profesor:</strong>
+                    <p>Javier Nolasco Hernández</p>
+                </div>
+
+                <div class="datos-fila">
+
+                    <div>
+                        <strong>Grupo:</strong>
+                        <span>7C</span>
+                    </div>
+
+                    <div class="division-dato"></div>
+
+                    <div>
+                        <strong>Turno:</strong>
+                        <span>Vespertino</span>
+                    </div>
+
+                </div>
+
+                <div class="dato-portada fecha-portada">
+                    <strong>Práctica:</strong>
+                    <p>25 de septiembre de 2026</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="numero-pagina">1</div>
+
+    </section>
+
+    <!-- ÍNDICE -->
+<section class="seccion indice" id="indice">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">00</span>
+
+        <div>
+            <h2>Índice</h2>
+            <p>Contenido de la práctica</p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+    <div class="lista-indice">
+
+        <a href="#introduccion" class="item-indice">
+            <span>01</span>
+
+            <div>
+                <h3>Introducción</h3>
+                <p>
+                    Descripción general y propósito de la práctica.
+                </p>
+            </div>
+        </a>
+
+
+        <a href="#marco-teorico" class="item-indice">
+            <span>02</span>
+
+            <div>
+                <h3>Marco teórico</h3>
+                <p>
+                    Conceptos relacionados con usuarios, roles,
+                    privilegios y seguridad en PostgreSQL.
+                </p>
+            </div>
+        </a>
+
+
+        <a href="#procedimiento" class="item-indice">
+            <span>03</span>
+
+            <div>
+                <h3>Procedimiento</h3>
+                <p>
+                    Creación de usuarios, asignación de privilegios
+                    y comprobación de los permisos otorgados.
+                </p>
+            </div>
+        </a>
+
+
+        <a href="#conclusion" class="item-indice">
+            <span>04</span>
+
+            <div>
+                <h3>Conclusión</h3>
+                <p>
+                    Resultados obtenidos y conocimientos adquiridos
+                    durante la práctica.
+                </p>
+            </div>
+        </a>
+
+
+        <a href="#referencias" class="item-indice">
+            <span>05</span>
+
+            <div>
+                <h3>Referencias bibliográficas</h3>
+                <p>
+                    Fuentes utilizadas para fundamentar los conceptos
+                    desarrollados en la práctica.
+                </p>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="numero-pagina">2</div>
+
+</section>
+
+<!-- INTRODUCCIÓN -->
+<section class="seccion" id="introduccion">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">01</span>
+
+        <div>
+            <h2>Introducción</h2>
+            <p>Administración de usuarios y privilegios en PostgreSQL</p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+    <div class="contenido-seccion">
+
+        <p>
+            La administración de usuarios y privilegios es un aspecto
+            importante dentro de un sistema de bases de datos, ya que permite
+            controlar las acciones que cada usuario puede realizar sobre la
+            información almacenada. Mediante la asignación de permisos es
+            posible establecer diferentes niveles de acceso y evitar que un
+            usuario ejecute operaciones que no corresponden con sus
+            responsabilidades.
+        </p>
+
+        <p>
+            En esta práctica se utilizó una base de datos PostgreSQL alojada
+            en Neon para trabajar con la creación y administración de
+            usuarios. Inicialmente se accedió a la base de datos
+            <strong>neondb</strong> mediante el usuario propietario y se
+            crearon tres usuarios llamados <strong>pedro</strong>,
+            <strong>juan</strong> y <strong>pablo</strong>. Posteriormente,
+            se asignaron privilegios diferentes a cada uno de acuerdo con
+            los requerimientos establecidos en la actividad.
+        </p>
+
+        <p>
+            Al usuario <strong>pedro</strong> se le otorgaron permisos de
+            lectura sobre las tablas de la base de datos. Al usuario
+            <strong>juan</strong> se le concedieron privilegios para realizar
+            operaciones de escritura sobre la tabla
+            <strong>alumno</strong>, mientras que al usuario
+            <strong>pablo</strong> se le proporcionaron permisos de escritura
+            sobre la tabla <strong>asistencia</strong>. También se
+            configuraron los permisos necesarios sobre el esquema y las
+            secuencias utilizadas por las tablas.
+        </p>
+
+        <p>
+            Finalmente, se realizaron conexiones independientes con cada
+            usuario para comprobar el funcionamiento de los privilegios
+            asignados. Se ejecutaron operaciones permitidas y operaciones
+            no autorizadas, observando la respuesta de PostgreSQL en cada
+            caso. De esta manera fue posible comprobar que los permisos
+            establecidos limitan las acciones de cada usuario de acuerdo
+            con el nivel de acceso que le fue otorgado.
+        </p>
+
+    </div>
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <div class="numero-pagina">3</div>
+
+</section>
+
+<!-- MARCO TEÓRICO -->
+<section class="seccion" id="marco-teorico">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">02</span>
+
+        <div>
+            <h2>Marco teórico</h2>
+            <p>Usuarios, roles y control de privilegios en PostgreSQL</p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+
+    <div class="bloque-teorico">
+
+        <h3>Usuarios y roles en PostgreSQL</h3>
+
+        <p>
+            PostgreSQL administra los permisos de acceso mediante roles.
+            Un rol puede representar a un usuario de la base de datos o
+            funcionar como un grupo, dependiendo de su configuración.
+            Además, los roles pueden ser propietarios de objetos y recibir
+            privilegios para determinar las operaciones que pueden realizar
+            sobre ellos (PostgreSQL Global Development Group, 2026).
+        </p>
+
+        <p>
+            En esta práctica se crearon los usuarios pedro, juan y pablo,
+            cada uno con permisos diferentes de acuerdo con las operaciones
+            que debía realizar dentro de la base de datos.
+        </p>
+
+    </div>
+
+
+    <div class="bloque-teorico">
+
+        <h3>Privilegios</h3>
+
+        <p>
+            Los privilegios determinan las operaciones que un rol puede
+            realizar sobre los objetos de una base de datos. PostgreSQL
+            dispone de privilegios como SELECT, INSERT, UPDATE, DELETE,
+            CREATE y USAGE, entre otros. Los permisos aplicables dependen
+            del tipo de objeto sobre el cual se asignan
+            (PostgreSQL Global Development Group, 2026).
+        </p>
+
+        <p>
+            En la práctica, el privilegio SELECT fue utilizado para permitir
+            que pedro realizara operaciones de lectura, mientras que los
+            privilegios INSERT, UPDATE y DELETE fueron asignados a juan y
+            pablo sobre tablas específicas.
+        </p>
+
+    </div>
+
+
+    <div class="bloque-teorico">
+
+        <h3>Comando GRANT</h3>
+
+        <p>
+            GRANT es la instrucción utilizada en PostgreSQL para conceder
+            privilegios sobre objetos de la base de datos a uno o varios
+            roles. Los permisos otorgados pueden aplicarse, entre otros
+            objetos, a tablas, secuencias, bases de datos y esquemas
+            (PostgreSQL Global Development Group, 2026).
+        </p>
+
+        <p>
+            Mediante este comando se otorgó a pedro el permiso SELECT sobre
+            las tablas existentes, a juan los permisos de escritura sobre
+            la tabla alumno y a pablo los permisos correspondientes sobre
+            la tabla asistencia.
+        </p>
+
+    </div>
+
+
+    <div class="bloque-teorico">
+
+        <h3>Esquemas y privilegio USAGE</h3>
+
+        <p>
+            Los esquemas permiten organizar los objetos contenidos en una
+            base de datos. Para utilizar objetos pertenecientes a un esquema,
+            PostgreSQL contempla el privilegio USAGE, además de los permisos
+            específicos que sean necesarios sobre cada objeto
+            (PostgreSQL Global Development Group, 2026).
+        </p>
+
+        <p>
+            Durante la práctica se trabajó con el esquema public y se
+            concedió el privilegio USAGE a los usuarios creados para que
+            pudieran utilizar los objetos sobre los cuales posteriormente
+            recibieron permisos específicos.
+        </p>
+
+    </div>
+
+
+    <div class="bloque-teorico">
+
+        <h3>Secuencias</h3>
+
+        <p>
+            Las secuencias son objetos de PostgreSQL utilizados para generar
+            valores numéricos consecutivos. PostgreSQL permite asignar sobre
+            ellas privilegios como USAGE, SELECT y UPDATE
+            (PostgreSQL Global Development Group, 2026).
+        </p>
+
+        <p>
+            En esta práctica fue necesario considerar las secuencias
+            utilizadas por las columnas de identificación de las tablas.
+            Por esta razón se otorgaron permisos sobre las secuencias a los
+            usuarios que debían realizar inserciones.
+        </p>
+
+    </div>
+
+
+    <div class="bloque-teorico">
+
+        <h3>Principio de mínimo privilegio</h3>
+
+        <p>
+            La asignación individual de privilegios permite limitar las
+            operaciones disponibles para cada usuario. En lugar de conceder
+            acceso completo a todos los objetos, se pueden otorgar únicamente
+            los permisos necesarios para realizar determinadas actividades.
+        </p>
+
+        <p>
+            Este enfoque fue aplicado durante la práctica al separar las
+            responsabilidades de los usuarios: pedro recibió acceso de
+            lectura, juan permisos de escritura sobre alumno y pablo permisos
+            de escritura sobre asistencia. Posteriormente, las restricciones
+            fueron comprobadas intentando ejecutar operaciones autorizadas y
+            no autorizadas.
+        </p>
+
+    </div>
+
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <div class="numero-pagina">4</div>
+
+</section>
+
+<!-- PROCEDIMIENTO -->
+<section class="seccion" id="procedimiento">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">03</span>
+
+        <div>
+            <h2>Procedimiento</h2>
+            <p>
+                Creación de usuarios, asignación de privilegios
+                y comprobación de permisos
+            </p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+
+    <!-- PASO 1 -->
+    <div class="paso">
+
+        <div class="titulo-paso">
+            <span>1</span>
+            <h3>Conexión a Neon como usuario propietario</h3>
+        </div>
+
+        <p>
+            Para comenzar la práctica se abrió el símbolo del sistema de
+            Windows (CMD) y se realizó una conexión con la base de datos
+            PostgreSQL alojada en Neon. La conexión inicial se efectuó
+            utilizando el usuario propietario de la base de datos, debido
+            a que este cuenta con los privilegios necesarios para crear
+            nuevos usuarios y posteriormente asignarles permisos.
+        </p>
+
+        <p>
+            Para establecer la conexión se utilizó el cliente
+            <strong>psql</strong> junto con la cadena de conexión
+            proporcionada por Neon. Por motivos de seguridad, la contraseña
+            utilizada para acceder a la base de datos no se muestra en esta
+            documentación.
+        </p>
+
+        <div class="comando">
+            <code>
+                psql "TU_CADENA_DE_CONEXION_DE_NEON"
+            </code>
+        </div>
+
+        <p>
+            Una vez establecida correctamente la conexión, la terminal mostró
+            el indicador <strong>neondb=&gt;</strong>, confirmando que la
+            sesión se encontraba dentro de la base de datos y que podían
+            comenzar a ejecutarse las instrucciones necesarias para la
+            administración de los usuarios.
+        </p>
+
+        <div class="captura">
+
+            <img src="img/captura1.png"
+                 alt="Conexión a la base de datos PostgreSQL alojada en Neon">
+
+            <p>
+                Figura 1. Conexión a la base de datos neondb
+                mediante el cliente psql.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- PASO 2 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>2</span>
+        <h3>Creación de los usuarios</h3>
+    </div>
+
+    <p>
+        Después de establecer la conexión con la base de datos mediante
+        el usuario propietario, se procedió a crear los tres usuarios
+        solicitados para la práctica: <strong>pedro</strong>,
+        <strong>juan</strong> y <strong>pablo</strong>. Cada uno de estos
+        usuarios sería utilizado posteriormente para comprobar diferentes
+        niveles de acceso a la información almacenada.
+    </p>
+
+    <p>
+        Para crear los usuarios se utilizó la instrucción
+        <strong>CREATE USER</strong>. A cada usuario se le asignó una
+        contraseña para permitir posteriormente su conexión individual
+        mediante el cliente psql. Por seguridad, las contraseñas utilizadas
+        durante la práctica se omiten en esta documentación.
+    </p>
+
+    <div class="comando">
+        <code>
+            CREATE USER pedro WITH PASSWORD '********';<br>
+            CREATE USER juan WITH PASSWORD '********';<br>
+            CREATE USER pablo WITH PASSWORD '********';
+        </code>
+    </div>
+
+    <p>
+        PostgreSQL confirmó la ejecución de las instrucciones mediante el
+        mensaje <strong>CREATE ROLE</strong>. Posteriormente se utilizó el
+        comando <strong>\du</strong> de psql para consultar los roles
+        existentes y comprobar que los tres nuevos usuarios habían sido
+        creados correctamente.
+    </p>
+
+    <div class="comando">
+        <code>\du</code>
+    </div>
+
+    <p>
+        En el resultado se observaron los usuarios pedro, juan y pablo,
+        además del usuario propietario de la base de datos. Los usuarios
+        recién creados no presentaron atributos administrativos especiales,
+        ya que los permisos necesarios serían asignados posteriormente de
+        manera individual.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura2.png"
+             alt="Creación de usuarios y comprobación de roles en PostgreSQL">
+
+        <p>
+            Figura 2. Creación de los usuarios pedro, juan y pablo
+            y comprobación mediante el comando \du.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 3 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>3</span>
+        <h3>Asignación de permisos al usuario Pedro</h3>
+    </div>
+
+    <p>
+        Una vez creados los usuarios, se comenzó con la asignación de
+        privilegios. De acuerdo con los requerimientos de la práctica,
+        el usuario <strong>pedro</strong> debía tener la capacidad de
+        consultar la información almacenada en las tablas de la base de
+        datos, sin contar con permisos para modificarla.
+    </p>
+
+    <p>
+        Primero se otorgó el privilegio <strong>USAGE</strong> sobre el
+        esquema <strong>public</strong>. Este permiso permite al usuario
+        acceder a los objetos contenidos dentro del esquema, siempre que
+        también posea los privilegios correspondientes sobre dichos objetos.
+    </p>
+
+    <div class="comando">
+        <code>
+            GRANT USAGE ON SCHEMA public TO pedro;
+        </code>
+    </div>
+
+    <p>
+        Posteriormente se concedió el privilegio
+        <strong>SELECT</strong> sobre todas las tablas existentes dentro
+        del esquema public. Con este permiso, Pedro puede realizar
+        consultas para visualizar la información, pero no recibe permisos
+        de inserción, actualización o eliminación.
+    </p>
+
+    <div class="comando">
+        <code>
+            GRANT SELECT ON ALL TABLES IN SCHEMA public TO pedro;
+        </code>
+    </div>
+
+    <p>
+        Después de ejecutar ambas instrucciones, PostgreSQL mostró el
+        mensaje <strong>GRANT</strong>, indicando que los privilegios
+        fueron asignados correctamente. De esta forma, el usuario Pedro
+        quedó configurado con acceso de lectura sobre las tablas de la
+        base de datos.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura3.png"
+             alt="Asignación de privilegios de lectura al usuario Pedro">
+
+        <p>
+            Figura 3. Asignación de los privilegios USAGE y SELECT
+            al usuario pedro.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 4 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>4</span>
+        <h3>Asignación de permisos al usuario Juan</h3>
+    </div>
+
+    <p>
+        El siguiente usuario configurado fue <strong>juan</strong>.
+        De acuerdo con los requerimientos de la práctica, este usuario
+        debía contar con permisos de escritura específicamente sobre la
+        tabla <strong>alumno</strong>, sin otorgarle los mismos privilegios
+        sobre las demás tablas de la base de datos.
+    </p>
+
+    <p>
+        Primero se concedió el privilegio <strong>USAGE</strong> sobre
+        el esquema <strong>public</strong>, permitiendo que el usuario
+        pudiera acceder a los objetos del esquema para los cuales tuviera
+        permisos asignados.
+    </p>
+
+    <div class="comando">
+        <code>
+            GRANT USAGE ON SCHEMA public TO juan;
+        </code>
+    </div>
+
+    <p>
+        Posteriormente se otorgaron los privilegios
+        <strong>INSERT</strong>, <strong>UPDATE</strong> y
+        <strong>DELETE</strong> sobre la tabla alumno. Estos permisos
+        permiten agregar nuevos registros, modificar información existente
+        y eliminar registros de dicha tabla.
+    </p>
+
+    <div class="comando">
+        <code>
+            GRANT INSERT, UPDATE, DELETE ON TABLE alumno TO juan;
+        </code>
+    </div>
+
+    <p>
+        También se concedieron los permisos <strong>USAGE</strong> y
+        <strong>SELECT</strong> sobre las secuencias del esquema public.
+        Esto permite utilizar las secuencias necesarias cuando una
+        operación de inserción requiere generar automáticamente un
+        identificador.
+    </p>
+
+    <div class="comando">
+        <code>
+            GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO juan;
+        </code>
+    </div>
+
+    <p>
+        Después de ejecutar las instrucciones, PostgreSQL respondió con
+        el mensaje <strong>GRANT</strong>, confirmando que los privilegios
+        fueron asignados. De esta manera, Juan quedó configurado con
+        permisos de escritura sobre la tabla alumno y con acceso a las
+        secuencias necesarias para realizar inserciones.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura4.png"
+             alt="Asignación de privilegios al usuario Juan">
+
+        <p>
+            Figura 4. Asignación de privilegios de escritura sobre
+            la tabla alumno al usuario juan.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 5 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>5</span>
+        <h3>Asignación de permisos al usuario Pablo</h3>
+    </div>
+
+    <p>
+        Posteriormente se configuraron los privilegios correspondientes
+        al usuario <strong>pablo</strong>. De acuerdo con los requerimientos
+        de la práctica, este usuario debía tener permisos de escritura
+        específicamente sobre la tabla <strong>asistencia</strong>,
+        manteniendo restringido el acceso de escritura sobre las demás
+        tablas de la base de datos.
+    </p>
+
+    <p>
+        En primer lugar, se concedió el privilegio
+        <strong>USAGE</strong> sobre el esquema
+        <strong>public</strong>. Este permiso permite que el usuario
+        pueda acceder a los objetos del esquema para los cuales se le
+        hayan otorgado privilegios específicos.
+    </p>
+
+    <div class="comando">
+        <code>
+            GRANT USAGE ON SCHEMA public TO pablo;
+        </code>
+    </div>
+
+    <p>
+        Después se otorgaron los privilegios
+        <strong>INSERT</strong>, <strong>UPDATE</strong> y
+        <strong>DELETE</strong> sobre la tabla asistencia. Con estos
+        permisos, Pablo puede realizar operaciones de escritura sobre
+        los registros correspondientes a las asistencias.
+    </p>
+
+    <div class="comando">
+        <code>
+            GRANT INSERT, UPDATE, DELETE ON TABLE asistencia TO pablo;
+        </code>
+    </div>
+
+    <p>
+        También se concedieron los privilegios
+        <strong>USAGE</strong> y <strong>SELECT</strong> sobre las
+        secuencias existentes en el esquema public. Estos permisos
+        permiten utilizar las secuencias requeridas para la generación
+        automática de identificadores durante determinadas operaciones
+        de inserción.
+    </p>
+
+    <div class="comando">
+        <code>
+            GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO pablo;
+        </code>
+    </div>
+
+    <p>
+        PostgreSQL confirmó cada una de las instrucciones mediante el
+        mensaje <strong>GRANT</strong>. Con esta configuración, Pablo
+        quedó limitado a realizar las operaciones de escritura asignadas
+        sobre la tabla asistencia, de acuerdo con los requerimientos
+        establecidos para la práctica.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura5.png"
+             alt="Asignación de privilegios al usuario Pablo">
+
+        <p>
+            Figura 5. Asignación de privilegios de escritura sobre
+            la tabla asistencia al usuario pablo.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 6 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>6</span>
+        <h3>Comprobación de permisos del usuario Pedro</h3>
+    </div>
+
+    <p>
+        Después de configurar los privilegios de los tres usuarios, se
+        realizaron conexiones individuales para comprobar que los permisos
+        funcionaran correctamente. Primero se cerró la sesión del usuario
+        propietario y se inició una nueva conexión utilizando las
+        credenciales del usuario <strong>pedro</strong>.
+    </p>
+
+    <div class="comando">
+        <code>
+            psql -h TU_HOST_DE_NEON -U pedro -d neondb -W
+        </code>
+    </div>
+
+    <p>
+        Una vez establecida la conexión, se utilizó la siguiente consulta
+        para verificar que la sesión correspondiera al usuario Pedro.
+    </p>
+
+    <div class="comando">
+        <code>
+            SELECT current_user;
+        </code>
+    </div>
+
+    <p>
+        Posteriormente se realizaron consultas sobre las tablas
+        <strong>alumno</strong> y <strong>materia</strong>. Ambas operaciones
+        pudieron ejecutarse correctamente debido al privilegio
+        <strong>SELECT</strong> que había sido otorgado previamente.
+    </p>
+
+    <div class="comando">
+        <code>
+            SELECT * FROM alumno;<br>
+            SELECT * FROM materia;
+        </code>
+    </div>
+
+    <div class="captura">
+
+        <img src="img/captura6.png"
+             alt="Consultas permitidas realizadas por el usuario Pedro">
+
+        <p>
+            Figura 6. Comprobación del acceso de lectura del usuario pedro
+            mediante consultas sobre las tablas de la base de datos.
+        </p>
+
+    </div>
+
+    <p>
+        Para comprobar que Pedro únicamente contaba con permisos de lectura,
+        se intentó insertar un nuevo registro en la tabla
+        <strong>materia</strong>.
+    </p>
+
+    <div class="comando">
+        <code>
+            INSERT INTO materia (nombre)<br>
+            VALUES ('PRUEBA PEDRO');
+        </code>
+    </div>
+
+    <p>
+        PostgreSQL rechazó la operación y mostró un mensaje indicando que
+        el usuario no tenía permisos sobre la tabla materia. Este resultado
+        confirmó que Pedro podía consultar la información, pero no tenía
+        autorización para insertar nuevos registros.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura7.png"
+             alt="Operación de inserción rechazada para el usuario Pedro">
+
+        <p>
+            Figura 7. Intento de inserción rechazado debido a que el usuario
+            pedro no cuenta con privilegios de escritura sobre la tabla materia.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 7 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>7</span>
+        <h3>Comprobación de permisos del usuario Juan</h3>
+    </div>
+
+    <p>
+        Después de comprobar los privilegios de Pedro, se cerró su sesión
+        y se realizó una nueva conexión a la base de datos utilizando las
+        credenciales del usuario <strong>juan</strong>. El propósito de esta
+        prueba fue verificar que pudiera realizar operaciones de escritura
+        sobre la tabla <strong>alumno</strong>, de acuerdo con los permisos
+        asignados anteriormente.
+    </p>
+
+    <div class="comando">
+        <code>
+            psql -h TU_HOST_DE_NEON -U juan -d neondb -W
+        </code>
+    </div>
+
+    <p>
+        Una vez iniciada la sesión, se verificó el usuario conectado mediante
+        la función <strong>current_user</strong>.
+    </p>
+
+    <div class="comando">
+        <code>
+            SELECT current_user;
+        </code>
+    </div>
+
+    <p>
+        Para comprobar el permiso de escritura, se realizó una inserción de
+        prueba en la tabla <strong>alumno</strong>. La operación fue aceptada
+        por PostgreSQL debido a que Juan contaba con el privilegio
+        <strong>INSERT</strong> sobre esta tabla.
+    </p>
+
+    <div class="comando">
+        <code>
+            INSERT INTO alumno (nombre, idGrupo)<br>
+            VALUES ('ALUMNO PRUEBA JUAN', 1);
+        </code>
+    </div>
+
+    <p>
+        PostgreSQL mostró el mensaje <strong>INSERT 0 1</strong>, indicando
+        que el registro de prueba fue insertado correctamente. Con este
+        resultado se comprobó que el permiso de escritura asignado a Juan
+        sobre la tabla alumno funcionaba correctamente.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura8.png"
+             alt="Inserción permitida para el usuario Juan en la tabla alumno">
+
+        <p>
+            Figura 8. Inserción permitida al usuario juan sobre la
+            tabla alumno.
+        </p>
+
+    </div>
+
+    <p>
+        Posteriormente se intentó realizar una operación de inserción sobre
+        la tabla <strong>materia</strong>. Debido a que Juan no recibió
+        privilegios de escritura sobre esta tabla, PostgreSQL rechazó
+        la operación.
+    </p>
+
+    <div class="comando">
+        <code>
+            INSERT INTO materia (nombre)<br>
+            VALUES ('PRUEBA JUAN');
+        </code>
+    </div>
+
+    <p>
+        El mensaje de permiso denegado permitió comprobar que los privilegios
+        de Juan se encontraban restringidos a los objetos autorizados y que
+        no podía realizar la misma operación sobre una tabla para la cual
+        no se le habían concedido permisos.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura9.png"
+             alt="Inserción rechazada para el usuario Juan en la tabla materia">
+
+        <p>
+            Figura 9. Operación de inserción rechazada al usuario juan
+            sobre la tabla materia por falta de privilegios.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 8 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>8</span>
+        <h3>Comprobación de permisos del usuario Pablo</h3>
+    </div>
+
+    <p>
+        Después de finalizar las pruebas correspondientes al usuario Juan,
+        se cerró su sesión y se realizó una nueva conexión a la base de
+        datos utilizando las credenciales del usuario
+        <strong>pablo</strong>. El objetivo fue comprobar que los permisos
+        de escritura asignados sobre la tabla
+        <strong>asistencia</strong> funcionaran correctamente.
+    </p>
+
+    <div class="comando">
+        <code>
+            psql -h TU_HOST_DE_NEON -U pablo -d neondb -W
+        </code>
+    </div>
+
+    <p>
+        Una vez establecida la conexión, se verificó que la sesión
+        correspondiera al usuario Pablo mediante la función
+        <strong>current_user</strong>.
+    </p>
+
+    <div class="comando">
+        <code>
+            SELECT current_user;
+        </code>
+    </div>
+
+    <p>
+        Para comprobar el permiso de escritura se realizó una inserción
+        de prueba en la tabla <strong>asistencia</strong>. Se utilizaron
+        datos temporales con la finalidad de verificar el funcionamiento
+        del privilegio <strong>INSERT</strong> asignado previamente.
+    </p>
+
+    <div class="comando">
+        <code>
+            INSERT INTO asistencia (idAlumno, fecha, horas)<br>
+            VALUES (1, '2026-09-25', 2);
+        </code>
+    </div>
+
+    <p>
+        La operación fue aceptada por PostgreSQL, mostrando el mensaje
+        <strong>INSERT 0 1</strong>. Este resultado confirmó que Pablo
+        podía realizar operaciones de escritura sobre la tabla asistencia
+        de acuerdo con los privilegios que le fueron asignados.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura10.png"
+             alt="Inserción permitida para el usuario Pablo en la tabla asistencia">
+
+        <p>
+            Figura 10. Inserción permitida al usuario pablo sobre
+            la tabla asistencia.
+        </p>
+
+    </div>
+
+    <p>
+        Posteriormente se realizó una segunda prueba intentando insertar
+        información en la tabla <strong>alumno</strong>. Esta tabla no
+        formaba parte de los objetos sobre los cuales Pablo tenía
+        privilegios de escritura.
+    </p>
+
+    <div class="comando">
+        <code>
+            INSERT INTO alumno (nombre, idGrupo)<br>
+            VALUES ('ALUMNO PRUEBA PABLO', 1);
+        </code>
+    </div>
+
+    <p>
+        PostgreSQL rechazó la operación debido a la falta de privilegios
+        sobre la tabla alumno. Con esta prueba se confirmó que los permisos
+        asignados a Pablo se encontraban limitados a la tabla asistencia
+        y que no podía realizar operaciones de escritura sobre tablas
+        no autorizadas.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura11.png"
+             alt="Inserción rechazada para el usuario Pablo en la tabla alumno">
+
+        <p>
+            Figura 11. Operación de inserción rechazada al usuario pablo
+            sobre la tabla alumno por falta de privilegios.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 9 -->
+<div class="paso">
+
+    <div class="titulo-paso">
+        <span>9</span>
+        <h3>Verificación final de usuarios y privilegios</h3>
+    </div>
+
+    <p>
+        Después de realizar las pruebas individuales con Pedro, Juan y
+        Pablo, se volvió a iniciar sesión con el usuario propietario de la
+        base de datos. Finalmente, se verificó la configuración de los
+        usuarios y los privilegios que habían sido asignados durante la
+        práctica.
+    </p>
+
+    <p>
+        Primero se utilizó el comando <strong>\du</strong> para consultar
+        los roles existentes en PostgreSQL y comprobar que los usuarios
+        pedro, juan y pablo continuaban registrados correctamente.
+    </p>
+
+    <div class="comando">
+        <code>
+            \du
+        </code>
+    </div>
+
+    <p>
+        Posteriormente se utilizó el comando <strong>\dp</strong>, el cual
+        permitió consultar los privilegios de acceso existentes sobre las
+        tablas y secuencias de la base de datos.
+    </p>
+
+    <div class="comando">
+        <code>
+            \dp
+        </code>
+    </div>
+
+    <p>
+        En el resultado se comprobó que el usuario
+        <strong>pedro</strong> tenía el privilegio
+        <strong>r</strong>, correspondiente a lectura mediante SELECT,
+        sobre las tablas de la base de datos. También se observó que
+        <strong>juan</strong> tenía los privilegios
+        <strong>a, w y d</strong> sobre la tabla alumno, correspondientes
+        a INSERT, UPDATE y DELETE.
+    </p>
+
+    <p>
+        De la misma manera, el usuario <strong>pablo</strong> presentó los
+        privilegios <strong>a, w y d</strong> sobre la tabla asistencia.
+        Además, Juan y Pablo mostraron los permisos correspondientes sobre
+        las secuencias necesarias para las operaciones de inserción.
+    </p>
+
+    <div class="captura">
+
+        <img src="img/captura12.png"
+             alt="Verificación final de privilegios mediante el comando dp">
+
+        <p>
+            Figura 12. Verificación final de los privilegios asignados
+            a pedro, juan y pablo mediante el comando \dp.
+        </p>
+
+    </div>
+
+    <p>
+        Con esta comprobación final se verificó que cada usuario mantuviera
+        únicamente los privilegios establecidos para la práctica. Las
+        pruebas realizadas anteriormente también demostraron que PostgreSQL
+        permitía las operaciones autorizadas y rechazaba aquellas para las
+        cuales el usuario no contaba con los permisos correspondientes.
+    </p>
+
+</div>
+
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <div class="numero-pagina">5</div>
+
+</section>
+
+<!-- CONCLUSIÓN -->
+<section class="seccion" id="conclusion">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">04</span>
+
+        <div>
+            <h2>Conclusión</h2>
+            <p>Resultados y conocimientos obtenidos</p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+    <div class="contenido-seccion">
+
+        <p>
+            Mediante el desarrollo de esta práctica fue posible comprender
+            de manera práctica cómo se administran usuarios y privilegios
+            dentro de una base de datos PostgreSQL alojada en Neon. La
+            creación de diferentes usuarios permitió observar cómo es
+            posible establecer distintos niveles de acceso dependiendo de
+            las actividades que cada persona necesita realizar dentro de
+            una base de datos.
+        </p>
+
+        <p>
+            Durante la práctica se crearon los usuarios
+            <strong>pedro</strong>, <strong>juan</strong> y
+            <strong>pablo</strong>. A Pedro se le asignaron permisos de
+            lectura sobre las tablas, mientras que Juan recibió permisos
+            de escritura sobre la tabla <strong>alumno</strong> y Pablo
+            sobre la tabla <strong>asistencia</strong>. Esto permitió
+            comprobar que los privilegios pueden asignarse de manera
+            específica sin proporcionar acceso completo a todos los
+            usuarios.
+        </p>
+
+        <p>
+            Las pruebas realizadas con cada cuenta fueron importantes para
+            verificar el funcionamiento de la configuración. Las operaciones
+            autorizadas pudieron ejecutarse correctamente, mientras que
+            PostgreSQL rechazó aquellas que intentaban acceder a funciones
+            para las cuales el usuario no tenía los privilegios necesarios.
+            De esta forma, se comprobó que la asignación de permisos se
+            aplicó de acuerdo con los requerimientos establecidos.
+        </p>
+
+        <p>
+            Finalmente, esta práctica permitió reforzar conocimientos sobre
+            la creación de usuarios, el uso de privilegios como
+            <strong>SELECT</strong>, <strong>INSERT</strong>,
+            <strong>UPDATE</strong>, <strong>DELETE</strong> y
+            <strong>USAGE</strong>, así como el manejo de esquemas y
+            secuencias. Estos mecanismos son importantes para mantener un
+            mejor control de acceso a la información y limitar las acciones
+            que cada usuario puede realizar dentro de un sistema de base de
+            datos.
+        </p>
+
+    </div>
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <div class="numero-pagina">6</div>
+
+</section>
+
+<!-- REFERENCIAS BIBLIOGRÁFICAS -->
+<section class="seccion" id="referencias">
+
+    <div class="encabezado-seccion">
+        <span class="numero-seccion">05</span>
+
+        <div>
+            <h2>Referencias bibliográficas</h2>
+            <p>Fuentes consultadas para el desarrollo de la práctica</p>
+        </div>
+    </div>
+
+    <div class="linea-seccion"></div>
+
+    <div class="lista-referencias">
+
+        <p>
+            PostgreSQL Global Development Group. (2026).
+            <em>Database roles</em>. PostgreSQL Documentation.
+            https://www.postgresql.org/docs/18/database-roles.html
+        </p>
+
+        <p>
+            PostgreSQL Global Development Group. (2026).
+            <em>Privileges</em>. PostgreSQL Documentation.
+            https://www.postgresql.org/docs/18/ddl-priv.html
+        </p>
+
+        <p>
+            PostgreSQL Global Development Group. (2026).
+            <em>GRANT</em>. PostgreSQL Documentation.
+            https://www.postgresql.org/docs/18/sql-grant.html
+        </p>
+
+        <p>
+            PostgreSQL Global Development Group. (2026).
+            <em>Schemas</em>. PostgreSQL Documentation.
+            https://www.postgresql.org/docs/18/ddl-schemas.html
+        </p>
+
+        <p>
+            Neon. (2026).
+            <em>Connect from any application</em>. Neon Docs.
+            https://neon.com/docs/connect/connect-from-any-app
+        </p>
+
+    </div>
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <div class="numero-pagina">7</div>
+
+</section>
+
+</body>
+
+</html>

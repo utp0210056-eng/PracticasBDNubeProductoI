@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Reporte - Respaldo de Base de Datos desde Aplicaciones Web
+    </title>
+
+    <link rel="stylesheet" href="estilos.css">
+
+</head>
+
+
+<body>
+
+    <div class="barra-navegacion">
+    <a href="../index.html" class="volver-practicas">
+        ← Volver a todas las prácticas
+    </a>
+</div>
+
+
+
+<section class="seccion portada" id="portada">
+
+    <div class="universidad">
+        Universidad Tecnológica de Puebla
+    </div>
+
+    <div class="linea-portada"></div>
+
+    <div class="materia">
+        Base de Datos en la Nube
+    </div>
+
+
+    <h1 class="titulo-practica">
+        Respaldo de Base de Datos desde Aplicaciones Web
+    </h1>
+
+    <div class="subtitulo-practica">
+        PostgreSQL alojado en Neon
+    </div>
+
+
+    <div class="datos-portada">
+
+        <div class="dato">
+            <strong>Alumno:</strong>
+            Alexis Ian Neocelo Sanabria
+        </div>
+
+        <div class="dato">
+            <strong>Grupo:</strong>
+            7C Vespertino
+        </div>
+
+        <div class="dato">
+            <strong>Profesor:</strong>
+            Javier Nolasco Hernández
+        </div>
+
+        <div class="dato">
+            <strong>Práctica:</strong>
+            Respaldos desde aplicaciones web
+        </div>
+
+        <div class="dato">
+            <strong>Tecnologías:</strong>
+            PHP, .NET 10, Golang, Rust, Python y C++
+        </div>
+
+        <div class="dato">
+            <strong>Base de datos:</strong>
+            PostgreSQL - Neon
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="seccion" id="indice">
+
+    <div class="encabezado">
+
+        <div class="numero">
+            00
+        </div>
+
+        <div class="encabezado-texto">
+
+            <h2>
+                Índice
+            </h2>
+
+            <p>
+                Contenido del reporte de práctica
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="separador"></div>
+
+
+    <div class="indice">
+
+        <a href="#introduccion">
+
+            Introducción
+
+            <span>01</span>
+
+        </a>
+
+
+        <a href="#marco-teorico">
+
+            Marco teórico
+
+            <span>02</span>
+
+        </a>
+
+
+        <a href="#procedimiento">
+
+            Procedimiento
+
+            <span>03</span>
+
+        </a>
+
+
+        <a href="#comparacion">
+
+            Cuadro comparativo
+
+            <span>04</span>
+
+        </a>
+
+
+        <a href="#conclusion">
+
+            Conclusión
+
+            <span>05</span>
+
+        </a>
+
+
+        <a href="#referencias">
+
+            Referencias bibliográficas
+
+            <span>06</span>
+
+        </a>
+
+    </div>
+
+    <span class="numero-pagina">Página 1</span>
+</section>
+
+
+
+<!-- =====================================================
+     INTRODUCCION
+===================================================== -->
+
+<section class="seccion" id="introduccion">
+
+    <div class="encabezado">
+
+        <div class="numero">
+            01
+        </div>
+
+        <div class="encabezado-texto">
+
+            <h2>
+                Introducción
+            </h2>
+
+            <p>
+                Respaldo de PostgreSQL desde diferentes tecnologías web
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="separador"></div>
+
+
+    <div class="contenido">
+
+        <p>
+            El respaldo de una base de datos es una actividad importante
+            para conservar la información y disponer de una copia que pueda
+            utilizarse posteriormente en caso de pérdida, modificación
+            accidental o algún problema con el sistema. En esta práctica se
+            trabajó con una base de datos PostgreSQL alojada en Neon,
+            utilizando diferentes tecnologías para generar respaldos desde
+            aplicaciones web.
+        </p>
+
+        <p>
+            El objetivo de la práctica fue desarrollar aplicaciones web
+            utilizando PHP, .NET 10, Golang, Rust, Python y C++, desde las
+            cuales el usuario pudiera solicitar la generación de un respaldo.
+            Para mantener un funcionamiento similar entre las diferentes
+            implementaciones, se utilizó la herramienta
+            <strong>pg_dump</strong> de PostgreSQL para generar los archivos
+            de respaldo en formato SQL.
+        </p>
+
+        <p>
+            Durante el desarrollo se configuró la conexión con la base de
+            datos, se realizaron pruebas desde la línea de comandos y
+            posteriormente se integró el proceso de respaldo con cada una de
+            las aplicaciones web. Finalmente, se compararon las tecnologías
+            utilizadas considerando principalmente su facilidad de
+            implementación y el funcionamiento obtenido durante las pruebas.
+        </p>
+
+    </div>
+
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <span class="numero-pagina">Página 2</span>
+</section>
+
+
+
+<section class="seccion" id="marco-teorico">
+
+    <div class="encabezado">
+
+        <div class="numero">
+            02
+        </div>
+
+        <div class="encabezado-texto">
+
+            <h2>
+                Marco teórico
+            </h2>
+
+            <p>
+                Conceptos utilizados para la generación de respaldos
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="separador"></div>
+
+
+    <div class="contenido">
+
+        <h3>PostgreSQL</h3>
+
+        <p>
+            PostgreSQL es un sistema gestor de bases de datos relacional
+            de código abierto que permite almacenar, organizar y consultar
+            información. También proporciona diferentes herramientas para
+            realizar tareas administrativas, entre ellas la generación de
+            respaldos de una base de datos (PostgreSQL Global Development
+            Group, 2026).
+        </p>
+
+
+        <h3>Neon</h3>
+
+        <p>
+            Neon es una plataforma que proporciona bases de datos PostgreSQL
+            en la nube. En esta práctica se utilizó para alojar la base de
+            datos sobre la cual se realizaron las conexiones y las pruebas
+            de respaldo desde las diferentes aplicaciones web.
+        </p>
+
+
+        <h3>Respaldo de una base de datos</h3>
+
+        <p>
+            Un respaldo consiste en conservar una copia de la información
+            almacenada en una base de datos para disponer de ella en caso de
+            pérdida de información, modificaciones accidentales o problemas
+            con el sistema. Dependiendo del método utilizado, el respaldo
+            puede incluir tanto la estructura de la base de datos como los
+            datos almacenados.
+        </p>
+
+
+        <h3>pg_dump</h3>
+
+        <p>
+            <strong>pg_dump</strong> es una herramienta de PostgreSQL que
+            permite exportar una base de datos. En esta práctica se utilizó
+            para generar archivos en formato SQL a partir de la base de datos
+            alojada en Neon. Estos archivos contienen la información necesaria
+            para conservar una copia de la base de datos
+            (PostgreSQL Global Development Group, 2026).
+        </p>
+
+
+        <h3>Aplicaciones web utilizadas</h3>
+
+        <p>
+            Para realizar la práctica se desarrollaron aplicaciones web con
+            PHP, .NET 10, Golang, Rust, Python y C++. Aunque cada tecnología
+            utiliza una forma diferente para crear y ejecutar una aplicación
+            web, todas fueron utilizadas con el mismo propósito: permitir que
+            el usuario iniciara la generación de un respaldo desde una
+            interfaz accesible mediante el navegador.
+        </p>
+
+
+        <div class="flujo-respaldo">
+
+            <div>
+                Aplicación web
+            </div>
+
+            <span>→</span>
+
+            <div>
+                Proceso de respaldo
+            </div>
+
+            <span>→</span>
+
+            <div>
+                pg_dump
+            </div>
+
+            <span>→</span>
+
+            <div>
+                PostgreSQL en Neon
+            </div>
+
+            <span>→</span>
+
+            <div>
+                Archivo .sql
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <span class="numero-pagina">Página 3</span>
+</section>
+
+
+
+<section class="seccion" id="procedimiento">
+
+    <div class="encabezado">
+
+        <div class="numero">
+            03
+        </div>
+
+        <div class="encabezado-texto">
+
+            <h2>
+                Procedimiento
+            </h2>
+
+            <p>
+                Desarrollo y pruebas del sistema de respaldos
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="separador"></div>
+
+
+    <div class="contenido">
+
+        <!-- PASO 1 -->
+
+        <div class="paso">
+
+            <div class="titulo-paso">
+
+                <span>1</span>
+
+                <h3>
+                    Preparación de la conexión con PostgreSQL
+                </h3>
+
+            </div>
+
+            <p>
+                Primero se verificó que las herramientas de PostgreSQL
+                estuvieran instaladas correctamente en el equipo. Se comprobó
+                principalmente el funcionamiento de <strong>pg_dump</strong>,
+                debido a que esta herramienta sería la encargada de generar
+                los respaldos de la base de datos.
+            </p>
+
+            <p>
+                Posteriormente se utilizaron los datos de conexión
+                proporcionados por Neon para establecer comunicación con la
+                base de datos PostgreSQL alojada en la nube. También se
+                configuró el archivo <strong>pgpass.conf</strong> para
+                permitir la autenticación durante la ejecución de los
+                respaldos sin solicitar manualmente la contraseña en cada
+                operación.
+            </p>
+
+            <div class="captura">
+
+                <img src="img/captura1.png"
+                     alt="Verificación de PostgreSQL y pg_dump">
+
+                <p>
+                    Figura 1. Verificación de las herramientas de PostgreSQL.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- PASO 2 -->
+
+        <div class="paso">
+
+            <div class="titulo-paso">
+
+                <span>2</span>
+
+                <h3>
+                    Prueba manual del respaldo
+                </h3>
+
+            </div>
+
+            <p>
+                Antes de desarrollar las aplicaciones web se realizó una
+                prueba directamente desde la línea de comandos. Para ello se
+                ejecutó <strong>pg_dump</strong> indicando los datos
+                necesarios para conectarse a la base de datos y la ubicación
+                donde se almacenaría el archivo generado.
+            </p>
+
+            <div class="comando">
+
+                <code>
+                    pg_dump -h "servidor-neon" -p 5432
+                    -U "usuario" -d "base_de_datos"
+                    -f "respaldo.sql"
+                </code>
+
+            </div>
+
+            <p>
+                La prueba permitió comprobar que el equipo podía conectarse
+                correctamente con Neon y generar un archivo SQL con el
+                contenido de la base de datos.
+            </p>
+
+            <div class="captura">
+
+                <img src="img/captura2.png"
+                     alt="Prueba manual del respaldo">
+
+                <p>
+                    Figura 2. Generación manual del respaldo mediante pg_dump.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- PASO 3 -->
+
+        <div class="paso">
+
+            <div class="titulo-paso">
+
+                <span>3</span>
+
+                <h3>
+                    Automatización mediante un archivo BAT
+                </h3>
+
+            </div>
+
+            <p>
+                Una vez comprobado el funcionamiento de pg_dump, se creó un
+                archivo por lotes denominado
+                <strong>respaldoPG.bat</strong>. Este archivo permitió
+                automatizar la generación del respaldo para posteriormente
+                ejecutarlo desde las diferentes aplicaciones web.
+            </p>
+
+            <p>
+                El archivo fue configurado para generar automáticamente un
+                nombre de respaldo utilizando la fecha y la hora de ejecución.
+                De esta forma, cada respaldo puede almacenarse como un archivo
+                diferente y se evita reemplazar directamente el respaldo
+                anterior.
+            </p>
+
+            <div class="comando">
+
+                <code>
+                    respaldo_28-09-2026_14-16-00.sql
+                </code>
+
+            </div>
+
+            <p>
+                Finalmente, el archivo BAT se ejecutó directamente desde la
+                consola para comprobar su funcionamiento. Al finalizar
+                correctamente, pg_dump devolvió el código de salida 0 y se
+                verificó la creación del archivo SQL.
+            </p>
+
+            <div class="captura">
+
+                <img src="img/captura3.png"
+                     alt="Ejecución correcta del archivo BAT">
+
+                <p>
+                    Figura 3. Ejecución correcta del proceso automatizado de
+                    respaldo.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- PASO 4 -->
+
+<div class="paso">
+
+    <div class="titulo-paso">
+
+        <span>4</span>
+
+        <h3>
+            Aplicación web en PHP
+        </h3>
+
+    </div>
+
+    <p>
+        Después de comprobar que el proceso de respaldo funcionaba
+        correctamente, se desarrolló una aplicación web utilizando PHP.
+        La aplicación permite que el usuario solicite la generación de
+        un respaldo de la base de datos PostgreSQL desde una interfaz
+        sencilla en el navegador.
+    </p>
+
+    <p>
+        Para realizar la prueba se inició el servidor local de PHP y se
+        accedió a la aplicación mediante localhost. En la interfaz se
+        incorporó un botón para iniciar el proceso de generación del
+        respaldo.
+    </p>
+
+    <div class="comando">
+        <code>php -S localhost:8000</code>
+    </div>
+
+
+    <!-- CAPTURA 4 -->
+
+    <div class="captura">
+
+        <img src="img/captura4.png"
+             alt="Aplicación web desarrollada en PHP">
+
+        <p>
+            Figura 4. Interfaz de la aplicación web desarrollada en PHP
+            para generar respaldos de PostgreSQL.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 5 -->
+
+<div class="paso">
+
+    <div class="titulo-paso">
+
+        <span>5</span>
+
+        <h3>
+            Generación del respaldo desde PHP
+        </h3>
+
+    </div>
+
+    <p>
+        Una vez iniciada la aplicación PHP, se realizó una prueba utilizando
+        el botón de generación de respaldo. La aplicación ejecutó el proceso
+        configurado para crear una copia de la base de datos PostgreSQL.
+    </p>
+
+    <p>
+        Al finalizar la operación, la aplicación mostró un mensaje indicando
+        que el respaldo se había generado correctamente, comprobando la
+        comunicación entre la aplicación web y el proceso encargado de
+        realizar el respaldo.
+    </p>
+
+
+    <!-- CAPTURA 5 -->
+
+    <div class="captura">
+
+        <img src="img/captura5.png"
+             alt="Respaldo generado desde PHP">
+
+        <p>
+            Figura 5. Generación correcta del respaldo desde la aplicación
+            web desarrollada en PHP.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 6 -->
+
+<div class="paso">
+
+    <div class="titulo-paso">
+
+        <span>6</span>
+
+        <h3>
+            Aplicación web en .NET 10
+        </h3>
+
+    </div>
+
+    <p>
+        Posteriormente se desarrolló una segunda aplicación web utilizando
+        .NET 10 y C#. Esta aplicación mantiene el mismo objetivo que la
+        versión realizada en PHP, permitiendo iniciar el proceso de respaldo
+        de PostgreSQL desde el navegador.
+    </p>
+
+    <p>
+        Para comprobar su funcionamiento se inició el proyecto desde la
+        terminal y posteriormente se accedió a la dirección local indicada
+        por el servidor. La aplicación presenta una interfaz desde la cual
+        el usuario puede solicitar la generación del respaldo.
+    </p>
+
+    <div class="comando">
+        <code>dotnet run</code>
+    </div>
+
+
+    <!-- CAPTURA 6 -->
+
+    <div class="captura">
+
+        <img src="img/captura6.png"
+             alt="Aplicación web desarrollada en .NET 10">
+
+        <p>
+            Figura 6. Interfaz de la aplicación web desarrollada
+            con .NET 10 para generar respaldos de PostgreSQL.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 7 -->
+
+<div class="paso">
+
+    <div class="titulo-paso">
+
+        <span>7</span>
+
+        <h3>
+            Generación del respaldo desde .NET 10
+        </h3>
+
+    </div>
+
+    <p>
+        Con la aplicación .NET 10 en ejecución, se realizó una prueba
+        para generar el respaldo desde la interfaz web. Al presionar el
+        botón correspondiente, la aplicación ejecutó el proceso encargado
+        de crear la copia de la base de datos PostgreSQL.
+    </p>
+
+    <p>
+        Después de finalizar el proceso, la aplicación mostró el resultado
+        de la operación, permitiendo comprobar que el respaldo podía
+        solicitarse correctamente desde la aplicación desarrollada con C#.
+    </p>
+
+
+    <!-- CAPTURA 7 -->
+
+    <div class="captura">
+
+        <img src="img/captura7.png"
+             alt="Respaldo generado desde .NET 10">
+
+        <p>
+            Figura 7. Generación correcta del respaldo desde la aplicación
+            web desarrollada con .NET 10.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 8 -->
+
+<div class="paso">
+
+    <div class="titulo-paso">
+
+        <span>8</span>
+
+        <h3>
+            Aplicación web en Golang
+        </h3>
+
+    </div>
+
+    <p>
+        La siguiente aplicación se desarrolló utilizando Golang. Para esta
+        versión se creó un servidor web local encargado de mostrar la
+        interfaz desde la cual el usuario puede solicitar la generación
+        del respaldo de PostgreSQL.
+    </p>
+
+    <p>
+        Durante las pruebas fue necesario trabajar con el proyecto desde
+        una ruta diferente a System32 debido a inconvenientes con el entorno.
+        Una vez realizado este ajuste, la aplicación pudo ejecutarse
+        correctamente y ser consultada desde el navegador.
+    </p>
+
+    <div class="comando">
+        <code>go run main.go</code>
+    </div>
+
+
+    <!-- CAPTURA 8 -->
+
+    <div class="captura">
+
+        <img src="img/captura8.png"
+             alt="Aplicación web desarrollada en Golang">
+
+        <p>
+            Figura 8. Interfaz de la aplicación web desarrollada
+            con Golang para generar respaldos de PostgreSQL.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 9 -->
+
+<div class="paso">
+
+    <div class="titulo-paso">
+
+        <span>9</span>
+
+        <h3>
+            Generación del respaldo desde Golang
+        </h3>
+
+    </div>
+
+    <p>
+        Con la aplicación desarrollada en Golang en ejecución, se realizó
+        una prueba desde el navegador para generar el respaldo de la base
+        de datos. Al presionar el botón correspondiente, la aplicación
+        inició el proceso configurado para crear el archivo SQL.
+    </p>
+
+    <p>
+        Al finalizar la operación se mostró el resultado en la interfaz,
+        permitiendo comprobar que la aplicación desarrollada en Golang
+        podía ejecutar correctamente el proceso de respaldo.
+    </p>
+
+
+    <!-- CAPTURA 9 -->
+
+    <div class="captura">
+
+        <img src="img/captura9.png"
+             alt="Respaldo generado desde Golang">
+
+        <p>
+            Figura 9. Generación correcta del respaldo desde la aplicación
+            web desarrollada con Golang.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 10 -->
+
+<div class="paso">
+
+    <div class="titulo-paso">
+
+        <span>10</span>
+
+        <h3>
+            Aplicación web en Rust
+        </h3>
+
+    </div>
+
+    <p>
+        Posteriormente se desarrolló una aplicación web utilizando Rust.
+        La aplicación fue configurada para ejecutarse mediante un servidor
+        local y proporcionar una interfaz desde la cual el usuario puede
+        iniciar el respaldo de la base de datos PostgreSQL.
+    </p>
+
+    <p>
+        Para ejecutar el proyecto se utilizó Cargo, herramienta empleada
+        para administrar y ejecutar proyectos desarrollados en Rust.
+        Una vez iniciado el servidor, se accedió a la aplicación desde
+        el navegador para comprobar su funcionamiento.
+    </p>
+
+    <div class="comando">
+        <code>cargo run</code>
+    </div>
+
+
+    <!-- CAPTURA 10 -->
+
+    <div class="captura">
+
+        <img src="img/captura10.png"
+             alt="Aplicación web desarrollada en Rust">
+
+        <p>
+            Figura 10. Interfaz de la aplicación web desarrollada
+            con Rust para generar respaldos de PostgreSQL.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 11 -->
+
+<div class="paso">
+
+    <div class="titulo-paso">
+
+        <span>11</span>
+
+        <h3>
+            Generación del respaldo desde Rust
+        </h3>
+
+    </div>
+
+    <p>
+        Con la aplicación desarrollada en Rust en funcionamiento, se realizó
+        una prueba de generación del respaldo desde el navegador. Al presionar
+        el botón correspondiente, la aplicación ejecutó el proceso encargado
+        de crear una copia de la base de datos PostgreSQL.
+    </p>
+
+    <p>
+        Una vez finalizada la operación, la aplicación mostró el resultado
+        del proceso, permitiendo comprobar que la solicitud de respaldo
+        podía realizarse correctamente desde la aplicación desarrollada
+        en Rust.
+    </p>
+
+
+    <!-- CAPTURA 11 -->
+
+    <div class="captura">
+
+        <img src="img/captura11.png"
+             alt="Respaldo generado desde Rust">
+
+        <p>
+            Figura 11. Generación correcta del respaldo desde la aplicación
+            web desarrollada con Rust.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 12 -->
+
+<div class="paso">
+
+    <div class="titulo-paso">
+
+        <span>12</span>
+
+        <h3>
+            Aplicación web en Python
+        </h3>
+
+    </div>
+
+    <p>
+        La siguiente aplicación web se desarrolló utilizando Python.
+        Esta versión permite acceder desde el navegador a una interfaz
+        sencilla para solicitar la generación del respaldo de la base
+        de datos PostgreSQL.
+    </p>
+
+    <p>
+        Para realizar las pruebas se inició el servidor de la aplicación
+        desde la terminal. Una vez ejecutado, se accedió a la dirección
+        local proporcionada por el servidor para comprobar que la interfaz
+        funcionara correctamente.
+    </p>
+
+    <div class="comando">
+        <code>py app.py</code>
+    </div>
+
+
+    <!-- CAPTURA 12 -->
+
+    <div class="captura">
+
+        <img src="img/captura12.png"
+             alt="Aplicación web desarrollada en Python">
+
+        <p>
+            Figura 12. Interfaz de la aplicación web desarrollada
+            con Python para generar respaldos de PostgreSQL.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 13 -->
+
+<div class="paso">
+
+    <div class="titulo-paso">
+
+        <span>13</span>
+
+        <h3>
+            Generación del respaldo desde Python
+        </h3>
+
+    </div>
+
+    <p>
+        Con la aplicación desarrollada en Python en ejecución, se realizó
+        una prueba para generar el respaldo desde el navegador. Al presionar
+        el botón correspondiente, la aplicación inició el proceso encargado
+        de crear la copia de la base de datos PostgreSQL.
+    </p>
+
+    <p>
+        Al finalizar la operación, la interfaz mostró un mensaje indicando
+        que el respaldo se había generado correctamente. Con esta prueba se
+        comprobó el funcionamiento de la aplicación y su integración con el
+        proceso de respaldo.
+    </p>
+
+
+    <!-- CAPTURA 13 -->
+
+    <div class="captura">
+
+        <img src="img/captura13.png"
+             alt="Respaldo generado desde Python">
+
+        <p>
+            Figura 13. Generación correcta del respaldo desde la aplicación
+            web desarrollada con Python.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 14 -->
+
+<div class="paso">
+
+    <div class="titulo-paso">
+
+        <span>14</span>
+
+        <h3>
+            Aplicación web en C++ con Drogon
+        </h3>
+
+    </div>
+
+    <p>
+        Finalmente, se desarrolló una aplicación web utilizando C++ y el
+        framework Drogon. Esta aplicación permite acceder desde el navegador
+        a una interfaz para solicitar la generación del respaldo de la base
+        de datos PostgreSQL.
+    </p>
+
+    <p>
+        Para esta implementación fue necesario compilar previamente el
+        proyecto y sus dependencias. Una vez generado el ejecutable, se
+        inició el servidor web y se comprobó el acceso a la aplicación
+        mediante una dirección local.
+    </p>
+
+    <div class="comando">
+        <code>C:\optativa1\7C\sep28\cpp\build\Release\RespaldoWeb.exe</code>
+    </div>
+
+
+    <!-- CAPTURA 14 -->
+
+    <div class="captura">
+
+        <img src="img/captura14.png"
+             alt="Aplicación web desarrollada en C++ con Drogon">
+
+        <p>
+            Figura 14. Interfaz de la aplicación web desarrollada
+            con C++ y Drogon para generar respaldos de PostgreSQL.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- PASO 15 -->
+
+<div class="paso">
+
+    <div class="titulo-paso">
+
+        <span>15</span>
+
+        <h3>
+            Generación del respaldo desde C++
+        </h3>
+
+    </div>
+
+    <p>
+        Con la aplicación desarrollada en C++ y Drogon en ejecución,
+        se realizó la prueba final de generación del respaldo. Desde
+        la interfaz web se solicitó la creación de una copia de la
+        base de datos PostgreSQL alojada en Neon.
+    </p>
+
+    <p>
+        Al ejecutar la operación, la aplicación inició el proceso de
+        respaldo y posteriormente mostró el resultado obtenido. Con
+        esta prueba se comprobó que la aplicación desarrollada en C++
+        también podía ejecutar correctamente la generación del archivo
+        de respaldo.
+    </p>
+
+
+    <!-- CAPTURA 15 -->
+
+    <div class="captura">
+
+        <img src="img/captura15.png"
+             alt="Respaldo generado desde C++">
+
+        <p>
+            Figura 15. Generación correcta del respaldo desde la aplicación
+            web desarrollada con C++ y Drogon.
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<a href="#indice" class="volver-indice">
+    ↑ Volver al índice
+</a>
+
+<span class="numero-pagina">Página 4</span>
+
+</section>
+
+
+
+<section class="seccion" id="comparacion">
+
+    <div class="encabezado">
+
+        <div class="numero">
+            04
+        </div>
+
+        <div class="encabezado-texto">
+
+            <h2>
+                Cuadro comparativo
+            </h2>
+
+            <p>
+                Comparación de facilidad y rendimiento
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="separador"></div>
+
+
+    <div class="contenido">
+
+        <p>
+            Después de implementar y probar las seis aplicaciones web,
+            se realizó una comparación general considerando la facilidad
+            de implementación y el rendimiento observado durante la práctica.
+            Debido a que todas las aplicaciones utilizan el mismo proceso de
+            respaldo mediante pg_dump, no se realizaron mediciones exactas
+            de tiempo entre los diferentes lenguajes.
+        </p>
+
+
+        <div class="tabla-contenedor">
+
+            <table class="tabla-comparativa">
+
+                <thead>
+
+                    <tr>
+                        <th>Tecnología</th>
+                        <th>Facilidad</th>
+                        <th>Rendimiento observado</th>
+                        <th>Observaciones</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+                        <td><strong>PHP</strong></td>
+                        <td>Alta</td>
+                        <td>Adecuado</td>
+                        <td>
+                            Requirió poca configuración y permitió ejecutar
+                            el proceso de respaldo de manera sencilla.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>.NET 10</strong></td>
+                        <td>Alta</td>
+                        <td>Adecuado</td>
+                        <td>
+                            Permitió integrar fácilmente la aplicación web
+                            con la ejecución del proceso externo.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Golang</strong></td>
+                        <td>Media</td>
+                        <td>Adecuado</td>
+                        <td>
+                            La implementación fue sencilla después de
+                            solucionar algunos inconvenientes relacionados
+                            con el entorno y las rutas.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Rust</strong></td>
+                        <td>Media</td>
+                        <td>Adecuado</td>
+                        <td>
+                            Requirió preparar el proyecto y sus dependencias
+                            antes de ejecutar correctamente la aplicación.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Python</strong></td>
+                        <td>Alta</td>
+                        <td>Adecuado</td>
+                        <td>
+                            Permitió desarrollar y ejecutar la aplicación
+                            web con una configuración relativamente sencilla.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>C++ / Drogon</strong></td>
+                        <td>Baja</td>
+                        <td>Adecuado</td>
+                        <td>
+                            Requirió mayor configuración debido al compilador,
+                            CMake, vcpkg, Drogon y sus dependencias.
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <p class="texto-comparacion">
+            En general, las seis tecnologías permitieron cumplir con el
+            objetivo de generar el respaldo. Las principales diferencias
+            se encontraron en la facilidad de preparación del entorno y
+            desarrollo de cada aplicación. En cuanto al rendimiento, durante
+            las pruebas todas respondieron adecuadamente; sin embargo, no se
+            realizaron mediciones controladas que permitan establecer una
+            diferencia exacta de velocidad entre ellas.
+        </p>
+
+    </div>
+
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+
+    <span class="numero-pagina">Página 5</span>
+</section>
+
+
+
+<section class="seccion" id="conclusion">
+
+    <div class="encabezado">
+
+        <div class="numero">
+            05
+        </div>
+
+        <div class="encabezado-texto">
+
+            <h2>
+                Conclusión
+            </h2>
+
+            <p>
+                Resultados obtenidos durante la práctica
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="separador"></div>
+
+
+    <div class="contenido">
+
+        <p>
+            Durante esta práctica se logró implementar un proceso de respaldo
+            para una base de datos PostgreSQL alojada en Neon y utilizarlo
+            desde diferentes aplicaciones web. Para ello se trabajó con
+            pg_dump y posteriormente se automatizó su ejecución para facilitar
+            la generación de los archivos SQL.
+        </p>
+
+        <p>
+            También se comprobó que PHP, .NET 10, Golang, Rust, Python y C++
+            pueden utilizarse para desarrollar una interfaz web capaz de
+            iniciar el mismo proceso de respaldo. Aunque el resultado fue
+            similar en todas las aplicaciones, la preparación del entorno
+            presentó diferentes niveles de dificultad. Algunos lenguajes
+            permitieron realizar la implementación con poca configuración,
+            mientras que otros requirieron instalar y configurar herramientas
+            adicionales.
+        </p>
+
+        <p>
+            Finalmente, los problemas encontrados durante las pruebas
+            permitieron comprender la importancia de verificar las rutas,
+            dependencias, arquitecturas y herramientas utilizadas por cada
+            proyecto. Después de realizar los ajustes necesarios, las seis
+            aplicaciones lograron ejecutar correctamente el proceso de
+            respaldo, cumpliendo con el objetivo planteado para la práctica.
+        </p>
+
+    </div>
+
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <span class="numero-pagina">Página 6</span>
+</section>
+
+
+
+<section class="seccion" id="referencias">
+
+    <div class="encabezado">
+
+        <div class="numero">
+            06
+        </div>
+
+        <div class="encabezado-texto">
+
+            <h2>
+                Referencias bibliográficas
+            </h2>
+
+            <p>
+                Fuentes consultadas para el desarrollo de la práctica
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="separador"></div>
+
+
+    <div class="contenido">
+
+        <div class="lista-referencias">
+
+            <p>
+                Go Authors. (2026).
+                <em>Package net/http</em>.
+                Go Packages.
+                <a href="https://pkg.go.dev/net/http"
+                   target="_blank">
+                    https://pkg.go.dev/net/http
+                </a>
+            </p>
+
+            <p>
+                Microsoft. (2026).
+                <em>ASP.NET Core documentation</em>.
+                Microsoft Learn.
+                <a href="https://learn.microsoft.com/aspnet/core/"
+                   target="_blank">
+                    https://learn.microsoft.com/aspnet/core/
+                </a>
+            </p>
+
+            <p>
+                Neon. (s. f.).
+                <em>Neon documentation</em>.
+                <a href="https://neon.com/docs"
+                   target="_blank">
+                    https://neon.com/docs
+                </a>
+            </p>
+
+            <p>
+                PHP Documentation Group. (s. f.).
+                <em>exec — Ejecuta un programa externo</em>.
+                Manual de PHP.
+                <a href="https://www.php.net/manual/es/function.exec.php"
+                   target="_blank">
+                    https://www.php.net/manual/es/function.exec.php
+                </a>
+            </p>
+
+            <p>
+                PostgreSQL Global Development Group. (2026).
+                <em>pg_dump</em>.
+                PostgreSQL 18 Documentation.
+                <a href="https://www.postgresql.org/docs/18/app-pgdump.html"
+                   target="_blank">
+                    https://www.postgresql.org/docs/18/app-pgdump.html
+                </a>
+            </p>
+
+            <p>
+                Python Software Foundation. (2026).
+                <em>Python documentation</em>.
+                <a href="https://docs.python.org/3/"
+                   target="_blank">
+                    https://docs.python.org/3/
+                </a>
+            </p>
+
+            <p>
+                Rust Project Developers. (2026).
+                <em>The Cargo Book</em>.
+                Rust Documentation.
+                <a href="https://doc.rust-lang.org/cargo/"
+                   target="_blank">
+                    https://doc.rust-lang.org/cargo/
+                </a>
+            </p>
+
+            <p>
+                Drogon Framework. (s. f.).
+                <em>Drogon: C++ web application framework</em>.
+                <a href="https://drogon.org/"
+                   target="_blank">
+                    https://drogon.org/
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <a href="#indice" class="volver-indice">
+        ↑ Volver al índice
+    </a>
+
+    <span class="numero-pagina">Página 7</span>
+    
+</section>
+
+
+</body>
+
+</html>
